@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1= title
+    p Authorization page
+    a(href=`https://www.dropbox.com/oauth2/authorize?client_id=${clientId}&response_type=code` target="_blank") 
+        button click me
+
+
+//-   form(action="/users/auth" method="post")
+//-     button click me
