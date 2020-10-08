@@ -1,0 +1,32 @@
+extends layout
+
+block content
+    h1 Your files from DropBox
+
+    div(id="files")
+
+
+    script(src="/javascripts/cookie.js")
+    script(src="/javascripts/files.js")
+    script. 
+        const cookie = findCookie(document.cookie, "dbx-token")
+        fetchDropbox(cookie)
+            .then((response) => {
+                const filesContainer = document.getElementById("files")
+                const fileNames = response.dropbox.result.entries
+                //console.log(fileNames)
+
+                for(let i = 0; i < fileNames.length; i++) {
+                    const element = document.createElement('h3')
+                    element.innerHTML = fileNames[i].name
+
+                    document.getElementById("files").appendChild(element);
+                }  
+
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+
+        

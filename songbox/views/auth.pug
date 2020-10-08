@@ -1,11 +1,19 @@
 extends layout
 
 block content
+    script(src="/javascripts/utils.js")
     h1= title
     p Authorization page
-    a(href=`https://www.dropbox.com/oauth2/authorize?client_id=${clientId}&response_type=code` target="_blank") 
+    a(href=`${dropbox.auth.getAuthenticationUrl('http://localhost:3000/users/auth')}` target="_blank") 
         button click me
 
+    div(id="auth" style=`display: none`) 
+        h1 You can only see this if youre authenticated!!!
 
-//-   form(action="/users/auth" method="post")
-//-     button click me
+    script.
+        let token = utils.parseQueryString(location.hash).access_token
+        const message = document.getElementById('auth')
+            
+        if (token) {
+            document.cookie = `dbx-token=${token}`
+        } 
