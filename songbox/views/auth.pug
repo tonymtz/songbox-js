@@ -4,16 +4,35 @@ block content
     script(src="/javascripts/utils.js")
     h1= title
     p Authorization page
-    a(href=`${dropbox.auth.getAuthenticationUrl('http://localhost:3000/users/auth')}` target="_blank") 
+    a(href=`${dropbox.auth.getAuthenticationUrl('http://localhost:3000/users/auth')}`) 
         button click me
 
-    div(id="auth" style=`display: none`) 
-        h1 You can only see this if youre authenticated!!!
-
-    script.
-        let token = utils.parseQueryString(location.hash).access_token
-        const message = document.getElementById('auth')
+    script. 
+        const setCookie = async (cookie) => {
+            const response = await fetch('http://localhost:3000/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+                body: JSON.stringify(cookie)
+            })
             
+            return response.json()
+        }
+
+        let token = utils.parseQueryString(location.hash).access_token
+
         if (token) {
-            document.cookie = `dbx-token=${token}`
+            const cookie = {
+                name: 'dbx-token',
+                value: token
+            }
+              
+            setCookie(cookie)
+                .then((response) => {
+                    console.log(response)
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
         } 

@@ -26,4 +26,20 @@ $ npm install
 $ npm start
 ```
 
+## API 
+
+```
+For both routes we will need a 'dbx-token' inside our headers (token given from dropbox).
+
+** 1. GET -> /api/files **
+This route will give you all files from the root of your Dropbox.
+
+
+** 2. GET -> /api/files/* **
+This route will give you access to an specific folder of your Dropbox (specifying the route where the '*' is).
+```
+
+
+
+
 Simple as that...

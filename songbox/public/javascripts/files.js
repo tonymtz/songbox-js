@@ -3,7 +3,7 @@ const fetchDropbox = async (token) => {
         token
     }
 
-    const response = await fetch('http://localhost:3000/users/files', {
+    const response = await fetch('http://localhost:3000/api/files', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
