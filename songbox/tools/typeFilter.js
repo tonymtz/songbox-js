@@ -1,12 +1,12 @@
 const typeFilter = (entries) => {
     const files = entries.filter((entry) => {
-        const isFolder = entry['.tag'] === 'folder'
-        const isValidFile = entry.name.match(/\.?(mp3|ogg|wav)/)
+        const isFolder = entry['.tag'] === 'folder';
+        const isValidFile = entry.name.match(/\.?(mp3|ogg|wav)/);
 
-        return isFolder || isValidFile
+        return isFolder || isValidFile;
     })
     
-    return files
+    return files;
 }
 
-module.exports = typeFilter
+module.exports = typeFilter;

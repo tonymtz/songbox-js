@@ -4,12 +4,12 @@ block content
     script(src="/javascripts/utils.js")
     h1= title
     p Authorization page
-    a(href=`${dropbox.auth.getAuthenticationUrl('http://localhost:3000/users/auth')}`) 
+    a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/users/auth`)}`) 
         button click me
 
     script. 
         const setCookie = async (cookie) => {
-            const response = await fetch('http://localhost:3000/', {
+            const response = await fetch(`http://${window.location.host}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

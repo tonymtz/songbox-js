@@ -1,7 +1,7 @@
 const fetchDropbox = async (token) => {
     const data = {
         token
-    }
+    };
 
     const response = await fetch('http://localhost:3000/api/files', {
         method: 'POST',
@@ -9,7 +9,7 @@ const fetchDropbox = async (token) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    })
+    });
 
-    return response.json()
+    return response.json();
 }
