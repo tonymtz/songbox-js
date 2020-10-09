@@ -9,7 +9,7 @@ block content
 
     script. 
         const setCookie = async (cookie) => {
-            const response = await fetch(`http://${window.location.host}`, {
+            const response = await fetch(`${location.protocol}//${window.location.host}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
