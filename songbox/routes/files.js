@@ -2,7 +2,7 @@ const express = require('express')
 const dropbox = require('dropbox')
 
 const typeFilter = require('../tools/typeFilter')
-const createLinks = require('../tools/createLinks')
+const createLink = require('../tools/createLink')
 const setToken = require('../middleware/setToken')
 
 const router = express.Router()
@@ -14,16 +14,8 @@ router.get('/files', setToken, async (req, res) => {
 
 		const dropboxFiles = await dbx.filesListFolder({ path: '' });
 		const files = typeFilter(dropboxFiles.result.entries);
-		const filesWithLink = await createLinks(files, dbx);
 
-		Promise.all(filesWithLink)
-			.then((result) => {
-				res.status(200).json(result);
-			})
-			.catch((error) => {
-				throw new Error(error)
-			});
-
+		res.status(200).json(files)
 	} catch (error) {
 		res.status(400).json({ error: 'Something went wrong!' });
 	}
@@ -41,18 +33,32 @@ router.get('/files/*', setToken, async (req, res) => {
 
 		const dropboxFiles = await dbx.filesListFolder({ path: dropboxPath });
 		const files = typeFilter(dropboxFiles.result.entries);
-		const filesWithLink = createLinks(files, dbx, dropboxPath);
 
-		Promise.all(filesWithLink)
-			.then((result) => {
-				res.status(200).json(result);
-			})
-			.catch((error) => {
-				throw new Error(error)
-			});
-
+		res.status(200).json(files)
 	} catch (error) {
 		res.status(400).json({ error: 'Something went wrong!' });
+	}
+})
+
+router.get('/file/*', setToken, (req, res) => {
+	try {
+		const token = req.token;
+		const dbx = new dropbox.Dropbox({ accessToken: token });
+
+		const baseUrl = '/file';
+		const path = req.path;
+
+		const dropboxPath = path.substring(baseUrl.length, path.length).replace(/%20/g, ' ')
+
+		createLink(dbx, dropboxPath, '')
+			.then((fileLink) => {
+				res.status(200).json(fileLink);
+			})
+			.catch((error) => {
+				res.status(400).json(error);
+			})
+	} catch (error) {
+		res.status(400).json(error);
 	}
 })
 
