@@ -3,9 +3,17 @@ extends layout
 block content
     script(src="/javascripts/utils.js")
     h1= title
-    p Authorization page
-    a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/users/auth`)}`) 
-        button click me
+    img()
+    div
+        a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/users/auth`)}`) 
+            button Dropbox
+        a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/users/auth`)}`) 
+            button Google
+
+    div
+        a(href=`/pricing`) Pricing 
+        a(href=`/privacy`) privacy
+        a(href=`/terms-of-service`) Terms of Service
 
     script. 
         const setCookie = async (cookie) => {
