@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Directory from './Directory'
 import Files from './Files';
 
 const Main = () => {
-    return(
+    const [route, setRoute] = useState('/');
+
+    return (
         <div className="App">
-            <Directory />
-            <Files />
+            <Directory route={route} setRoute={setRoute}/>
+            <Files route={route} setRoute={setRoute}/>
         </div>
     )
 }

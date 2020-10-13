@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Directory = () => {
-    const [route, setRoute] = useState('/') 
+const Directory = ({ route }) => {
 
     return (
         <div>
-            <img />
-            <h1>{route}</h1> 
+            <h1>{route}</h1>
         </div>
     )
 }

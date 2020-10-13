@@ -11,7 +11,7 @@ router.get('/', function (req, res, next) {
 
 router.post('/', (req, res) => {
 	const cookie = req.body;
-	res.cookie(cookie.name, cookie.value).send('Cookie is set');
+	res.cookie(cookie.name, cookie.value).status(200).json({ message: 'Cookie is set' });
 })
 
 router.get('/login', (req, res) => {

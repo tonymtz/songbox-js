@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookie from 'universal-cookie';
 
 const auth = () => {
-    const isAuth = false
+    const isAuth = true
     return isAuth
 }
 
