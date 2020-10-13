@@ -37,6 +37,15 @@ This route will give you all files from the root of your Dropbox.
 
 ** 2. GET -> /api/files/* **
 This route will give you access to an specific folder of your Dropbox (specifying the route where the '*' is).
+
+
+**3. GET -> /api/file/filename.mp3
+This route will give access to the file link.
+
+**4. POST -> /users/auth
+This route will check if 'dbx-token' is valid.
+
+https://documenter.getpostman.com/view/9987408/TVRj6orw#52f42304-ce6a-4336-8e95-0a4d26ca6904
 ```
 
 
