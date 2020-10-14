@@ -1,12 +1,18 @@
-import React from 'react'
+import React from 'react';
 
-const Directory = ({ route }) => {
+import Home from './Home';
+
+const Directory = ({ route, setRoute }) => {
 
     return (
         <div>
-            <h1>{route}</h1>
+            <Home 
+                setRoute={setRoute}
+            
+            />
+            <h4>{route}</h4>
         </div>
-    )
+    );
 }
 
-export default Directory
+export default Directory;

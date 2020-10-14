@@ -1,10 +1,15 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.sidebar-container {
+  text-align: initial;
 }
 
 @media (prefers-reduced-motion: no-preference) {

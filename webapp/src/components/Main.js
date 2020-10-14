@@ -1,17 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
-import Directory from './Directory'
+import Directory from './Directory';
 import Files from './Files';
+import Sidebar from './Sidebar/Sidebar';
 
 const Main = () => {
     const [route, setRoute] = useState('/');
+    const [isAuth, setIsAuth] = useState(true);
 
     return (
         <div className="App">
-            <Directory route={route} setRoute={setRoute}/>
-            <Files route={route} setRoute={setRoute}/>
+            <div className="sidebar-container">
+                <Sidebar
+
+                />
+            </div>
+            <div>
+                <h1>Your personal library</h1>
+                <Directory
+                    route={route}
+                    setRoute={setRoute}
+                />
+                <Files
+                    setIsAuth={setIsAuth}
+                    route={route}
+                    setRoute={setRoute}
+                />
+            </div>
+            { !isAuth && <Redirect to="/login" />}
         </div>
-    )
+    );
 }
 
-export default Main
+export default Main;

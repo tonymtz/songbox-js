@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios'
-import Cookie from 'universal-cookie'
+import axios from 'axios';
+import Cookie from 'universal-cookie';
 
 const File = ({ file, route, setRoute }) => {
 
@@ -38,7 +38,7 @@ const File = ({ file, route, setRoute }) => {
             <h6>{file['.tag'] ? file['.tag'] : '???'}</h6>
             <p>{file.name ? file.name : 'Unnamed file'}</p>
         </div>
-    )
+    );
 }
 
 export default File;

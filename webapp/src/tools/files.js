@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const getFiles = async (token, route) => {
     try {
