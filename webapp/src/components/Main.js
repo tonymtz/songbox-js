@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 
-import Directory from './Directory';
-import Files from './Files';
-import Sidebar from './Sidebar/Sidebar';
+import Directory from './directory';
+import Files from './files';
+import Sidebar from './sidebar';
 
 const Main = () => {
     const [route, setRoute] = useState('/');
