@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/App.css';
 
-import Main from './components/Main';
-import NotFound from './components/NotFound';
+import Main from './components/Main/index';
+import NotFound from './components/Not found/index';
 
 const App = () => {
   	return (

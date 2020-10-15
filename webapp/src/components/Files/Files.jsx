@@ -3,7 +3,7 @@ import Cookie from 'universal-cookie';
 
 import File from './File';
 
-import getFiles from '../tools/files';
+import getFiles from './tools/files';
 
 const Files = ({ route, setIsAuth, setRoute }) => {
     const [files, setFiles] = useState([]);
@@ -17,7 +17,8 @@ const Files = ({ route, setIsAuth, setRoute }) => {
                 setFiles(result.data);
             })
             .catch((error) => {
-                setIsAuth(false);
+                console.log(error)
+                //setIsAuth(false);
                 setFiles([]);
             })
     }, [route]);

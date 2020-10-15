@@ -7,8 +7,6 @@ block content
     div
         a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/login`)}`) 
             button Dropbox
-        a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/login`)}`) 
-            button Google
 
     div
         a(href=`/pricing`) Pricing 
@@ -53,8 +51,8 @@ block content
         }
 
         const isValidToken = async (url, cookie) => {
-            const response = await fetch(url + '/users/auth', {
-                method: 'POST',
+            const response = await fetch(url + '/me', {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     'dbx-token': `${cookie}`
@@ -68,8 +66,8 @@ block content
             const dbxToken = findCookie(document.cookie, 'dbx-token');
             isValidToken(url, dbxToken)
                 .then((result) => {
-                    if (result.userAccount.status === 200){
-                            window.location = "http://localhost:3000/app";
+                    if (result.status === 200){
+                            window.location = `${location.protocol}//${location.hostname}:3000/app`;
                     }
                 })
                 .catch((error) => {

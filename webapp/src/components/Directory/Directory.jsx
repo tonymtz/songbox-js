@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Home from './Home';
+import Home from '../Home/index';
 
 const Directory = ({ route, setRoute }) => {
 
