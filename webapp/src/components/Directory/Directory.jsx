@@ -2,15 +2,15 @@ import React from 'react';
 
 import Home from '../Home/index';
 
-const Directory = ({ route, setRoute }) => {
+import './style/directory.css'
 
+const Directory = ({ route, setRoute }) => {
     return (
-        <div>
+        <div className="directory-container">
             <Home 
                 setRoute={setRoute}
-            
             />
-            <h4>{route}</h4>
+            <h4 className="title">{route}</h4>
         </div>
     );
 }

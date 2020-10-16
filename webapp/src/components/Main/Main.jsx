@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 
 import Directory from '../Directory/index';
 import Files from '../Files/index';
-import Sidebar from '../Sidebar/index';
 
 const Main = () => {
     const [route, setRoute] = useState('/');
@@ -11,13 +10,9 @@ const Main = () => {
 
     return (
         <div className="App">
-            <div className="sidebar-container">
-                <Sidebar
 
-                />
-            </div>
             <div>
-                <h1>Your personal library</h1>
+                <h1 className="title">Your personal library</h1>
                 <Directory
                     route={route}
                     setRoute={setRoute}

@@ -1,6 +1,6 @@
 .App {
-  text-align: center;
   display: flex;
+  justify-content: center;
 }
 
 .App-logo {
@@ -10,6 +10,14 @@
 
 .sidebar-container {
   text-align: initial;
+}
+
+.title {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.text {
+  font-family: 'Asap', sans-serif;
 }
 
 @media (prefers-reduced-motion: no-preference) {

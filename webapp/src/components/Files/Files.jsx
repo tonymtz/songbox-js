@@ -17,8 +17,7 @@ const Files = ({ route, setIsAuth, setRoute }) => {
                 setFiles(result.data);
             })
             .catch((error) => {
-                console.log(error)
-                //setIsAuth(false);
+                setIsAuth(false);
                 setFiles([]);
             })
     }, [route]);

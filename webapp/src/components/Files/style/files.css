@@ -1,0 +1,14 @@
+.file-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.7vw 1vw;
+}
+
+.file-container .text {
+    margin-left: 1vw;
+}
+
+.file-container:hover {
+    cursor: pointer;
+}

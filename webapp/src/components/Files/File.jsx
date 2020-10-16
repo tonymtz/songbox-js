@@ -2,6 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import Cookie from 'universal-cookie';
 
+import folderIcon from './icons/folder.svg';
+import playCircleIcon from './icons/play-circle.svg'
+
+import './style/files.css';
+
 const File = ({ file, route, setRoute }) => {
 
     const changeRoute = () => {
@@ -35,9 +40,14 @@ const File = ({ file, route, setRoute }) => {
             onClick={
                 file['.tag'] === 'folder' ? changeRoute : getLink
             }
+
+            className="file-container"
         >
-            <h6>{file['.tag'] ? file['.tag'] : '???'}</h6>
-            <p>{file.name ? file.name : 'Unnamed file'}</p>
+            <img 
+                src={file['.tag'] === 'folder' ? folderIcon : playCircleIcon} 
+                alt={file['.tag'] === 'folder' ? 'folder-icon' : 'play-cicle'} 
+            />
+            <p className="text">{file.name ? file.name : 'Unnamed file'}</p>
         </div>
     );
 }

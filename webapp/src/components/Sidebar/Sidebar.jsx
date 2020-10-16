@@ -24,7 +24,7 @@ const Sidebar = () => {
             <div className={sidebar ? 'sidebar active' : 'sidebar'}>
                 <ul>
                     <li className="navbar">
-                        <Link to="/app">
+                        <Link to="#">
                             <AiIcons.AiOutlineClose onClick={showSidebar}/>
                         </Link>
                     </li>
