@@ -4,7 +4,17 @@
   "private": true,
   "scripts": {
     "start": "env-cmd -f ./.env node ./bin/www",
-    "dev": "env-cmd -f ./.env nodemon ./bin/www"
+    "dev": "env-cmd -f ./.env nodemon ./bin/www",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "eslint --fix --ext .js ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": ["npm run lint:fix", "git add"]
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -16,5 +26,10 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.2"
   }
 }

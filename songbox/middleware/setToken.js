@@ -9,6 +9,6 @@ const setToken = async (req, res, next) => {
     } catch (error) {
         res.status(401).send({ error: 'Not a valid token!' });
     }
-}
+};
 
 module.exports = setToken;

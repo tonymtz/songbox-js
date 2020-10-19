@@ -13,89 +13,10 @@ block content
         a(href=`/privacy`) privacy
         a(href=`/terms-of-service`) Terms of Service
 
-    script.
-        const setCookie = async (url, cookie) => {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }, 
-                body: JSON.stringify(cookie)
-            });
-            
-            return response.json();
-        }
-
-        const findCookie = (cookies, name) => {
-            if (cookies) {
-                const cookiesArray = cookies.split(' ');
-                if (cookiesArray.length > 0) {
-                    const foundCookie = cookiesArray.find((value) => value.startsWith(name));
-
-                    if (foundCookie) {
-                        const indexOfequal = foundCookie.indexOf("=");
-
-                        const cookieName = foundCookie.substring(0, indexOfequal);
-                        const cookieValue = foundCookie.substring(indexOfequal + 1, foundCookie.length);
-
-                        if (cookieName !== name) return "";
-
-                        return cookieValue;
-                    } else {
-                        return "";
-                    }
-                }
-            }
-
-            return "";
-        }
-
-        const isValidToken = async (url, cookie) => {
-            const response = await fetch(url + '/me', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'dbx-token': `${cookie}`
-                }
-            });
-
-            return response.json();
-        } 
-
-        const checkRedirect = () => {
-            const dbxToken = findCookie(document.cookie, 'dbx-token');
-            isValidToken(url, dbxToken)
-                .then((result) => {
-                    if (result.status === 200){
-                            window.location = `${location.protocol}//${location.hostname}:3000/app`;
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        }  
-
-        const url = `${location.protocol}//${window.location.host}`;
-        const port = 4000;
-
-        let token = utils.parseQueryString(location.hash).access_token;
-
-        if (token) {
-            const cookie = {
-                name: 'dbx-token',
-                value: token
-            };
-            
-            setCookie(url, cookie)
-                .then((response) => {
-                    checkRedirect();
-                })
-                .catch((error) => {
-                    console.log(error);
-                })
-        } else {
-            checkRedirect();
-        }
+    script(src='/javascripts/cookie.js' type='module')
+    script(src='/javascripts/token.js' type='module')
+    script(src='/javascripts/redirect.js' type='module').
+        
 
 
         

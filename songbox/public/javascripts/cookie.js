@@ -21,4 +21,18 @@ const findCookie = (cookies, name) => {
     }
 
     return "";
+};
+
+const setCookie = async (url, cookie) => {
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(cookie)
+    });
+    
+    return response.json();
 }
+
+export { findCookie, setCookie };

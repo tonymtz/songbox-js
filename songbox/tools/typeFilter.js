@@ -4,9 +4,9 @@ const typeFilter = (entries) => {
         const isValidFile = entry.name.match(/\.?(mp3|ogg|wav)/);
 
         return isFolder || isValidFile;
-    })
+    });
     
     return files;
-}
+};
 
 module.exports = typeFilter;

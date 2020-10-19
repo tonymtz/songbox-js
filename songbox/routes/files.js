@@ -1,11 +1,11 @@
-const express = require('express')
-const dropbox = require('dropbox')
+const express = require('express');
+const dropbox = require('dropbox');
 
 const typeFilter = require('../tools/typeFilter');
 const createLink = require('../tools/createLink');
 const setToken = require('../middleware/setToken');
 
-const router = express.Router()
+const router = express.Router();
 
 router.get('/files/*', setToken, async (req, res) => {
 	try {
@@ -18,7 +18,7 @@ router.get('/files/*', setToken, async (req, res) => {
 		const dropboxPath = routePath.substring(baseUrl.length, routePath.length).replace(/%20/g, ' ');
 		const finalPath = dropboxPath === '/' ? '' : dropboxPath;
 
-		console.log('dropbox path=', finalPath)
+		console.log('dropbox path=', finalPath);
 
 		const dropboxFiles = await dbx.filesListFolder({ path: finalPath });
 		const files = typeFilter(dropboxFiles.result.entries);
@@ -37,7 +37,7 @@ router.get('/file/*', setToken, (req, res) => {
 		const baseUrl = '/file';
 		const path = req.path;
 
-		const dropboxPath = path.substring(baseUrl.length, path.length).replace(/%20/g, ' ')
+		const dropboxPath = path.substring(baseUrl.length, path.length).replace(/%20/g, ' ');
 
 		createLink(dbx, dropboxPath, '')
 			.then((fileLink) => {
