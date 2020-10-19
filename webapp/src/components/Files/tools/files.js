@@ -1,19 +1,19 @@
 import axios from 'axios';
 
 const getFiles = async (token, route) => {
-    try {
-        const url = `${window.location.protocol}//${window.location.hostname}:4000/api/files${route}`;
-        const response = await axios.get(url, {
-            headers: {
-                'Content-Type': 'application/json',
-                'dbx-token': `${token}`
-            }
-        });
+	try {
+		const url = `${window.location.protocol}//${window.location.hostname}:4000/api/files${route}`;
+		const response = await axios.get(url, {
+			headers: {
+				'Content-Type': 'application/json',
+				'dbx-token': `${token}`
+			}
+		});
 
-        return response;
-    } catch (error) {
-        throw new Error();
-    }
-}
+		return response;
+	} catch (error) {
+		throw new Error();
+	}
+};
 
 export default getFiles;

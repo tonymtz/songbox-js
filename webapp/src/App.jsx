@@ -10,13 +10,11 @@ import Help from './components/Help/index';
 import NotFound from './components/Not found/index';
 
 const App = () => {
-  	return (
-    	<BrowserRouter>
-		    <div className="sidebar-container">
-            <Sidebar
-
-            />
-            </div>
+	return (
+		<BrowserRouter>
+			<div className="sidebar-container">
+				<Sidebar />
+			</div>
 			<div>
 				<Switch>
 					<Route path="/app" component={Main} exact={true}/>
@@ -27,7 +25,7 @@ const App = () => {
 				</Switch>
 			</div>
 		</BrowserRouter>
-  	);
-}
+	);
+};
 
-export default App;
+export default App
