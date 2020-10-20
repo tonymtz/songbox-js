@@ -1,21 +1,29 @@
 extends layout
 
 block content
+    div(class="main")
+        div(id="image-container")
+            img(id="image")
+        div(id="content")
+            div(class="header-container")
+                h1(class="header" id="sign-in") Sign in
+                p(class="text") Hey there! Nice to see you again.
+
+            div(class="buttons-container")
+                a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/login`)}`) 
+                    button(class="dropbox-btn") Dropbox                  
+
+            div(class="links-container")
+                a(class="text" href=`/pricing`) Pricing  
+                a(class="text") | 
+                a(class="text" href=`/privacy`) Privacy 
+                a(class="text") | 
+                a(class="text" href=`/terms-of-service`) Terms of Service
+
     script(src="/javascripts/utils.js")
-    h1= title
-    img()
-    div
-        a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/login`)}`) 
-            button Dropbox
-
-    div
-        a(href=`/pricing`) Pricing 
-        a(href=`/privacy`) privacy
-        a(href=`/terms-of-service`) Terms of Service
-
     script(src='/javascripts/cookie.js' type='module')
     script(src='/javascripts/token.js' type='module')
-    script(src='/javascripts/redirect.js' type='module').
+    script(src='/javascripts/redirect.js' type='module')
         
 
 

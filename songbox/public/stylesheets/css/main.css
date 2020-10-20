@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Asap&family=Quicksand&display=swap");
+html, body, .main {
+  height: 100%; }
+
+.main {
+  font-size: 6vw;
+  text-align: center; }
+
+.header-container {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6vw; }
+
+.header {
+  color: black;
+  font-family: "Quicksand", sans-serif;
+  font-size: 8vw; }
+
+.text {
+  color: #b0b0b0;
+  font-family: "Asap", sans-serif;
+  font-size: 4vw; }
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10vh; }
+
+.buttons-container a {
+  margin: 2vw 0; }
+
+.dropbox-btn {
+  background-color: #1BA1F2;
+  border-radius: 15px;
+  border: none;
+  color: white;
+  font-family: "Asap", sans-serif;
+  font-size: 4vw;
+  font-weight: bold;
+  padding: 3vw 8vw; }
+
+#image-container {
+  background-color: #d1c91d;
+  height: 35%;
+  width: 100%; }
+
+#content {
+  padding: 2vw 14vw;
+  padding-top: 10vh; }
+
+#sign-in {
+  font-weight: bold; }
+
+@media (min-width: 1024px) {
+  .main {
+    display: flex; }
+  #image-container {
+    height: 100%;
+    width: 45%; }
+  .header {
+    font-size: 3vw; }
+  .text {
+    font-size: 2vw; }
+  .dropbox-btn {
+    font-size: 3vw;
+    padding: 2vw 5vw; }
+  #content {
+    padding: 2vw 10vw; } }
