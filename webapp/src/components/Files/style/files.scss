@@ -1,0 +1,33 @@
+$icon-height: 7vw;
+$icon-width: 7vw;
+
+.file-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.7vw 1vw;
+}
+
+.file-container .text {
+    margin-left: 1vw;
+}
+
+.file-container:hover {
+    cursor: pointer;
+}
+
+.file-name {
+    max-width: 80%;
+    margin-left: 20px;
+}
+
+.icon {
+    height: $icon-height;
+    width: $icon-width;
+}
+
+.heart-icon {
+    height: $icon-height - 2;
+    width: $icon-width - 2;
+    margin-left: auto;
+}
