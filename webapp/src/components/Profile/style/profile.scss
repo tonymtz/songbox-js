@@ -1,0 +1,44 @@
+$image-size: 20vw;
+$font-size: 4vw;
+
+.profile-container {
+    text-align: center;
+}
+
+.profile-picture {
+    height: $image-size;
+    width: $image-size;
+    border-radius: 50px;
+}
+
+.user-email {
+    font-size: $font-size;
+    padding: 1vw;
+    word-wrap: break-word;
+}
+
+.user-name {
+    font-size: $font-size;
+    padding: 3vw;
+    word-wrap: break-word;
+}
+
+@media(min-width: 1024px) {
+    $image-size: 8vw;
+    $font-size: 1vw;
+
+    .profile-picture {
+        height: $image-size;
+        width: $image-size;
+    }
+
+    .user-email {
+        font-size: $font-size;
+    }
+    
+    .user-name {
+        font-size: $font-size;
+        padding: 0;
+    }
+
+}

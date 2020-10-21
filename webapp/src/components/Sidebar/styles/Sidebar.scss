@@ -13,21 +13,25 @@ $orange-color: #FFA834;
     padding-left: 0;
 }
 
-a, u {
+.nav-text a, u {
     text-decoration: none;
     color: $gray-color;
 }
 
-a:visited {
+.nav-text a:visited {
     color: $gray-color;
 }
 
-a:hover {
+.nav-text a:hover {
     color: $gray-color;
 }
 
-a:active {
+.nav-text a:active {
     color: $gray-color;
+}
+
+.close {
+    color: $orange-color;
 }
 
 .hamburger path {

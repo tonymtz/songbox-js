@@ -4,6 +4,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 
 import SidebarData from './sidebar.config';
+import Profile from '../Profile/index';
 
 import './styles/Sidebar.scss';
 
@@ -24,9 +25,13 @@ const Sidebar = () => {
 			<div className={sidebar ? 'sidebar active' : 'sidebar'}>
 				<ul className="elements">
 					<li className="navbar">
-						<Link to="#">
+						<Link className="close" to="#">
 							<AiIcons.AiOutlineClose onClick={showSidebar}/>
 						</Link>
+					</li>
+
+					<li>
+						<Profile />
 					</li>
 					{
 						SidebarData.map((item, index) => {
