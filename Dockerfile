@@ -9,10 +9,8 @@ COPY server/ .
 COPY webapp ./webapp
 
 # REACT APP
-ADD public app
+RUN cd public && mkdir app
 RUN cd webapp && npm install --silent && PUBLIC_URL=https://songbox.io/app npm run build && mv build/* ../public/app
-RUN ls public -las
-RUN ls public/app -las
 # END REACT APP
 
 EXPOSE ${PORT}
