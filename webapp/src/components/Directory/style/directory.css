@@ -1,9 +1,0 @@
-.directory-container {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-}
-
-.directory-container .title {
-    margin-left: 0.8vw;
-}

@@ -8,3 +8,9 @@
 .directory-container .title {
     margin-left: 0.8vw;
 }
+
+@media (min-width: 1024px) {
+    .directory-container {
+        padding: 1vw;
+    }
+}

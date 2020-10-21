@@ -2,7 +2,7 @@ import React from 'react';
 
 import Home from '../Home/index';
 
-import './style/directory.css';
+import './style/directory.scss';
 
 const Directory = ({ route, setRoute }) => {
 	return (

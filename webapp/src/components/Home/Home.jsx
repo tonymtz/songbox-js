@@ -2,12 +2,13 @@ import React from 'react';
 
 import './style/home.css';
 
-import home from '../../images/1x/sharp_home_black_24dp.png';
+import home from './icons/home.svg';
 
 const Home = ({ setRoute }) => {
 	return (
 		<div className="home-container">
 			<img
+				className="icon"
 				onClick={() => {
 					setRoute('/');
 				}}

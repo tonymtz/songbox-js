@@ -5,7 +5,7 @@ import * as AiIcons from 'react-icons/ai';
 
 import SidebarData from './sidebar.config';
 
-import './styles/Sidebar.css';
+import './styles/Sidebar.scss';
 
 const Sidebar = () => {
 	const [sidebar, setSidebar] = useState(false);

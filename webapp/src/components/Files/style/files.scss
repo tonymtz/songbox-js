@@ -2,10 +2,11 @@ $icon-height: 7vw;
 $icon-width: 7vw;
 
 .file-container {
-    display: flex;
     align-items: center;
+    border-top: 1px solid #b0b0b0;
+    display: flex;
     justify-content: flex-start;
-    padding: 0.7vw 1vw;
+    padding: 1.5vw 1vw;
 }
 
 .file-container .text {
@@ -30,4 +31,19 @@ $icon-width: 7vw;
     height: $icon-height - 2;
     width: $icon-width - 2;
     margin-left: auto;
+}
+
+@media (min-width: 1024px){
+    $icon-height: 2vw;
+    $icon-width: 2vw;
+
+    .icon {
+        height: $icon-height;
+        width: $icon-width;
+    }
+
+    .heart-icon {
+        height: $icon-height - 2;
+        width: $icon-width - 2;
+    }
 }

@@ -4,8 +4,9 @@ import Cookie from 'universal-cookie';
 
 import folderIcon from './icons/folder.svg';
 import playCircleIcon from './icons/play-circle.svg';
+import heartIcon from './icons/heart.svg';
 
-import './style/files.css';
+import './style/files.scss';
 
 const File = ({ file, route, setRoute }) => {
 
@@ -43,11 +44,20 @@ const File = ({ file, route, setRoute }) => {
 
 			className="file-container"
 		>
-			<img 
+			<img
+				className="icon" 
 				src={file['.tag'] === 'folder' ? folderIcon : playCircleIcon} 
 				alt={file['.tag'] === 'folder' ? 'folder-icon' : 'play-cicle'} 
 			/>
-			<p className="text">{file.name ? file.name : 'Unnamed file'}</p>
+			<p className="file-name">{file.name ? file.name : 'Unnamed file'}</p>
+			{
+				file['.tag'] === 'file' &&
+				<img
+					className="heart-icon"
+					src={heartIcon}
+					alt="heart-icon"
+				/>
+			}
 		</div>
 	);
 };
