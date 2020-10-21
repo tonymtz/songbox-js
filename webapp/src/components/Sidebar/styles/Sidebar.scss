@@ -47,7 +47,7 @@ $orange-color: #FFA834;
     align-items: center;
     display: flex;
     height: 50px;
-    justify-content: start;
+    justify-content: flex-start;
     padding-left: $padding-left-s;
 }
 
@@ -72,7 +72,7 @@ $orange-color: #FFA834;
 .nav-text {
     display: flex;
     height: 3vh;
-    justify-content: start;
+    justify-content: flex-start;
     list-style: none;
     padding: 7vw 2vw;
     padding-left: $padding-left-s;

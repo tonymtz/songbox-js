@@ -1,4 +1,4 @@
-$image-size: 20vw;
+$img-size: 20vw;
 $font-size: 4vw;
 
 .profile-container {
@@ -6,8 +6,8 @@ $font-size: 4vw;
 }
 
 .profile-picture {
-    height: $image-size;
-    width: $image-size;
+    height: $img-size;
+    width: $img-size;
     border-radius: 50px;
 }
 

@@ -5,7 +5,7 @@ import File from './File';
 
 import getFiles from './tools/files';
 
-const Files = ({ route, setIsAuth, setRoute }) => {
+const Files = ({ route, setRoute }) => {
 	const [files, setFiles] = useState([]);
 
 	useEffect(() => {
@@ -17,7 +17,6 @@ const Files = ({ route, setIsAuth, setRoute }) => {
 				setFiles(result.data);
 			})
 			.catch(() => {
-				setIsAuth(false);
 				setFiles([]);
 			});
 	}, [route]);

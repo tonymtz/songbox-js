@@ -37,7 +37,7 @@ app.use(sassMiddleware({
 app.use('/api', filesRouter);
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-app.use('/me', meRouter);
+app.use('/api', meRouter);
 app.use('/pricing', pricingRouter);
 app.use('/privacy', privacyRouter);
 app.use('/terms-of-service', termsRouter);

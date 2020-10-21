@@ -1,5 +1,5 @@
 const isValidToken = async (url, cookie) => {
-    const response = await fetch(url + '/me', {
+    const response = await fetch(url + '/api/me', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

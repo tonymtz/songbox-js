@@ -10,7 +10,7 @@ const Profile = () => {
 			<img
 				className="profile-picture"
 				src={profilePicture}
-				alt="profile-picture"
+				alt="profile"
 			/>
 			<p className="user-email">example@something.com</p>
 			<h4 className="user-name">Ariel Plascencia Bojorquez</h4>
