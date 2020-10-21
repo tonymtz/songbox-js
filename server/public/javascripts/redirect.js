@@ -2,7 +2,6 @@ import { findCookie, setCookie } from './cookie.js'
 import { isValidToken } from './token.js'
 
 const url = `${location.protocol}//${window.location.host}`;
-const port = 4000;
 
 let token = utils.parseQueryString(location.hash).access_token;
 
@@ -11,7 +10,7 @@ const checkRedirect = () => {
     isValidToken(url, dbxToken)
         .then((result) => {
             if (result.status === 200){
-                    window.location = `${location.protocol}//${location.hostname}:3000/app`;
+                    window.location = `${location.protocol}//${location.hostname}/app`;
             }
         })
         .catch((error) => {
