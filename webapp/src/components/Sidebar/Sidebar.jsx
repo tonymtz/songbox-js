@@ -22,7 +22,7 @@ const Sidebar = () => {
 				</Link>
 			</div>
 			<div className={sidebar ? 'sidebar active' : 'sidebar'}>
-				<ul>
+				<ul className="elements">
 					<li className="navbar">
 						<Link to="#">
 							<AiIcons.AiOutlineClose onClick={showSidebar}/>
@@ -32,9 +32,9 @@ const Sidebar = () => {
 						SidebarData.map((item, index) => {
 							return (
 								<li key={index} className={item.className}>
-									<Link to={item.path}>
+									<Link className="icon" to={item.path}>
 										{ item.icon }
-										<span>{ item.title }</span>
+										<span className="item-title">{ item.title }</span>
 									</Link>
 								</li>
 							);
