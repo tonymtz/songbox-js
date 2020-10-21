@@ -21,7 +21,7 @@ const File = ({ file, route, setRoute }) => {
 		const token = cookie.get('dbx-token');
 
 		try {
-			const url = `${window.location.protocol}//${window.location.hostname}:4000/api/file${route}${file.name}`;
+			const url = `${window.location.protocol}//${window.location.hostname}/api/file${route}${file.name}`;
 			const resposne = await axios.get(url, {
 				headers: {
 					'Content-Type': 'application/json',
