@@ -13,7 +13,7 @@ const Profile = () => {
 				alt="profile"
 			/>
 			<p className="user-email">example@something.com</p>
-			<h4 className="user-name">Ariel Plascencia Bojorquez</h4>
+			<h4 className="user-name">Username</h4>
 		</div>
 	);
 };

@@ -5,8 +5,15 @@ import File from './File';
 
 import getFiles from './tools/files';
 
-const Files = ({ route, setRoute }) => {
+const Files = ({ route, setRoute, setSongs }) => {
 	const [files, setFiles] = useState([]);
+
+	const filterSongs = (files) => {
+		if (files.length <= 0) return files;
+		
+		const songs = files.filter((file) => file['.tag'] === 'file');
+		return songs;
+	};
 
 	useEffect(() => {
 		const cookie = new Cookie();
@@ -21,6 +28,11 @@ const Files = ({ route, setRoute }) => {
 			});
 	}, [route]);
 
+	const setSongsInQueue = () => {
+		const songs = filterSongs(files);
+		setSongs(songs);	
+	};
+
 	return (
 		<div>
 			{
@@ -31,6 +43,7 @@ const Files = ({ route, setRoute }) => {
 							file={file}
 							route={route}
 							setRoute={setRoute}
+							setSongsInQueue={setSongsInQueue}
 						/>
 					);
 				})

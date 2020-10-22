@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 import Directory from '../Directory/index';
 import Files from '../Files/index';
+import AudioPlayer from '../Audio Player/index';
 
 import './style/style.scss';
 
 const Main = () => {
 	const [route, setRoute] = useState('/');
+	const [songs, setSongs] = useState([]);
 
 	return (
 		<div className="App">
@@ -19,7 +21,11 @@ const Main = () => {
 				<Files
 					route={route}
 					setRoute={setRoute}
+					setSongs={setSongs}
 				/>
+				<AudioPlayer
+					songs={songs}
+				/> 
 			</div>
 		</div>
 	);
