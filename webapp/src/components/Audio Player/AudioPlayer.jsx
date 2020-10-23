@@ -7,6 +7,7 @@ import Player from './Player';
 const AudioPlayer = ({ songs }) => {
 	const [songsQueue, setSongsQueue] = useState([]);
 	const [currentSong, setCurrentSong] = useState('');
+	const [index, setIndex] = useState(0);
 
 	const getLink = async (path) => {
 		const cookie = new Cookie();
@@ -29,9 +30,7 @@ const AudioPlayer = ({ songs }) => {
 	};
 	
 	useEffect(() => {
-		if (songs) {
-			console.log('new list!');
-
+		if (songs.length > 0) {
 			const songsLink = songs.map((song) => {
 				return getLink(song.path_display);
 			});
@@ -40,34 +39,40 @@ const AudioPlayer = ({ songs }) => {
 				.then((result) => {
 					const finalLinks = result.map((song) => song.replace('dl=0', 'dl=1'));
 					setSongsQueue(finalLinks);
+					setCurrentSong(finalLinks[0]);
 				})
 				.catch(() =>{
 					setSongsQueue([]);
 				});
 		}
+		setIndex(0);
 	}, [songs]);
 
-	const previousSong = () => {
-		console.log('previous song!');
+	useEffect(() =>{
+		setCurrentSong(songsQueue[index]);
+	},[index]);
+
+
+	const next = () => {		
+		if (index < songsQueue.length - 1) {
+			setIndex(index + 1);
+		}
 	};
 	
-	const nextSong = () => {
-		console.log('Next song!');
+	const previous = () => {
+		if (index > 0){
+			setIndex(index - 1);
+		}
 	};
-
-	const play = async () => {
-		setCurrentSong(songsQueue[0]);
-	};
-
+	
 	return(
 		<div>
 			<Player
 				key={currentSong}
 				currentSong={currentSong}
 			/>
-			<button onClick={previousSong}>Previous</button>
-			<button onClick={play}>PLAY</button> 
-			<button onClick={nextSong}>Next</button>
+			<button onClick={previous}>Previous</button>
+			<button onClick={next}>Next</button>
 		</div>
 	);
 };

@@ -2,13 +2,12 @@ import  React, { useState, useEffect} from 'react';
 
 const Player = ({ currentSong }) => {
 	const [audioPlayer] = useState(React.createRef());
-
+	
 	useEffect(() =>{
-		if (currentSong) {        
+		if (currentSong) {    
 			audioPlayer.current.play();
 		}
-	}, [audioPlayer, currentSong]);
-
+	}, [currentSong, audioPlayer]);
 
 	return (
 		<div>
