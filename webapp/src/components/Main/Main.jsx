@@ -9,6 +9,7 @@ import './style/style.scss';
 const Main = () => {
 	const [route, setRoute] = useState('/');
 	const [songs, setSongs] = useState([]);
+	const [songsIndex, setSongsIndex] = useState(0);
 
 	return (
 		<div className="App">
@@ -22,9 +23,11 @@ const Main = () => {
 					route={route}
 					setRoute={setRoute}
 					setSongs={setSongs}
+					setSongsIndex={setSongsIndex}
 				/>
 				<AudioPlayer
 					songs={songs}
+					songsIndex={songsIndex}
 				/> 
 			</div>
 		</div>

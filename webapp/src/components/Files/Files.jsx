@@ -5,8 +5,10 @@ import File from './File';
 
 import getFiles from './tools/files';
 
-const Files = ({ route, setRoute, setSongs }) => {
+const Files = ({ route, setRoute, setSongs, setSongsIndex }) => {
 	const [files, setFiles] = useState([]);
+
+	let songIndex = -1;
 
 	const filterSongs = (files) => {
 		if (files.length <= 0) return files;
@@ -36,14 +38,18 @@ const Files = ({ route, setRoute, setSongs }) => {
 	return (
 		<div>
 			{
-				files.map((file) => {
-					return (
+				files.map((file) => {				
+					if (file['.tag'] === 'file') songIndex++;
+
+					return (					
 						<File
 							key={file.id}
 							file={file}
 							route={route}
 							setRoute={setRoute}
 							setSongsInQueue={setSongsInQueue}
+							songIndex={songIndex}
+							setSongsIndex={setSongsIndex}
 						/>
 					);
 				})

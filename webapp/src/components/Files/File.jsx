@@ -6,7 +6,7 @@ import heartIcon from './icons/heart.svg';
 
 import './style/files.scss';
 
-const File = ({ file, route, setRoute, setSongsInQueue }) => {
+const File = ({ file, route, setRoute, setSongsInQueue, songIndex, setSongsIndex }) => {
 
 	const changeRoute = () => {
 		if (file['.tag'] === 'folder') {
@@ -15,10 +15,15 @@ const File = ({ file, route, setRoute, setSongsInQueue }) => {
 		}
 	};
 
+	const startPlaying = () => {
+		setSongsInQueue();
+		setSongsIndex(songIndex);
+	};
+
 	return (
 		<div
 			onClick={
-				file['.tag'] === 'folder' ? changeRoute : setSongsInQueue
+				file['.tag'] === 'folder' ? changeRoute : startPlaying
 			}
 
 			className="file-container"

@@ -18,8 +18,6 @@ router.get('/files/*', setToken, async (req, res) => {
 		const dropboxPath = routePath.substring(baseUrl.length, routePath.length).replace(/%20/g, ' ');
 		const finalPath = dropboxPath === '/' ? '' : dropboxPath;
 
-		console.log('dropbox path=', finalPath);
-
 		const dropboxFiles = await dbx.filesListFolder({ path: finalPath });
 		const files = typeFilter(dropboxFiles.result.entries);
 
