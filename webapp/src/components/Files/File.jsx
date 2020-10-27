@@ -8,42 +8,42 @@ import './style/files.scss';
 
 const File = ({ file, route, setRoute, setSongsInQueue, songIndex, setSongsIndex }) => {
 
-	const changeRoute = () => {
-		if (file['.tag'] === 'folder') {
-			const path = `${route}${file.name}/`;
-			setRoute(path);
-		}
-	};
+    const changeRoute = () => {
+        if (file['.tag'] === 'folder') {
+            const path = `${route}${file.name}/`;
+            setRoute(path);
+        }
+    };
 
-	const startPlaying = () => {
-		setSongsInQueue();
-		setSongsIndex(songIndex);
-	};
+    const startPlaying = () => {
+        setSongsInQueue();
+        setSongsIndex(songIndex);
+    };
 
-	return (
-		<div
-			onClick={
-				file['.tag'] === 'folder' ? changeRoute : startPlaying
-			}
+    return (
+        <div
+            onClick={
+                file['.tag'] === 'folder' ? changeRoute : startPlaying
+            }
 
-			className="file-container"
-		>
-			<img
-				className="icon" 
-				src={file['.tag'] === 'folder' ? folderIcon : playCircleIcon} 
-				alt={file['.tag'] === 'folder' ? 'folder-icon' : 'play-cicle'} 
-			/>
-			<p className="file-name">{file.name ? file.name : 'Unnamed file'}</p>
-			{
-				file['.tag'] === 'file' &&
-				<img
-					className="heart-icon"
-					src={heartIcon}
-					alt="heart-icon"
-				/>
-			}
-		</div>
-	);
+            className="file-container"
+        >
+            <img
+                className="icon" 
+                src={file['.tag'] === 'folder' ? folderIcon : playCircleIcon} 
+                alt={file['.tag'] === 'folder' ? 'folder-icon' : 'play-cicle'} 
+            />
+            <p className="file-name">{file.name ? file.name : 'Unnamed file'}</p>
+            {
+                file['.tag'] === 'file' &&
+                <img
+                    className="heart-icon"
+                    src={heartIcon}
+                    alt="heart-icon"
+                />
+            }
+        </div>
+    );
 };
 
 export default File;

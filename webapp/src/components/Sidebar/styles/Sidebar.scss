@@ -1,6 +1,6 @@
+@import "../../../styles/colors.scss";
+
 $padding-left-s: 4vw;
-$gray-color: #b0b0b0;
-$orange-color: #FFA834;
 
 .sidebar-item {
     display: flex;
@@ -15,27 +15,27 @@ $orange-color: #FFA834;
 
 .nav-text a, u {
     text-decoration: none;
-    color: $gray-color;
+    color: $gray;
 }
 
 .nav-text a:visited {
-    color: $gray-color;
+    color: $gray;
 }
 
 .nav-text a:hover {
-    color: $gray-color;
+    color: $gray;
 }
 
 .nav-text a:active {
-    color: $gray-color;
+    color: $gray;
 }
 
 .close {
-    color: $orange-color;
+    color: $orange;
 }
 
 .hamburger path {
-    color: $orange-color;
+    color: $orange;
 }
 
 .sidebar-item-name {
@@ -99,7 +99,7 @@ $orange-color: #FFA834;
 }
 
 .nav-text:active {
-    background-color: $orange-color;
+    background-color: $orange;
 }
 
 
@@ -123,7 +123,7 @@ $orange-color: #FFA834;
     }
 
     .nav-text:hover {
-        background-color: $orange-color;
+        background-color: $orange;
     }
 
     .item-title {

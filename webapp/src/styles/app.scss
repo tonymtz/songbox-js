@@ -1,58 +1,61 @@
+@import "colors.scss";
+@import "fonts.scss";
+
 .App {
     display: flex;
     justify-content: center;
-  }
-  
-  .App-logo {
-    height: 40vmin;
-    pointer-events: none;
-  }
-  
-  .sidebar-container {
-    text-align: initial;
-  }
-  
-  .title {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: bold;
-  }
-  
-  .text {
-    font-family: 'Asap', sans-serif;
-    font-size: 5vw;
-  }
 
-  #root {
-    padding: 2vw 5vw;
-  }
-  
-  @media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-      animation: App-logo-spin infinite 20s linear;
+    &-logo {
+        height: 40vmin;
+        pointer-events: none;
     }
-  }
+
+    &-header {
+        background-color: $dark-color;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: $white;
+    }
+
+    &-link {
+        color: $light-blue;
+    }
+}
   
-  .App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-  }
+.sidebar-container {
+    text-align: initial;
+}
   
-  .App-link {
-    color: #61dafb;
-  }
+.title {
+    font-family: $font-quick;
+    font-weight: bold;
+}
   
-  @keyframes App-logo-spin {
+.text {
+    font-family: $font-asap;
+    font-size: 5vw;
+}
+
+#root {
+    padding: 2vw 5vw;
+}
+  
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+  
+@keyframes App-logo-spin {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
     to {
-      transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-  }
+}
   

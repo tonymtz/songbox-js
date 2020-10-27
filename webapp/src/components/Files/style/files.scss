@@ -1,9 +1,11 @@
+@import "../../../styles/colors.scss";
+
 $icon-height: 7vw;
 $icon-width: 7vw;
 
 .file-container {
     align-items: center;
-    border-top: 1px solid #b0b0b0;
+    border-top: 1px solid $gray;
     display: flex;
     justify-content: flex-start;
     padding: 1.5vw 1vw;

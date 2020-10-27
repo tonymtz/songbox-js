@@ -10,7 +10,14 @@ router.get('/me', setToken, async (req, res) => {
 		const dbx = new dropbox.Dropbox({ accessToken: token });
 
 		const userAccount = await dbx.usersGetCurrentAccount();
-		res.status(200).send(userAccount);
+		const finalUserAccount = {
+			status: userAccount.status,
+			result: {
+				name: userAccount.result.name,
+				email: userAccount.result.email
+			},
+		};
+		res.status(200).send(finalUserAccount);
 
 	} catch (error) {
 		res.status(401).json(error);

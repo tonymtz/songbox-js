@@ -21,7 +21,19 @@ router.get('/files/*', setToken, async (req, res) => {
 		const dropboxFiles = await dbx.filesListFolder({ path: finalPath });
 		const files = typeFilter(dropboxFiles.result.entries);
 
-		res.status(200).json(files);
+		const clearFiles = files.map((file) => {
+			delete file.id;
+			delete file.client_modified;
+			delete file.server_modified;
+			delete file.rev;
+			delete file.size;
+			delete file.is_downloadable;
+			delete file.content_hash;
+
+			return file;
+		}); 
+
+		res.status(200).json(clearFiles);
 	} catch (error) {
 		res.status(400).json({ error: 'Something went wrong!' });
 	}
@@ -38,8 +50,16 @@ router.get('/file/*', setToken, (req, res) => {
 		const dropboxPath = path.substring(baseUrl.length, path.length).replace(/%20/g, ' ');
 
 		createLink(dbx, dropboxPath, '')
-			.then((fileLink) => {
-				res.status(200).json(fileLink);
+			.then((file) => {
+				const clearFile = {
+					status: file.status,
+					headers: file.headers,
+					result: {
+						preview_url: file.result.preview_url,
+					},
+				};
+
+				res.status(200).json(clearFile);
 			})
 			.catch((error) => {
 				res.status(400).json(error);
