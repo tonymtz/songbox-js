@@ -1,3 +1,7 @@
 .home-container:hover {
     cursor: pointer;
 }
+
+.home-container {
+    padding: 2vw;
+}

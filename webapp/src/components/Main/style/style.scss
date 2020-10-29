@@ -1,3 +1,19 @@
 .content-container {
     width: 100%;
 }
+
+#your-personal-library {
+    padding: 2vw;
+    text-align: left;
+    font-size: 6vw;
+    padding-left: 2vw;
+    margin: 4vw 0;
+    margin-left: 3vw;
+}
+
+@media(min-width: 1024px){
+    #your-personal-library {
+        font-size: 2vw;
+        margin: 1vw 2vw;
+    }
+}

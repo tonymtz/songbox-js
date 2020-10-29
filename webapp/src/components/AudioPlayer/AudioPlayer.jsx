@@ -74,7 +74,7 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
  
 	
     return(
-        <div>
+        <>
             <Player
                 key={currentSong}
                 currentSong={currentSong}
@@ -86,7 +86,7 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
                 toggleOnRandom={toggleOnRandom}
                 singleSong={singleSong}
             />
-        </div>
+        </>
     );
 };
 

@@ -6,6 +6,8 @@ import LinkToSong from './LinkToSong';
 
 import getFiles from './tools/files';
 
+import './style/files.scss';
+
 const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setSongIndex }) => {
     const [folders, setFolders] = useState([]);
 
@@ -31,7 +33,7 @@ const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, set
     }, [route]);
 
     return (
-        <div>
+        <div className="files-container">
             {
                 folders.map((file, index) => {
                     return(

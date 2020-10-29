@@ -1,18 +1,36 @@
 @import "../../../styles/colors.scss";
 
 .directory-container {
+    padding: 0 2vw;
+}
+
+.directory-container .title {
+    margin-left: 2vw;
+    margin-bottom: 0;
+    font-size: 4.5vw;
+}
+
+.sub-directory-container {
     display: flex;
     align-items: center;
     justify-content: left;
     border-top: 2px solid #b0b0b0;
+    padding: 2vw 3vw;
 }
 
-.directory-container .title {
-    margin-left: 0.8vw;
-}
+
 
 @media (min-width: 1024px) {
     .directory-container {
-        padding: 1vw;
+        padding: 0;
+    }
+    
+    .directory-container .title {
+        margin-left: 2vw;
+        font-size: 1.5vw;
+    }
+
+    .sub-directory-container {
+        padding-bottom: 0;
     }
 }

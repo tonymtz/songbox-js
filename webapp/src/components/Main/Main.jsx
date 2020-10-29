@@ -11,7 +11,7 @@ const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setS
     return (
         <div className="App">
             <div className="content-container">
-                <h1 className="title">Your personal library</h1>
+                <h1 id="your-personal-library" className="title">Your personal library</h1>
                 <Breadcrumb
                     route={route}
                     setRoute={setRoute}

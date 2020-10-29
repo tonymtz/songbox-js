@@ -1,6 +1,4 @@
 import React from 'react';
-
-import './style/files.scss';
 import folderIcon from './icons/folder.svg';
 
 const LinkToFolder = ({ fileName, route, setRoute }) => {

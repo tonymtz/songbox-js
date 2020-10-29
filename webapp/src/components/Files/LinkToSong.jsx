@@ -2,7 +2,6 @@ import React from 'react';
 
 import getLink from '../../Links/getLink';
 
-import './style/files.scss';
 import playCircleIcon from './icons/play-circle.svg';
 import heartIcon from './icons/heart.svg';
 
