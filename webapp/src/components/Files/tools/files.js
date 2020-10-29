@@ -12,7 +12,7 @@ const getFiles = async (token, route) => {
 
         return response;
     } catch (error) {
-        throw new Error();
+        throw new Error(error);
     }
 };
 

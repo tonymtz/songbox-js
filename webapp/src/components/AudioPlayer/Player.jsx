@@ -2,18 +2,16 @@ import  React, { useState, useEffect} from 'react';
 
 import './style/player.scss';
 
-const Player = ({ currentSong, previous, next, chooseRandom, toggleRepeat, onRepeat, isRandom, singleSong }) => {
+const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat, onRandom, toggleOnRandom }) => {
     const [audioPlayer] = useState(React.createRef());
     const [isPlaying, setIsPlaying] = useState(false);
 	
     useEffect(() =>{
-        if (currentSong) {    
+        if (currentSong) {
             audioPlayer.current.play();
             setIsPlaying(true);
-        } else {
-            setIsPlaying(false);
-        } 
-    }, [currentSong, audioPlayer]);
+        }
+    }, [currentSong]);
 
 
     const play = () => {
@@ -27,12 +25,8 @@ const Player = ({ currentSong, previous, next, chooseRandom, toggleRepeat, onRep
     };
 
     const songEnded = () => {
-        if (audioPlayer.current.ended) {
-            if (onRepeat && singleSong) {
-                audioPlayer.current.play();
-            } else {
-                next();
-            }
+        if(audioPlayer.current.ended) {
+            nextSong();
         }
     };
 
@@ -45,11 +39,11 @@ const Player = ({ currentSong, previous, next, chooseRandom, toggleRepeat, onRep
                 <source src={currentSong} type="audio/ogg"/>
             </audio>
 
-            <button className={onRepeat ? 'button-active' : ''} onClick={toggleRepeat}>Repeat</button>
-            <button onClick={previous}>Previous</button>
-            <button onClick={play}>{ isPlaying ? 'Pause' : 'Play'}</button>
-            <button onClick={next}>Next</button>
-            <button className={isRandom ? 'button-active' : ''} onClick={chooseRandom}>Random</button>
+            <button className={onRepeat? 'button-active' : ''} onClick={toggleOnRepeat}>Repeat</button>
+            <button onClick={previousSong}>Previous</button>
+            <button onClick={play}>{isPlaying ? 'Pause' : 'Play'}</button>
+            <button onClick={nextSong}>Next</button>
+            <button className={onRandom ? 'button-active' : ''} onClick={toggleOnRandom}>Random</button>
         </div>
     );
 };

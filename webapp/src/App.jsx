@@ -12,8 +12,14 @@ import NotFound from './components/NotFound';
 
 import auth from './auth/auth';
 
+import AudioPlayer from './components/AudioPlayer';
+
 const App = () => {
     const [isAuth, setIsAuth] = useState(false);
+    const [currentSong, setCurrentSong] = useState('');
+    const [queueSongs, setQueueSongs] = useState([]);
+    const [songIndex, setSongIndex] = useState(0);
+    const [route, setRoute] = useState('/');
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -38,20 +44,41 @@ const App = () => {
         <>
             {
                 isAuth &&
-                <BrowserRouter>
-                    <div className="sidebar-container">
-                        <Sidebar /> 
-                    </div>
-                    <div>
-                        <Switch>
-                            <Route path="/app" component={Main} exact={true}/>
-                            <Route path="/favorites" component={Favorites} />
-                            <Route path="/settings" component={Settings}/>
-                            <Route path="/help" component={Help} />
-                            <Route component={NotFound}/>
-                        </Switch>
-                    </div>
-                </BrowserRouter>
+                <>
+                    <BrowserRouter>
+                        <div className="sidebar-container">
+                            <Sidebar /> 
+                        </div>
+                        <div>
+                            <Switch>
+                                <Route 
+                                    path="/app"
+                                    render={() => 
+                                        <Main 
+                                            route={route} 
+                                            setRoute={setRoute} 
+                                            setCurrentSong={setCurrentSong}
+                                            queueSongs={queueSongs} 
+                                            setQueueSongs={setQueueSongs}
+                                            setSongIndex={setSongIndex}    
+                                        />}
+                                />
+                                <Route path="/favorites" component={Favorites} />
+                                <Route path="/settings" component={Settings}/>
+                                <Route path="/help" component={Help} />
+                                <Route path="*" component={NotFound}/>
+                            </Switch>
+                        </div>
+                        <AudioPlayer 
+                            currentSong={currentSong}
+                            queueSongs={queueSongs}
+                            songIndex={songIndex}
+                            setSongIndex={setSongIndex}
+                            setCurrentSong={setCurrentSong}
+                            setQueueSongs={setQueueSongs} 
+                        />
+                    </BrowserRouter>
+                </>
             }	
         </>
     );

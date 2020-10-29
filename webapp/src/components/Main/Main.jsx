@@ -1,34 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import Directory from '../Directory';
+import Breadcrumb from '../Breadcrumb';
 import Files from '../Files';
-import AudioPlayer from '../AudioPlayer';
 
 import './style/style.scss';
 
-const Main = () => {
-    const [route, setRoute] = useState('/');
-    const [songs, setSongs] = useState([]);
-    const [songsIndex, setSongsIndex] = useState(0);
+const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setSongIndex }) => {
+
 
     return (
         <div className="App">
             <div className="content-container">
                 <h1 className="title">Your personal library</h1>
-                <Directory
+                <Breadcrumb
                     route={route}
                     setRoute={setRoute}
                 />
                 <Files
+                    key={route}
                     route={route}
                     setRoute={setRoute}
-                    setSongs={setSongs}
-                    setSongsIndex={setSongsIndex}
+                    setCurrentSong={setCurrentSong}
+                    queueSongs={queueSongs}
+                    setQueueSongs={setQueueSongs}
+                    setSongIndex={setSongIndex}
                 />
-                <AudioPlayer
-                    songs={songs}
-                    songsIndex={songsIndex}
-                /> 
             </div>
         </div>
     );

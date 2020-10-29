@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Cookie from 'universal-cookie';
 
-import File from './File';
+import LinkToFolder from './LinkToFolder';
+import LinkToSong from './LinkToSong';
 
 import getFiles from './tools/files';
 
-const Files = ({ route, setRoute, setSongs, setSongsIndex }) => {
-    const [files, setFiles] = useState([]);
-
-    let songIndex = -1;
-
-    const filterSongs = (files) => {
-        if (files.length <= 0) return files;
-		
-        const songs = files.filter((file) => file['.tag'] === 'file');
-        return songs;
-    };
+const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setSongIndex }) => {
+    const [folders, setFolders] = useState([]);
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -23,37 +15,48 @@ const Files = ({ route, setRoute, setSongs, setSongsIndex }) => {
 
         getFiles(token, route)
             .then((result) => {
-                setFiles(result.data);
+                const firstFile = result.data.findIndex((file) => file['.tag'] === 'file');
+                const songs = result.data.splice(firstFile, result.data.length);
+                
+                setFolders(result.data);
+                setQueueSongs(songs);
             })
-            .catch(() => {
-                setFiles([]);
+            .catch((error) => {
+                throw new Error(error);
             });
     }, [route]);
-
-    const setSongsInQueue = () => {
-        const songs = filterSongs(files);
-        setSongs(songs);	
-    };
 
     return (
         <div>
             {
-                files.map((file) => {				
-                    if (file['.tag'] === 'file') songIndex++;
-
-                    return (					
-                        <File
-                            key={file.id}
-                            file={file}
+                folders.map((file, index) => {
+                    return(
+                        <LinkToFolder
+                            key={index}
+                            fileName={file.name}
                             route={route}
                             setRoute={setRoute}
-                            setSongsInQueue={setSongsInQueue}
-                            songIndex={songIndex}
-                            setSongsIndex={setSongsIndex}
                         />
                     );
                 })
             }
+
+            {
+                queueSongs.map((song, index) => {
+                    return(
+                        <LinkToSong
+                            key={index}
+                            index={index}
+                            fileName={song.name}
+                            path={song.path_lower}
+                            setCurrentSong={setCurrentSong}
+                            setSongIndex={setSongIndex}
+                            queueSongs={queueSongs}
+                            setQueueSongs={setQueueSongs}
+                        />
+                    );
+                })
+            }   
         </div>
     );
 };

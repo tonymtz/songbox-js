@@ -1,98 +1,81 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Cookie from 'universal-cookie';
 
 import Player from './Player';
 
-const AudioPlayer = ({ songs, songsIndex }) => {
-    const [songsQueue, setSongsQueue] = useState([]);
-    const [currentSong, setCurrentSong] = useState('');
-    const [index, setIndex] = useState(0);
+import getLink from '../../Links/getLink';
+
+const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurrentSong, setQueueSongs }) => {
+
     const [onRepeat, setOnRepeat] = useState(false);
-    const [isRandom, setIsRandom] = useState(false);
-    const [singleSong, setSingleSong] = useState(false);
+    const [onRandom, setOnRandom] = useState(false);
 
-    const getLink = async (path) => {
-        const cookie = new Cookie();
-        const token = cookie.get('dbx-token');
-
-        try {
-            const url = `${window.location.protocol}//${window.location.hostname}/api/file${path}`;
-            const resposne = await axios.get(url, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'dbx-token': `${token}`
-                }
-            });
-
-            const songLink = resposne.data.result.preview_url;
-            return songLink;
-        } catch (error) {
-            return [];
-        }
-    };
-	
     useEffect(() => {
-        if (songs.length > 0) {
-            setSingleSong(songs.length === 1);
+        console.log(songIndex);
+        if(queueSongs.length <= 0) return;
 
-            const songsLink = songs.map((song) => {
-                return getLink(song.path_display);
-            });
-
-            Promise.all(songsLink)
+        if(queueSongs[songIndex].preview_url) {
+            setSongIndex(songIndex);
+            setCurrentSong(queueSongs[songIndex].preview_url);
+            setQueueSongs(queueSongs);
+        } else {
+            getLink(queueSongs[songIndex].path_display)
                 .then((result) => {
-                    const finalLinks = result.map((song) => song.replace('dl=0', 'dl=1'));	
-
-                    setIndex(songsIndex);
-                    setSongsQueue(finalLinks);
-                    setCurrentSong(finalLinks[songsIndex]);
+                    const songLink = result.replace('dl=0', 'dl=1');
+                    queueSongs[songIndex].preview_url = songLink;     
+                                  
+                    setCurrentSong(songLink);
+                    setQueueSongs(queueSongs);
                 })
-                .catch(() =>{
-                    setSongsQueue([]);
+                .catch((error) => {
+                    throw new Error(error);
                 });
         }
-    }, [songs, songsIndex]);
+    }, [songIndex]);
 
-    useEffect(() =>{
-        setCurrentSong(songsQueue[index]);
-    },[index]);
+    const toggleOnRepeat = () => setOnRepeat(!onRepeat); 
+    const toggleOnRandom = () => setOnRandom(!onRandom);
 
-
-    const next = () => {
-        if (onRepeat && index >= songsQueue.length - 1) {
-            setIndex(0);
-        } else if (index < songsQueue.length - 1) {
-            setIndex(index + 1);
+    const repeatPlaylist = () => {
+        if (songIndex + 1 >= queueSongs.length){
+            setSongIndex(0);
         }
     };
-	
-    const previous = () => {
-        if (index > 0){
-            setIndex(index - 1);
+    
+    const previousSong = () => {
+        if (songIndex > 0) {
+            setSongIndex(songIndex - 1);
         }
     };
 
-    const toggleRepeat = () => {
-        setOnRepeat(!onRepeat);
+    const nextSong = () => {
+        if (onRandom) {
+            selectRandom();
+        } else {
+            if (songIndex + 1 < queueSongs.length) {
+                setSongIndex(songIndex + 1);          
+            } else if(onRepeat && (songIndex + 1 >= queueSongs.length)) {
+                setSongIndex(0);   
+            }
+        }   
     };
 
-    const randomSong = () => {
-        setIsRandom(!isRandom);
+    const selectRandom = () => {
+        const randomNumber = Math.floor(Math.random() * queueSongs.length)
+        setSongIndex(randomNumber)
     };
+ 
 	
     return(
         <div>
             <Player
                 key={currentSong}
                 currentSong={currentSong}
-                next={next}
-                previous={previous}
-                chooseRandom={randomSong}
-                toggleRepeat={toggleRepeat}
+                previousSong={previousSong}
+                nextSong={nextSong}
                 onRepeat={onRepeat}
-                isRandom={isRandom}
-                singleSong={singleSong}
+                toggleOnRepeat={toggleOnRepeat}
+                onRandom={onRandom}
+                toggleOnRandom={toggleOnRandom}
             />
         </div>
     );
