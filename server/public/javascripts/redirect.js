@@ -9,8 +9,8 @@ const checkRedirect = () => {
     const dbxToken = findCookie(document.cookie, 'dbx-token');
     isValidToken(url, dbxToken)
         .then((result) => {
-            if (result.status === 200){
-                    window.location = `${location.protocol}//${location.hostname}/app`;
+            if (result.status === 200) {
+                window.location = `${location.protocol}//${location.hostname}/app`;
             }
         })
         .catch((error) => {
@@ -28,8 +28,8 @@ if (token) {
         .then((response) => {
             checkRedirect();
         })
-        .catch ((error) => {
-        console.log(error);
+        .catch((error) => {
+            console.log(error);
         });
 
 } else {

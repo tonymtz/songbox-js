@@ -8,13 +8,12 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
 
     const [onRepeat, setOnRepeat] = useState(false);
     const [onRandom, setOnRandom] = useState(false);
+    const [singleSong, setSingleSong] = useState(false);
 
     useEffect(() => {
-        console.log(songIndex);
         if(queueSongs.length <= 0) return;
 
         if(queueSongs[songIndex].preview_url) {
-            setSongIndex(songIndex);
             setCurrentSong(queueSongs[songIndex].preview_url);
             setQueueSongs(queueSongs);
         } else {
@@ -31,6 +30,10 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
                 });
         }
     }, [songIndex]);
+
+    useEffect(() => {
+        setSingleSong(queueSongs.length === 1);
+    }, [queueSongs]);
 
     const toggleOnRepeat = () => setOnRepeat(!onRepeat); 
     const toggleOnRandom = () => setOnRandom(!onRandom);
@@ -53,15 +56,20 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
         } else {
             if (songIndex + 1 < queueSongs.length) {
                 setSongIndex(songIndex + 1);          
-            } else if(onRepeat && (songIndex + 1 >= queueSongs.length)) {
-                setSongIndex(0);   
+            } else if(onRepeat) {
+                repeatPlaylist();
             }
         }   
     };
 
     const selectRandom = () => {
-        const randomNumber = Math.floor(Math.random() * queueSongs.length)
-        setSongIndex(randomNumber)
+        const randomNumber = Math.floor(Math.random() * queueSongs.length);
+
+        if(randomNumber === songIndex) {
+            return selectRandom();
+        } else {
+            setSongIndex(randomNumber);
+        }
     };
  
 	
@@ -76,6 +84,7 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
                 toggleOnRepeat={toggleOnRepeat}
                 onRandom={onRandom}
                 toggleOnRandom={toggleOnRandom}
+                singleSong={singleSong}
             />
         </div>
     );

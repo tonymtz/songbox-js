@@ -16,10 +16,14 @@ const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, set
         getFiles(token, route)
             .then((result) => {
                 const firstFile = result.data.findIndex((file) => file['.tag'] === 'file');
-                const songs = result.data.splice(firstFile, result.data.length);
+                if (firstFile >= 0) {
+                    const songs = result.data.splice(firstFile, result.data.length);
+                    setQueueSongs(songs);
+                } else {
+                    setQueueSongs([]);
+                }
                 
                 setFolders(result.data);
-                setQueueSongs(songs);
             })
             .catch((error) => {
                 throw new Error(error);

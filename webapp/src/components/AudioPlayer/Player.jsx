@@ -1,17 +1,22 @@
-import  React, { useState, useEffect} from 'react';
+import  React, { useState } from 'react';
 
 import './style/player.scss';
 
-const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat, onRandom, toggleOnRandom }) => {
+const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat, onRandom, toggleOnRandom, singleSong }) => {
     const [audioPlayer] = useState(React.createRef());
     const [isPlaying, setIsPlaying] = useState(false);
-	
-    useEffect(() =>{
-        if (currentSong) {
-            audioPlayer.current.play();
+
+    const onLoadSong = () => {
+        if (audioPlayer) {
+            audioPlayer.current.play()
+                .then(() => {
+
+                }).catch(() => {
+
+                });
             setIsPlaying(true);
         }
-    }, [currentSong]);
+    };
 
 
     const play = () => {
@@ -25,7 +30,11 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     };
 
     const songEnded = () => {
-        if(audioPlayer.current.ended) {
+        if (singleSong && onRepeat) { 
+            console.log('repeat single song');
+            audioPlayer.current.currentTime = 0;
+            audioPlayer.current.play();
+        } else if (audioPlayer.current.ended) {
             nextSong();
         }
     };
@@ -33,7 +42,7 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     return (
         <div>
             <h1>Hola soy tu audioplayer</h1>
-            <audio onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
+            <audio onLoadStart={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
                 <source src={currentSong} type="audio/mp3"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>
