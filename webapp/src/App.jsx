@@ -60,6 +60,7 @@ const App = () => {
                                             setCurrentSong={setCurrentSong}
                                             queueSongs={queueSongs} 
                                             setQueueSongs={setQueueSongs}
+                                            songIndex={songIndex}
                                             setSongIndex={setSongIndex}    
                                         />}
                                 />

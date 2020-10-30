@@ -29,7 +29,7 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
                     throw new Error(error);
                 });
         }
-    }, [songIndex]);
+    }, [queueSongs, songIndex]);
 
     useEffect(() => {
         setSingleSong(queueSongs.length === 1);

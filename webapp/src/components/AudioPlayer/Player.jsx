@@ -31,10 +31,11 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
         if (audioPlayer !== null) {
             audioPlayer.current.play()
                 .then(() => {
-                    setIsPlaying(true);
                 }).catch(() => {
                     
                 });               
+            
+            setIsPlaying(true);
         }
     };
 
@@ -70,7 +71,7 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
 
     return (
         <div className="audio-container">
-            <audio onLoadStart={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
+            <audio onLoadedData={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
                 <source src={currentSong} type="audio/mp3"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>

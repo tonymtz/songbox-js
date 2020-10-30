@@ -43,6 +43,10 @@ $icon-width: 7vw;
     display: none;
 }
 
+.is-playing {
+    background-color: $playing-song;
+}
+
 @media (min-width: 1024px){
     $icon-height: 2vw;
     $icon-width: 2vw;
@@ -58,7 +62,11 @@ $icon-width: 7vw;
     }
 
     .file-name {
-        font-size: 1vw;
+        font-size: 1.2vw;
+    }
+
+    .files-container {
+        padding-bottom: 8vw;
     }
 
     .file-container {

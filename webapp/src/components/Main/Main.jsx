@@ -5,7 +5,7 @@ import Files from '../Files';
 
 import './style/style.scss';
 
-const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setSongIndex }) => {
+const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
 
 
     return (
@@ -23,6 +23,7 @@ const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setS
                     setCurrentSong={setCurrentSong}
                     queueSongs={queueSongs}
                     setQueueSongs={setQueueSongs}
+                    songIndex={songIndex}
                     setSongIndex={setSongIndex}
                 />
             </div>

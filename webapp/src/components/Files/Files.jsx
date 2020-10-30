@@ -8,8 +8,10 @@ import getFiles from './tools/files';
 
 import './style/files.scss';
 
-const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, setSongIndex }) => {
+const Files = ({ route, setRoute, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
     const [folders, setFolders] = useState([]);
+    const [files, setFiles] = useState([]);
+    const [samePlaylist, setSamePlaylist] = useState(false);
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -20,9 +22,9 @@ const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, set
                 const firstFile = result.data.findIndex((file) => file['.tag'] === 'file');
                 if (firstFile >= 0) {
                     const songs = result.data.splice(firstFile, result.data.length);
-                    setQueueSongs(songs);
+                    setFiles(songs);
                 } else {
-                    setQueueSongs([]);
+                    setFiles([]);
                 }
                 
                 setFolders(result.data);
@@ -31,6 +33,19 @@ const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, set
                 throw new Error(error);
             });
     }, [route]);
+
+    useEffect(() => {
+        setSamePlaylist(isSamePlaylist());
+    }, [files, queueSongs, songIndex]);
+
+    const isSamePlaylist = () => {
+        if ((files.length > 0) && (files.length === queueSongs.length)) {
+            const isMatch = files.some((file, index) => file.name !== queueSongs[index].name);
+            return !isMatch;
+        } else {
+            return false;
+        }
+    };
 
     return (
         <div className="files-container">
@@ -48,17 +63,17 @@ const Files = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, set
             }
 
             {
-                queueSongs.map((song, index) => {
+                files.map((song, index) => {
                     return(
                         <LinkToSong
                             key={index}
                             index={index}
                             fileName={song.name}
-                            path={song.path_lower}
-                            setCurrentSong={setCurrentSong}
                             setSongIndex={setSongIndex}
-                            queueSongs={queueSongs}
+                            songIndex={songIndex}
+                            samePlaylist={samePlaylist}
                             setQueueSongs={setQueueSongs}
+                            files={files}
                         />
                     );
                 })
