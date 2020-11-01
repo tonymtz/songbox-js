@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import Player from './Player';
+import Player from './Player/';
 
 import getLink from '../../Links/getLink';
 
@@ -9,9 +9,12 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
     const [onRepeat, setOnRepeat] = useState(false);
     const [onRandom, setOnRandom] = useState(false);
     const [singleSong, setSingleSong] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     useEffect(() => {
         if(queueSongs.length <= 0) return;
+        setIsLoading(true);
 
         if(queueSongs[songIndex].preview_url) {
             setCurrentSong(queueSongs[songIndex].preview_url);
@@ -32,7 +35,12 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
     }, [queueSongs, songIndex]);
 
     useEffect(() => {
-        setSingleSong(queueSongs.length === 1);
+        const singleSong = queueSongs.length === 1;
+        const isPlaying = queueSongs.length <= 0;
+
+        setSingleSong(singleSong);
+        setIsPlaying(!isPlaying);
+
     }, [queueSongs]);
 
     const toggleOnRepeat = () => setOnRepeat(!onRepeat); 
@@ -75,17 +83,22 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
 	
     return(
         <>
-            <Player
-                key={currentSong}
-                currentSong={currentSong}
-                previousSong={previousSong}
-                nextSong={nextSong}
-                onRepeat={onRepeat}
-                toggleOnRepeat={toggleOnRepeat}
-                onRandom={onRandom}
-                toggleOnRandom={toggleOnRandom}
-                singleSong={singleSong}
-            />
+            {
+                isPlaying &&
+                <Player
+                    key={currentSong}
+                    currentSong={currentSong}
+                    previousSong={previousSong}
+                    nextSong={nextSong}
+                    onRepeat={onRepeat}
+                    toggleOnRepeat={toggleOnRepeat}
+                    onRandom={onRandom}
+                    toggleOnRandom={toggleOnRandom}
+                    singleSong={singleSong}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                />
+            }
         </>
     );
 };

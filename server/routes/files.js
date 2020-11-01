@@ -52,8 +52,6 @@ router.get('/file/*', setToken, (req, res) => {
 		createLink(dbx, dropboxPath, '')
 			.then((file) => {
 				const clearFile = {
-					status: file.status,
-					headers: file.headers,
 					result: {
 						preview_url: file.result.preview_url,
 					},

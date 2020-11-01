@@ -80,9 +80,9 @@ html, body, .main {
 
 
 @media (min-width: 1024px) {
-    $font-size-s: 2vw;
-    $font-size-m: 3vw;
-    $font-size-l: 5vw;
+    $font-size-s: 1vw;
+    $font-size-m: 2vw;
+    $font-size-l: 3vw;
 
     .main {
         display: flex;
@@ -102,8 +102,8 @@ html, body, .main {
     }
 
     .dropbox-btn {
-        font-size: 3vw;
-        padding: 2vw 5vw;
+        font-size: $font-size-m;
+        padding: 1vw 2vw;
     }
 
     #content {

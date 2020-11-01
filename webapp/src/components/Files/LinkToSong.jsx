@@ -18,7 +18,7 @@ const LinkToSong = ({ index, fileName, songIndex, setSongIndex, samePlaylist, se
         setIsPlaying(expression);
 
         return () => setIsPlaying(false);
-    }, [songIndex]);
+    }, [songIndex, index, samePlaylist]);
 
     return(
         <div onClick={selectSong} className={`file-container ${isPlaying ? 'is-playing' : ''}`}>

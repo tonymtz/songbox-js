@@ -29,6 +29,9 @@ $icon-width: 7vw;
     margin-left: 20px;
     margin-bottom: 0;
     font-size: 4vw;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .icon {
@@ -62,7 +65,7 @@ $icon-width: 7vw;
     }
 
     .file-name {
-        font-size: 1.2vw;
+        font-size: 1vw;
     }
 
     .files-container {
@@ -70,6 +73,6 @@ $icon-width: 7vw;
     }
 
     .file-container {
-        padding: 2vw;
+        padding: 1.5vw 1vw;
     }
 }

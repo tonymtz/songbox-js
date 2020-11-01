@@ -35,7 +35,8 @@ const Files = ({ route, setRoute, queueSongs, setQueueSongs, songIndex, setSongI
     }, [route]);
 
     useEffect(() => {
-        setSamePlaylist(isSamePlaylist());
+        const samePlaylist = isSamePlaylist();
+        setSamePlaylist(samePlaylist);
     }, [files, queueSongs, songIndex]);
 
     const isSamePlaylist = () => {

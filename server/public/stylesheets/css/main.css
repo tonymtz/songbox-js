@@ -59,11 +59,12 @@ html, body, .main {
     height: 100%;
     width: 45%; }
   .header {
-    font-size: 3vw; }
-  .text {
     font-size: 2vw; }
+  .text {
+    font-size: 1vw; }
   .dropbox-btn {
-    font-size: 3vw;
-    padding: 2vw 5vw; }
+    font-size: 2vw;
+    padding: 1vw 2vw; }
   #content {
-    padding: 2vw 10vw; } }
+    padding: 2vw 10vw;
+    margin: auto auto; } }
