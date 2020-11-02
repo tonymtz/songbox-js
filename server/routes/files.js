@@ -52,7 +52,7 @@ router.get('/file/*', setToken, (req, res) => {
 		createLink(dbx, dropboxPath, '')
 			.then((file) => {
 				const clearFile = {
-					url: file.result.link
+					url: file.result.url
 				};
 
 				res.status(200).json(clearFile);
