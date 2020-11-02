@@ -26,13 +26,8 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
 
     const onLoadSong = () => {
         if (audioPlayer !== null) {
-            setIsLoading(false); 
-            audioPlayer.current.play()
-                .then(() => {
-                    play();
-                }).catch((error) => {
-                    console.log(error);
-                });                        
+            setIsLoading(false);
+            play();                    
         }
     };
 
@@ -68,7 +63,7 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
 
     return (
         <div className="audio-container">
-            <audio onLoad={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
+            <audio onLoadedMetadata={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
                 <source src={currentSong} type="audio/mpeg"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>
