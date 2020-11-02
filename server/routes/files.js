@@ -52,9 +52,7 @@ router.get('/file/*', setToken, (req, res) => {
 		createLink(dbx, dropboxPath, '')
 			.then((file) => {
 				const clearFile = {
-					result: {
-						preview_url: file.result.preview_url,
-					},
+					url: file.result.link
 				};
 
 				res.status(200).json(clearFile);
@@ -62,6 +60,7 @@ router.get('/file/*', setToken, (req, res) => {
 			.catch((error) => {
 				res.status(400).json(error);
 			});
+
 	} catch (error) {
 		res.status(400).json(error);
 	}

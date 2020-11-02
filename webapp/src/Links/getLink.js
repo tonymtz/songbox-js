@@ -15,7 +15,7 @@ const getLink = async (path) => {
             }
         });
 
-        const songLink = response.data.result.preview_url;
+        const songLink = response.data.url;
         return songLink;
     } catch (error) {
         throw new Error(error);

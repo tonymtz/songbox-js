@@ -1,5 +1,5 @@
 const createLink = async (dbx, route) => {
-	const link = await dbx.sharingGetFileMetadata({ file: route });
+	const link = await dbx.filesGetTemporaryLink({ path: route });
 	return link;
 };
 
