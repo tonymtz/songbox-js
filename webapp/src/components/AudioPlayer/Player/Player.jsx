@@ -27,12 +27,12 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     const onLoadSong = () => {
         if (audioPlayer !== null) {
             setIsLoading(false); 
-            audioPlayer.current.play()
-                .then(() => {
-                    setIsPlaying(true);
-                }).catch((error) => {
-                    console.log(error);
-                });                        
+            // audioPlayer.current.play()
+            //     .then(() => {
+            //         setIsPlaying(true);
+            //     }).catch((error) => {
+            //         console.log(error);
+            //     });                        
         }
     };
 
