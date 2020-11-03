@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 
 import Breadcrumb from '../Breadcrumb';
 import Files from '../Files';
+
+import { getRoute } from '../../route/route';
 
 import './style/style.scss';
 
 const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
 
+    const [correctPath, setCorrectPath] = useState(false);
+
+    useEffect(() => {
+        const pathFromURL = getRoute();
+        if (route !== pathFromURL) {
+            setRoute(pathFromURL);
+        } 
+
+        setCorrectPath(true);
+    }, []);
 
     return (
         <div className="App">
@@ -16,16 +28,20 @@ const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, song
                     route={route}
                     setRoute={setRoute}
                 />
-                <Files
-                    key={route}
-                    route={route}
-                    setRoute={setRoute}
-                    setCurrentSong={setCurrentSong}
-                    queueSongs={queueSongs}
-                    setQueueSongs={setQueueSongs}
-                    songIndex={songIndex}
-                    setSongIndex={setSongIndex}
-                />
+                        
+                {
+                    correctPath &&
+                    <Files
+                        key={route}
+                        route={route}
+                        setRoute={setRoute}
+                        setCurrentSong={setCurrentSong}
+                        queueSongs={queueSongs}
+                        setQueueSongs={setQueueSongs}
+                        songIndex={songIndex}
+                        setSongIndex={setSongIndex}
+                    />
+                }
             </div>
         </div>
     );

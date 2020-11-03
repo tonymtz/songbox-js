@@ -30,14 +30,18 @@ const Files = ({ route, setRoute, queueSongs, setQueueSongs, songIndex, setSongI
                 setFolders(result.data);
             })
             .catch((error) => {
-                throw new Error(error);
+                if (error) {
+                    setFiles([]);
+                }
             });
+
     }, [route]);
 
     useEffect(() => {
         const samePlaylist = isSamePlaylist();
         setSamePlaylist(samePlaylist);
     }, [files, queueSongs, songIndex]);
+
 
     const isSamePlaylist = () => {
         if ((files.length > 0) && (files.length === queueSongs.length)) {

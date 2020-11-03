@@ -19,6 +19,11 @@ router.get('/files/*', setToken, async (req, res) => {
 		const finalPath = dropboxPath === '/' ? '' : dropboxPath;
 
 		const dropboxFiles = await dbx.filesListFolder({ path: finalPath });
+
+		if (dropboxFiles.status === 409) {
+			res.status(404).json({ error: 'Files were not found!' });
+		}
+
 		const files = typeFilter(dropboxFiles.result.entries);
 
 		const clearFiles = files.map((file) => {
@@ -31,7 +36,7 @@ router.get('/files/*', setToken, async (req, res) => {
 			delete file.content_hash;
 
 			return file;
-		}); 
+		});
 
 		res.status(200).json(clearFiles);
 	} catch (error) {
