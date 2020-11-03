@@ -27,7 +27,15 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     const onLoadSong = () => {
         if (audioPlayer !== null) {
             setIsLoading(false);
-            play();                    
+            audioPlayer.current.play()
+                .then(() => {
+                    //Auto play...
+                    setIsPlaying(true);
+                })
+                .catch((error) => {
+                    //Auto play is disabled
+                    console.log(error);
+                });                 
         }
     };
 
