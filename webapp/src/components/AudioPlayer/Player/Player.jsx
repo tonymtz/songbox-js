@@ -35,16 +35,6 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
                 })
                 .catch((error) => {
                     //Auto play is disabled
-                    audioPlayer.current.pause();
-                    swal({
-                        text: 'Mobile browsers block auto play.',
-                        icon: 'info',
-                        button: 'Play'
-                    }).then((click) => { 
-                        if (click) {
-                            play();
-                        }
-                    });
                     console.log(error);
                 });
         }
