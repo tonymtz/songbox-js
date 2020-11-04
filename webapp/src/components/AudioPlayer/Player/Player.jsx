@@ -28,24 +28,24 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     const onLoadSong = () => {
         if (audioPlayer !== null) {
             setIsLoading(false);
-            setIsPlaying(true);
             audioPlayer.current.play()
                 .then(() => {
-                //Auto play...
-                    audioPlayer.current.muted = false;
+                    //Auto play...
+                    setIsPlaying(true);
                 })
                 .catch((error) => {
                     //Auto play is disabled
+                    audioPlayer.current.pause();
                     swal({
-                        text: 'Mobile browsers do not allow auto play.',
+                        text: 'Mobile browsers block auto play.',
                         icon: 'info',
-                        button: 'Play!'
-                    }).then((event) => {
-                        if (event) {
-                            audioPlayer.current.muted = false;
+                        button: 'Play'
+                    }).then((click) => { 
+                        if (click) {
                             play();
                         }
                     });
+                    console.log(error);
                 });
         }
     };
@@ -82,7 +82,7 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
 
     return (
         <div className="audio-container">
-            <audio onCanPlayThrough={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" muted controls>
+            <audio onCanPlayThrough={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
                 <source src={currentSong} type="audio/mpeg"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>
