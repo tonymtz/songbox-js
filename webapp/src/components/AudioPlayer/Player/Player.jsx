@@ -72,7 +72,7 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
 
     return (
         <div className="audio-container">
-            <audio onLoadedMetadata={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" autoPlay controls>
+            <audio onCanPlayThrough={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" autoPlay controls>
                 <source src={currentSong} type="audio/mpeg"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>
