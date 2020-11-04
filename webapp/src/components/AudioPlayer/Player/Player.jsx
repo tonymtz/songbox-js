@@ -28,15 +28,14 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     const onLoadSong = () => {
         if (audioPlayer !== null) {
             setIsLoading(false);
+            setIsPlaying(true);
             audioPlayer.current.play()
                 .then(() => {
-                    //Auto play...
-                    setIsPlaying(true);
+                //Auto play...
                     audioPlayer.current.muted = false;
                 })
                 .catch((error) => {
                     //Auto play is disabled
-                    setIsPlaying(false);
                     swal({
                         text: 'Mobile browsers do not allow auto play.',
                         icon: 'info',
