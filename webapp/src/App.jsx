@@ -61,10 +61,10 @@ const App = () => {
                                             setSongIndex={setSongIndex}    
                                         />}
                                 />
-                                <Route path="/favorites" component={Favorites} />
-                                <Route path="/settings" component={Settings}/>
-                                <Route path="/help" component={Help} />
-                                <Route path="*" component={NotFound}/>
+                                <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
+                                <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
+                                <Route path="/help" render={() => <Help pageNumber={3}/>} />
+                                <Route path="*" component={NotFound} />
                             </Switch>
                         </div>
                         <AudioPlayer 
