@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Cookie from 'universal-cookie';
 
 import LinkToFolder from './LinkToFolder';
@@ -8,10 +9,12 @@ import getFiles from './tools/files';
 
 import './style/files.scss';
 
-const Files = ({ route, setRoute, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
+const Files = ({ queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
     const [folders, setFolders] = useState([]);
     const [files, setFiles] = useState([]);
     const [samePlaylist, setSamePlaylist] = useState(false);
+
+    const route = useSelector((state) => state.route); 
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -61,7 +64,6 @@ const Files = ({ route, setRoute, queueSongs, setQueueSongs, songIndex, setSongI
                             key={index}
                             fileName={file.name}
                             route={route}
-                            setRoute={setRoute}
                         />
                     );
                 })

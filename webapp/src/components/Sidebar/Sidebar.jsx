@@ -5,15 +5,13 @@ import * as AiIcons from 'react-icons/ai';
 
 import SidebarData from './sidebar.config';
 import Profile from '../Profile/index';
+import Item from './Item/';
 
 import './styles/Sidebar.scss';
 
 const Sidebar = () => {
     const [sidebar, setSidebar] = useState(false);
-
-    const showSidebar = () => {
-        setSidebar(!sidebar);
-    };
+    const showSidebar = () => setSidebar(!sidebar);
 
     return (
         <div>
@@ -36,12 +34,11 @@ const Sidebar = () => {
                     {
                         SidebarData.map((item, index) => {
                             return (
-                                <li key={index} className={item.className}>
-                                    <Link className="icon" to={item.path}>
-                                        { item.icon }
-                                        <span className="item-title">{ item.title }</span>
-                                    </Link>
-                                </li>
+                                <Item
+                                    key={index} 
+                                    index={index}
+                                    item={item}
+                                />
                             );
                         })
                     }

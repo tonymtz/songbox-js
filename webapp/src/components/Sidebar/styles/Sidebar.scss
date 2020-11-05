@@ -34,6 +34,10 @@ $padding-left-s: 4vw;
     color: $orange;
 }
 
+.close path {
+    color: $orange;
+}
+
 .hamburger path {
     color: $orange;
 }
@@ -71,21 +75,26 @@ $padding-left-s: 4vw;
 
 .nav-text {
     display: flex;
-    height: 3vh;
     justify-content: flex-start;
     list-style: none;
-    padding: 7vw 2vw;
-    padding-left: $padding-left-s;
 }
 
 .nav-text a {
     display: flex;
     width: 100%;
+    padding: 2vw;
+    height: 8vh;
 }
 
 .nav-text a svg {
     height: 6vw;
     width: 6vw;
+    align-self: center;
+}
+
+.nav-text span {
+    align-self: center;
+    font-weight: 600;
 }
 
 .elements {
@@ -102,6 +111,13 @@ $padding-left-s: 4vw;
     background-color: $orange;
 }
 
+.selected-item { 
+    background-color: $selected-item;
+}
+
+.selected-item path {
+    color: orange;
+}
 
 @media (min-width: 1024px) {
     .navbar {

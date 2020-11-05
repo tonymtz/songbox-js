@@ -1,18 +1,21 @@
 import React from 'react';
-import folderIcon from './icons/folder.svg';
-
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const LinkToFolder = ({ fileName, route, setRoute }) => {
+import { changeRoute } from '../../redux/actions';
+
+import folderIcon from './icons/folder.svg';
+
+const LinkToFolder = ({ fileName, route }) => {
+
+    const dispatch = useDispatch();
 
     const path = `${route}${fileName}/`;
-    const changeRoute = () => {
-        setRoute(path);
-    };
+    const changeFolder = () => dispatch(changeRoute(path));
 
     return(
         <Link to={'/app' + path}>
-            <div onClick={changeRoute} className="file-container">
+            <div onClick={changeFolder} className="file-container">
                 <img
                     className="icon" 
                     src={folderIcon} 

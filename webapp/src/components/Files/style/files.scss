@@ -48,7 +48,7 @@ $icon-width: 7vw;
 }
 
 .is-playing {
-    background-color: $playing-song;
+    background-color: $selected-item;
 }
 
 @media (min-width: 1024px){

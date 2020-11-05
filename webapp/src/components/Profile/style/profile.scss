@@ -13,13 +13,16 @@ $font-size: 4vw;
 
 .user-email {
     font-size: $font-size;
+    margin-bottom: 0;
     padding: 1vw;
     word-wrap: break-word;
 }
 
 .user-name {
     font-size: $font-size;
+    font-weight: bold;
     padding: 3vw;
+    padding-top: 0;
     word-wrap: break-word;
 }
 

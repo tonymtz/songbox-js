@@ -1,10 +1,12 @@
 import React, { useState, useEffect} from 'react';
+import { useSelector } from 'react-redux';
 
 import Home from '../Home';
-
 import './style/breadcrumb.scss';
 
-const Directory = ({ route, setRoute }) => {
+const Directory = () => {
+
+    const route = useSelector((state) => state.route);
 
     const [showingRoute, setShowingRoute] = useState(route);
 
@@ -16,9 +18,7 @@ const Directory = ({ route, setRoute }) => {
     return (
         <div className="directory-container">
             <div className="sub-directory-container">
-                <Home 
-                    setRoute={setRoute}
-                />
+                <Home />
                 <h4 className="title">{showingRoute}</h4>
             </div>
         </div>

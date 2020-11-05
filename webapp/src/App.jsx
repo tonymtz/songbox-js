@@ -19,7 +19,6 @@ const App = () => {
     const [currentSong, setCurrentSong] = useState('');
     const [queueSongs, setQueueSongs] = useState([]);
     const [songIndex, setSongIndex] = useState(0);
-    const [route, setRoute] = useState('/');
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -55,8 +54,6 @@ const App = () => {
                                     path="/app"
                                     render={() => 
                                         <Main 
-                                            route={route} 
-                                            setRoute={setRoute} 
                                             setCurrentSong={setCurrentSong}
                                             queueSongs={queueSongs} 
                                             setQueueSongs={setQueueSongs}

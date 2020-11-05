@@ -1,20 +1,24 @@
 import React, { useState, useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Breadcrumb from '../Breadcrumb';
 import Files from '../Files';
 
 import { getRoute } from '../../route/route';
+import { changeRoute } from '../../redux/actions/';
 
 import './style/style.scss';
 
-const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
+const Main = ({ setCurrentSong, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
 
     const [correctPath, setCorrectPath] = useState(false);
+    const route = useSelector((state) => state.route);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const pathFromURL = getRoute();
         if (route !== pathFromURL) {
-            setRoute(pathFromURL);
+            dispatch(changeRoute(pathFromURL));
         } 
 
         setCorrectPath(true);
@@ -24,17 +28,12 @@ const Main = ({ route, setRoute, setCurrentSong, queueSongs, setQueueSongs, song
         <div className="App">
             <div className="content-container">
                 <h1 id="your-personal-library" className="title">Your personal library</h1>
-                <Breadcrumb
-                    route={route}
-                    setRoute={setRoute}
-                />
+                <Breadcrumb />
                         
                 {
                     correctPath &&
                     <Files
                         key={route}
-                        route={route}
-                        setRoute={setRoute}
                         setCurrentSong={setCurrentSong}
                         queueSongs={queueSongs}
                         setQueueSongs={setQueueSongs}
