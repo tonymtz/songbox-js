@@ -18,7 +18,6 @@ const Item = ({ index, item }) => {
                 { item.icon }
                 <span className="item-title">{ item.title }</span>
             </Link>
-
             <img src={selectedIndex === index ? chevronLeft : chevronRight} alt="chevron"/>
         </li>
     );

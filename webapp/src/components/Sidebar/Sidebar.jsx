@@ -28,7 +28,7 @@ const Sidebar = () => {
                         </Link>
                     </li>
 
-                    <li>
+                    <li className="profile-container">
                         <Profile />
                     </li>
                     {

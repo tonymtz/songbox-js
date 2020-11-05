@@ -19,28 +19,16 @@ $padding-left-s: 4vw;
     color: $gray;
 }
 
-.nav-text a:visited {
-    color: $gray;
-}
-
-.nav-text a:hover {
-    color: $gray;
-}
-
-.nav-text a:active {
-    color: $gray;
-}
-
 .close {
-    color: $orange;
+    fill: $orange;
 }
 
 .close path {
-    color: $orange;
+    fill: $orange;
 }
 
-.hamburger path {
-    color: $orange;
+.hamburger path, .hamburger path {
+    fill: $orange;
 }
 
 .sidebar-item-name {
@@ -108,16 +96,17 @@ $padding-left-s: 4vw;
     margin-left: 2vw;
 }
 
-.nav-text:active {
-    background-color: $orange;
-}
-
 .selected-item { 
     background-color: $selected-item;
 }
 
 .selected-item path {
-    color: orange;
+    fill: $orange;
+}
+
+.profile-container {
+    margin-bottom: 5vh;
+    margin-top: 5vh;
 }
 
 @media (min-width: 1024px) {
@@ -137,10 +126,6 @@ $padding-left-s: 4vw;
     .nav-text a svg {
         height: 2vw;
         width: 2vw;
-    }
-
-    .nav-text:hover {
-        background-color: $orange;
     }
 
     .item-title {
