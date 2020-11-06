@@ -16,7 +16,7 @@ router.get('/files/*', setToken, async (req, res) => {
 		const routePath = req.path;
 
 		const dropboxPath = routePath.substring(baseUrl.length, routePath.length).replace(/%20/g, ' ');
-		const finalPath = dropboxPath === '/' ? '' : dropboxPath;
+		const finalPath = dropboxPath === '/' ? '' : decodeURI(dropboxPath);
 
 		const dropboxFiles = await dbx.filesListFolder({ path: finalPath });
 
@@ -52,9 +52,10 @@ router.get('/file/*', setToken, (req, res) => {
 		const baseUrl = '/file';
 		const path = req.path;
 
-		const dropboxPath = path.substring(baseUrl.length, path.length).replace(/%20/g, ' ');
-
-		createLink(dbx, dropboxPath, '')
+		const dropboxPath = path.substring(baseUrl.length, path.length);
+		const decodedPath = decodeURI(dropboxPath);
+		
+		createLink(dbx, decodedPath, '')
 			.then((file) => {
 				const clearFile = {
 					url: file.result.url

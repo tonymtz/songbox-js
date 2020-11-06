@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { AiFillHome } from 'react-icons/ai';
 
 import { changeRoute } from '../../redux/actions/';
 
-import './style/home.css';
-import home from './icons/home.svg';
+import './style/home.scss';
 
 const Home = () => {
 
@@ -14,12 +14,11 @@ const Home = () => {
     return (
         <div className="home-container">
             <Link to="/app">
-                <img
-                    className="icon"
+                <AiFillHome 
+                    className="icon home-icon"
                     onClick={() => {
                         dispatch(changeRoute('/'));
                     }}
-                    src={home}
                     alt={'home-button'}
                 />
             </Link>

@@ -1,6 +1,8 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { ProgressBar } from 'react-bootstrap';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/progress.scss';
 
 const AudioProgress = ({ process }) => {
     return (

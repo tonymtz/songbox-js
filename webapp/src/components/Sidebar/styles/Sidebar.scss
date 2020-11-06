@@ -66,6 +66,7 @@ $padding-left-s: 4vw;
     display: flex;
     justify-content: flex-start;
     list-style: none;
+    padding: 0 2vw;
 }
 
 .nav-text a {
@@ -73,6 +74,10 @@ $padding-left-s: 4vw;
     width: 100%;
     padding: 2vw;
     height: 8vh;
+}
+
+.nav-text a:hover {
+    text-decoration: none;
 }
 
 .nav-text a svg {
@@ -115,7 +120,7 @@ $padding-left-s: 4vw;
     }
 
     .nav-text {
-        padding: 2vw 1vw;
+        padding: 0;
         padding-left: 0;
     }
 
@@ -130,5 +135,18 @@ $padding-left-s: 4vw;
 
     .item-title {
         align-self: center;
+    }
+
+    .nav-text a {
+        padding-right: 0;
+    }
+
+    .nav-text a:hover {
+        fill: $gray;
+        color: $gray;
+    }
+
+    .icon {
+        padding-right: 0;
     }
 }
