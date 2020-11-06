@@ -11,3 +11,17 @@ export const changeRoute = (route) => {
         payload: route
     };
 };
+
+export const changeSongIndex = (index) => {
+    return {
+        type: 'CHANGE_SONG_INDEX',
+        payload: index
+    };
+};
+
+export const changeSongsQueue = (newQueue) => {
+    return {
+        type: 'CHANGE_SONGS_QUEUE',
+        payload: newQueue
+    };
+};

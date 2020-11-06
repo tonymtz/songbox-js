@@ -1,53 +1,64 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import Player from './Player/';
 
+import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
 import getLink from '../../Links/getLink';
 
-const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurrentSong, setQueueSongs }) => {
+const AudioPlayer = () => {
 
     const [onRepeat, setOnRepeat] = useState(false);
     const [onRandom, setOnRandom] = useState(false);
     const [singleSong, setSingleSong] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [currentSong, setCurrentSong] = useState('');
 
+    const songIndex = useSelector((state) => state.songIndex);
+    const songsQueue = useSelector((state) => state.songsQueue);
+    
+    const dispatch = useDispatch();
+    const setSongIndex = (index) => dispatch(changeSongIndex(index));
+    const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
+    
     useEffect(() => {
-        if(queueSongs.length <= 0) return;
+
+        if(songsQueue.length <= 0) return;
         setIsLoading(true);
 
-        if(queueSongs[songIndex].preview_url) {
-            setCurrentSong(queueSongs[songIndex].preview_url);
-            setQueueSongs(queueSongs);
+        if(songsQueue[songIndex].preview_url) {
+            setCurrentSong(songsQueue[songIndex].preview_url);
+            setSongsQueue(songsQueue);
         } else {
-            getLink(queueSongs[songIndex].path_display)
+            getLink(songsQueue[songIndex].path_display)
                 .then((result) => {
                     const songLink = result.replace('?dl=0', '').replace('www.', 'dl.');
-                    queueSongs[songIndex].preview_url = songLink;     
+                    songsQueue[songIndex].preview_url = songLink;     
                                   
                     setCurrentSong(songLink);
-                    setQueueSongs(queueSongs);
+                    setSongsQueue(songsQueue);
                 })
                 .catch((error) => {
                     throw new Error(error);
                 });
         }
-    }, [queueSongs, songIndex]);
+    }, [songsQueue, songIndex]);
 
     useEffect(() => {
-        const singleSong = queueSongs.length === 1;
-        const isPlaying = queueSongs.length <= 0;
+        const singleSong = songsQueue.length === 1;
+        const isPlaying = songsQueue.length <= 0;
 
         setSingleSong(singleSong);
         setIsPlaying(!isPlaying);
 
-    }, [queueSongs]);
+    }, [songsQueue]);
 
     const toggleOnRepeat = () => setOnRepeat(!onRepeat); 
     const toggleOnRandom = () => setOnRandom(!onRandom);
 
     const repeatPlaylist = () => {
-        if (songIndex + 1 >= queueSongs.length){
+        if (songIndex + 1 >= songsQueue.length){
             setSongIndex(0);
         }
     };
@@ -62,7 +73,7 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
         if (onRandom) {
             selectRandom();
         } else {
-            if (songIndex + 1 < queueSongs.length) {
+            if (songIndex + 1 < songsQueue.length) {
                 setSongIndex(songIndex + 1);          
             } else if(onRepeat) {
                 repeatPlaylist();
@@ -71,7 +82,8 @@ const AudioPlayer = ({ currentSong, queueSongs, songIndex, setSongIndex, setCurr
     };
 
     const selectRandom = () => {
-        const randomNumber = Math.floor(Math.random() * queueSongs.length);
+        if (singleSong) return;
+        const randomNumber = Math.floor(Math.random() * songsQueue.length);
 
         if(randomNumber === songIndex) {
             return selectRandom();

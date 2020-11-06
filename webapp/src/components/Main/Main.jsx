@@ -9,7 +9,7 @@ import { changeRoute } from '../../redux/actions/';
 
 import './style/style.scss';
 
-const Main = ({ setCurrentSong, queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
+const Main = () => {
 
     const [correctPath, setCorrectPath] = useState(false);
     const route = useSelector((state) => state.route);
@@ -30,17 +30,7 @@ const Main = ({ setCurrentSong, queueSongs, setQueueSongs, songIndex, setSongInd
                 <h1 id="your-personal-library" className="title">Your personal library</h1>
                 <Breadcrumb />
                         
-                {
-                    correctPath &&
-                    <Files
-                        key={route}
-                        setCurrentSong={setCurrentSong}
-                        queueSongs={queueSongs}
-                        setQueueSongs={setQueueSongs}
-                        songIndex={songIndex}
-                        setSongIndex={setSongIndex}
-                    />
-                }
+                { correctPath && <Files key={route} />}
             </div>
         </div>
     );

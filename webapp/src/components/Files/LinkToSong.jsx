@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
 
 import heartIcon from './icons/heart.svg';
 
-const LinkToSong = ({ index, fileName, songIndex, setSongIndex, samePlaylist, setQueueSongs, files}) => {
+const LinkToSong = ({ index, fileName, samePlaylist, files}) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
+    const songIndex = useSelector((state) => state.songIndex);
+    const dispatch = useDispatch();
+
+    const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue)); 
+
     const selectSong = () => {
-        setQueueSongs(files);
-        setSongIndex(index);
+        setSongsQueue(files);
+        dispatch(changeSongIndex(index));
         setIsPlaying(true);
     };
 

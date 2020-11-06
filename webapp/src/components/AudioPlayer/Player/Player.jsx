@@ -17,6 +17,16 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
     const [progress, setProgress] = useState(0);
 
     useEffect(() => {
+        const updateProcess = () => {
+            if (audioPlayer !== null && !audioPlayer.current.paused) {
+                const currentTime = audioPlayer.current.currentTime;
+                const totalTime = audioPlayer.current.duration;
+                const progress = (currentTime / totalTime) * 100;
+        
+                setProgress(progress);
+            }  
+        };
+
         let interval = setInterval(() => updateProcess(), 1000); 
 
         return () => {
@@ -38,17 +48,6 @@ const Player = ({ currentSong, previousSong, nextSong, onRepeat, toggleOnRepeat,
                 });
         }
     };
-
-    const updateProcess = () => {
-        if (audioPlayer !== null && !audioPlayer.current.paused) {
-            const currentTime = audioPlayer.current.currentTime;
-            const totalTime = audioPlayer.current.duration;
-            const progress = (currentTime / totalTime) * 100;
-    
-            setProgress(progress);
-        }  
-    };
-    
 
     const play = () => {
         if (isPlaying) {

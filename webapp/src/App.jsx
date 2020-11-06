@@ -16,9 +16,6 @@ import AudioPlayer from './components/AudioPlayer';
 
 const App = () => {
     const [isAuth, setIsAuth] = useState(false);
-    const [currentSong, setCurrentSong] = useState('');
-    const [queueSongs, setQueueSongs] = useState([]);
-    const [songIndex, setSongIndex] = useState(0);
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -53,13 +50,7 @@ const App = () => {
                                 <Route 
                                     path="/app"
                                     render={() => 
-                                        <Main 
-                                            setCurrentSong={setCurrentSong}
-                                            queueSongs={queueSongs} 
-                                            setQueueSongs={setQueueSongs}
-                                            songIndex={songIndex}
-                                            setSongIndex={setSongIndex}    
-                                        />}
+                                        <Main />}
                                 />
                                 <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
                                 <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
@@ -67,14 +58,7 @@ const App = () => {
                                 <Route path="*" component={NotFound} />
                             </Switch>
                         </div>
-                        <AudioPlayer 
-                            currentSong={currentSong}
-                            queueSongs={queueSongs}
-                            songIndex={songIndex}
-                            setSongIndex={setSongIndex}
-                            setCurrentSong={setCurrentSong}
-                            setQueueSongs={setQueueSongs} 
-                        />
+                        <AudioPlayer />
                     </BrowserRouter>
                 </>
             }	

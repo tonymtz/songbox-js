@@ -9,12 +9,13 @@ import getFiles from './tools/files';
 
 import './style/files.scss';
 
-const Files = ({ queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
+const Files = () => {
     const [folders, setFolders] = useState([]);
     const [files, setFiles] = useState([]);
     const [samePlaylist, setSamePlaylist] = useState(false);
 
     const route = useSelector((state) => state.route); 
+    const songsQueue = useSelector((state) => state.songsQueue);
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -41,19 +42,20 @@ const Files = ({ queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
     }, [route]);
 
     useEffect(() => {
+        const isSamePlaylist = () => {
+            if ((files.length > 0) && (files.length === songsQueue.length)) {
+                const isMatch = files.some((file, index) => file.name !== songsQueue[index].name);
+                return !isMatch;
+            } else {
+                return false;
+            }
+        };
+
+
         const samePlaylist = isSamePlaylist();
         setSamePlaylist(samePlaylist);
-    }, [files, queueSongs, songIndex]);
+    }, [files, songsQueue]);
 
-
-    const isSamePlaylist = () => {
-        if ((files.length > 0) && (files.length === queueSongs.length)) {
-            const isMatch = files.some((file, index) => file.name !== queueSongs[index].name);
-            return !isMatch;
-        } else {
-            return false;
-        }
-    };
 
     return (
         <div className="files-container">
@@ -76,10 +78,7 @@ const Files = ({ queueSongs, setQueueSongs, songIndex, setSongIndex }) => {
                             key={index}
                             index={index}
                             fileName={song.name}
-                            setSongIndex={setSongIndex}
-                            songIndex={songIndex}
                             samePlaylist={samePlaylist}
-                            setQueueSongs={setQueueSongs}
                             files={files}
                         />
                     );
