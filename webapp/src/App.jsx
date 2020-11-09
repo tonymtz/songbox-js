@@ -63,7 +63,7 @@ const App = () => {
                                 <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
                                 <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
                                 <Route path="/help" render={() => <Help pageNumber={3}/>} />
-                                <Route path="/logout" component={Logout} />
+                                <Route path="/logout" render={() => <Logout />} />
                                 <Route path="*" component={NotFound} />
                             </Switch>
                         </div>
