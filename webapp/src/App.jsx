@@ -44,7 +44,7 @@ const App = () => {
                 changeAuthState(false);
                 window.location.href  = redirectURL;	
             });
-    }, [isAuth]);
+    }, []);
 
     return (
         <>
