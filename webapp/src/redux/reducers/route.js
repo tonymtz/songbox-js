@@ -1,5 +1,5 @@
-const routeReducer = (state = '/', { type, payload = ''}) => {
-    switch(type) {
+const routeReducer = (state = '/', { type, payload = '' }) => {
+    switch (type) {
     case 'CHANGE_ROUTE':
         return payload;
 

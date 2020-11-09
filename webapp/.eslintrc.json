@@ -22,6 +22,11 @@
     "plugins": [
         "react"
     ],
+    "settings": {
+        "react": {
+          "version": "16.8.2"
+        }
+    },
     "rules": {
         "semi": "error",
         "no-unused-vars":"warn",

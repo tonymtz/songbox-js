@@ -1,14 +1,31 @@
-import React, { useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import { changeRoute } from '../../redux/actions';
 
 import Home from '../Home';
+
 import './style/breadcrumb.scss';
 
 const Directory = () => {
+    const route = useSelector((state) => state.route); 
+    const dispatch = useDispatch();
+    const changeRouteState = (newRoute) => dispatch(changeRoute(newRoute));
 
-    const route = useSelector((state) => state.route);
+    const history = useHistory();
 
     const [showingRoute, setShowingRoute] = useState(route);
+
+
+    history.listen(({ pathname }) => {
+        let finalRoute = pathname;
+
+        if (finalRoute.startsWith('/app')) finalRoute = finalRoute.replace('/app', '');
+        if (finalRoute === "") finalRoute = "/";
+
+        changeRouteState(finalRoute);
+    }, []);
 
     useEffect(() => {
         const cleanRoute = route.replaceAll('%20', ' ');

@@ -1,4 +1,4 @@
-export const changeSlidebarIndex = (index) =>{
+export const changeSlidebarIndex = (index) => {
     return {
         type: 'CHANGE_SLIDEBAR_INDEX',
         payload: index
@@ -23,5 +23,12 @@ export const changeSongsQueue = (newQueue) => {
     return {
         type: 'CHANGE_SONGS_QUEUE',
         payload: newQueue
+    };
+};
+
+export const changeAuth = (auth) => {
+    return {
+        type: 'CHANGED_AUTH',
+        payload: auth
     };
 };

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Cookie from 'universal-cookie';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './styles/app.scss';
+import { useSelector, useDispatch } from 'react-redux'; 
+import { changeAuth } from './redux/actions';
 
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
@@ -9,15 +10,21 @@ import Favorites from './components/Favorites';
 import Settings from './components/Settings';
 import Help from './components/Help';
 import NotFound from './components/NotFound';
+import AudioPlayer from './components/AudioPlayer';
+import Logout from './components/Logout';
 
 import auth from './auth/auth';
 
-import AudioPlayer from './components/AudioPlayer';
+import './styles/app.scss';
+
 
 const App = () => {
-    const [isAuth, setIsAuth] = useState(false);
+    const isAuth = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        const changeAuthState = (isAuth) => dispatch(changeAuth(isAuth));
+
         const cookie = new Cookie();
         const token = cookie.get('dbx-token');
 
@@ -26,15 +33,18 @@ const App = () => {
         auth(token)
             .then((result) => {
                 const validToken = result.data.status === 200 ? true : false;
-                setIsAuth(validToken);
-
-                if (!validToken) window.location.href  = redirectURL;
+                if (!validToken) {
+                    window.location.href  = redirectURL;
+                    changeAuthState(false);
+                } else {
+                    changeAuthState(true);
+                }
             })
             .catch(()=> {
-                setIsAuth(false);
+                changeAuthState(false);
                 window.location.href  = redirectURL;	
             });
-    }, []);
+    }, [isAuth]);
 
     return (
         <>
@@ -47,14 +57,12 @@ const App = () => {
                         </div>
                         <div>
                             <Switch>
-                                <Route 
-                                    path="/app"
-                                    render={() => 
-                                        <Main />}
-                                />
+                                <Route path="/app" component={Main} />
+                                <Route path={`/app/:path`} component={Main} />
                                 <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
                                 <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
                                 <Route path="/help" render={() => <Help pageNumber={3}/>} />
+                                <Route path="/logout" component={Logout} />
                                 <Route path="*" component={NotFound} />
                             </Switch>
                         </div>
