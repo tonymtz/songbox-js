@@ -13,9 +13,6 @@ const Logout = () => {
         const cookie = new Cookie();
         cookie.remove('dbx-token');
         changeAuthState(false);
-
-        const redirectURL = `${window.location.protocol}//${window.location.hostname}/login`;
-        window.location.href  = redirectURL;
     }, []);
 
     return(

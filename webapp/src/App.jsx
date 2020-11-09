@@ -25,8 +25,9 @@ const App = () => {
     useEffect(() => {
         const changeAuthState = (isAuth) => dispatch(changeAuth(isAuth));
 
+        const tokenName = 'dbx-token';
         const cookie = new Cookie();
-        const token = cookie.get('dbx-token');
+        const token = cookie.get(tokenName);
 
         const redirectURL = `${window.location.protocol}//${window.location.hostname}/login`;
 		
@@ -34,17 +35,17 @@ const App = () => {
             .then((result) => {
                 const validToken = result.data.status === 200 ? true : false;
                 if (!validToken) {
+                    cookie.remove(tokenName);
                     window.location.href  = redirectURL;
-                    changeAuthState(false);
                 } else {
                     changeAuthState(true);
                 }
             })
             .catch(()=> {
-                changeAuthState(false);
+                cookie.remove(tokenName);
                 window.location.href  = redirectURL;	
             });
-    }, []);
+    }, [isAuth]);
 
     return (
         <>
