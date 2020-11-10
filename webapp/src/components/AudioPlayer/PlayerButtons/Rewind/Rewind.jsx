@@ -3,9 +3,9 @@ import rewindIcon from '../../icons/rewind.svg';
 
 const Previous = ({ previousSong }) => {
     return (
-        <button onClick={previousSong}>
+        <button className="player-button" onClick={previousSong}>
             <img 
-                className="icon player-button" 
+                className="icon" 
                 src={rewindIcon}
                 alt={'rewind-icon'}
             />

@@ -4,9 +4,9 @@ import fastForwardIcon from '../../icons/fast-forward.svg';
 
 const Forward = ({ nextSong }) => {
     return (
-        <button onClick={nextSong}>
+        <button className="player-button" onClick={nextSong}>
             <img
-                className="icon player-button" 
+                className="icon" 
                 src={fastForwardIcon}
                 alt={'fast-forward-icon'}
             />
