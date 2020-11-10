@@ -52,6 +52,10 @@ html, body, .main {
 #sign-in {
   font-weight: bold; }
 
+.links-container {
+  position: absolute;
+  bottom: 10px; }
+
 @media (min-width: 1024px) {
   .main {
     display: flex; }
