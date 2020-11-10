@@ -11,8 +11,8 @@ const Logout = () => {
 
     useEffect(() => {
         const cookie = new Cookie();
-        cookie.remove('dbx-token');
-        //changeAuthState(false);
+        cookie.remove('dbx-token', { path: '/'});
+        changeAuthState(false);
     }, []);
 
     return(
