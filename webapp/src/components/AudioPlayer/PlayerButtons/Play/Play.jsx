@@ -7,6 +7,7 @@ const Play = ({ play, isPlaying }) => {
     return (
         <button onClick={play}>
             <img 
+                className="icon play-icon" 
                 src={isPlaying ? pauseIcon : playIcon}
                 alt={isPlaying ? 'pause-icon' : 'play-icon'}
             />

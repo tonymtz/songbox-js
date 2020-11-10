@@ -1,10 +1,11 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
 
-$icon-height: 7vw;
-$icon-width: 7vw;
+$icon-height: 6vw;
+$icon-width: 6vw;
 
 .files-container {
-    padding: 2vw;
+    padding: 2vw 3vw;
     padding-bottom: 25vw;
 }
 
@@ -13,7 +14,7 @@ $icon-width: 7vw;
     border-top: 0.5px solid $soft-gray;
     display: flex;
     justify-content: flex-start;
-    padding: 6vw 5vw;
+    padding: 5vw;
 }
 
 .files-container a:hover {
@@ -32,11 +33,12 @@ $icon-width: 7vw;
     max-width: 80%;
     margin-left: 20px;
     margin-bottom: 0;
+    font-family: $font-asap;
     font-size: 4vw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: black;
+    color: #656565;
 }
 
 .icon {
@@ -91,5 +93,27 @@ $icon-width: 7vw;
 
     .file-container {
         padding: 1.5vw 1vw;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    $icon-height: 3vw;
+    $icon-width: 3vw;
+ 
+    .icon {
+        height: $icon-height;
+        width: $icon-width;
+    }
+
+    .files-container {
+        padding-top: 0;
+    }
+
+    .file-container {
+        padding: 2.5vw 5vw;
+    }
+
+    .file-name {
+        font-size: 2.5vw;
     }
 }

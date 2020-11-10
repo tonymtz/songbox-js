@@ -14,9 +14,14 @@ $padding-left-s: 4vw;
     padding-left: 5vw;
 }
 
+.hamburger svg {
+    height: 6vw;
+    width: 6vw;
+}
+
 .nav-text a, u {
     text-decoration: none;
-    color: $gray;
+    color: $icon-gray;
 }
 
 .close {
@@ -66,7 +71,7 @@ $padding-left-s: 4vw;
     display: flex;
     justify-content: flex-start;
     list-style: none;
-    padding: 0 2vw;
+    padding: 0 4vw;
 }
 
 .nav-text a {
@@ -98,7 +103,7 @@ $padding-left-s: 4vw;
 
 .item-title {
     color: black;
-    margin-left: 2vw;
+    margin-left: 4vw;
 }
 
 .selected-item { 
@@ -126,6 +131,7 @@ $padding-left-s: 4vw;
 
     .nav-text a {
         padding-left: 1vw;
+        padding-right: 0;
     }
 
     .nav-text a svg {
@@ -137,10 +143,6 @@ $padding-left-s: 4vw;
         align-self: center;
     }
 
-    .nav-text a {
-        padding-right: 0;
-    }
-
     .nav-text a:hover {
         fill: $gray;
         color: $gray;
@@ -150,3 +152,41 @@ $padding-left-s: 4vw;
         padding-right: 0;
     }
 }
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) { 
+    .hamburger svg {
+        height: 3vw;
+        width: 3vw;
+    }
+
+    .profile-picture {
+        height: 12vw;
+        width: 12vw;
+    }
+
+    .user-email {
+        font-size: 2vw;
+    }
+
+    .user-name {
+        font-size: 2vw;
+    }
+
+    .item-title {
+        margin-left: 2vw;
+    }
+
+    .nav-text {
+        padding: 0vw 3vw;
+    }
+
+    .nav-text a { 
+        padding: 0;
+    }
+
+    .nav-text a svg {
+        height: 3vw;
+        width: 3vw;
+    }
+}
+

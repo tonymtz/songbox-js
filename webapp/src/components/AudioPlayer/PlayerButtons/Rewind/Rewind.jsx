@@ -5,6 +5,7 @@ const Previous = ({ previousSong }) => {
     return (
         <button onClick={previousSong}>
             <img 
+                className="icon player-button" 
                 src={rewindIcon}
                 alt={'rewind-icon'}
             />

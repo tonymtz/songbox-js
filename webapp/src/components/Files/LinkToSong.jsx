@@ -29,7 +29,7 @@ const LinkToSong = ({ index, fileName, samePlaylist, files}) => {
 
     return(
         <div onClick={selectSong} className={`file-container ${isPlaying ? 'is-playing' : ''}`}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isPlaying ? "#808080" : "none"} stroke={"gray"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-play-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isPlaying ? "#808080" : "none"} stroke={"gray"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-play-circle icon">
                 <circle cx="12" cy="12" r="10"></circle>
                 <polygon points="10 8 16 12 10 16 10 8" stroke={isPlaying ? "white": ""}></polygon>
             </svg>

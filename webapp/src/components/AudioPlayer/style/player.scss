@@ -9,18 +9,19 @@ audio {
 }
 
 .audio-container {
-    background: #eeeded;
+    background: #F7F6F6;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 25vw;
+    height: 15vh;
 }
 
 .buttons {
+    align-items: center;
     display: flex;
+    height: 90%;
     justify-content: space-between;
-    padding: 4.5vh 4vw;
     padding-bottom: 0;
 }
 
@@ -31,6 +32,15 @@ audio {
     background-color: transparent;
     border-color: transparent;
     padding: 0.5vw;
+}
+
+.play-icon {
+    height: 13vw;
+    width: 13vw;
+}
+
+.player-button {
+    margin-top: 3vw;
 }
 
 @media (min-width: 1024px) {
@@ -45,5 +55,20 @@ audio {
 
     .audio-container { 
         padding: 0;
+    }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+    .play-icon {
+        height: 10vw;
+        width: 10vw;
+    }
+    
+    .player-button {
+        margin-top: 1.5vw;
+    }
+
+    .audio-container {
+        height: 15vw;
     }
 }
