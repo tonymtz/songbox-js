@@ -26,6 +26,25 @@ $font-size: 4vw;
     word-wrap: break-word;
 }
 
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
+    $image-size: 15vw;
+    $font-size: 2vw;
+
+    .profile-picture {
+        height: $image-size;
+        width: $image-size;
+    }
+
+    .user-email {
+        font-size: $font-size;
+    }
+    
+    .user-name {
+        font-size: $font-size;
+        padding: 0;
+    }
+}
+
 @media(min-width: 1024px) {
     $image-size: 6vw;
     $font-size: 1vw;

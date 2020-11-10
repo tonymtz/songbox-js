@@ -7,6 +7,7 @@ $icon-width: 6vw;
 .files-container {
     padding: 2vw 3vw;
     padding-bottom: 25vw;
+    padding-top: 0;
 }
 
 .file-container {
@@ -69,6 +70,22 @@ $icon-width: 6vw;
     fill: white;
 }
 
+@media (min-width: 600px) and (max-width: 1024px) {
+    .file-container {
+        padding: 1.7vw 2vw;
+        padding-left: 5vw;
+    }
+
+    .file-name {
+        font-size: 2.7vw;
+    }
+
+    .icon {
+        height: 4vw;
+        width: 4vw;
+    }
+}
+
 @media (min-width: 1024px){
     $icon-height: 2vw;
     $icon-width: 2vw;
@@ -92,7 +109,7 @@ $icon-width: 6vw;
     }
 
     .file-container {
-        padding: 1.5vw 1vw;
+        padding: 1.5vw 4vw;
     }
 }
 

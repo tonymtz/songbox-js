@@ -47,6 +47,7 @@ $padding-left-s: 4vw;
     height: 50px;
     justify-content: flex-start;
     padding-left: $padding-left-s;
+    z-index: 1;
 }
 
 .sidebar {
@@ -65,11 +66,12 @@ $padding-left-s: 4vw;
     left: 0;
     transition: 200ms;
     border-right: 1px solid #b0b0b0b0;
+    z-index: 1;
 }
 
 .nav-text {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     list-style: none;
     padding: 0 4vw;
 }
@@ -119,37 +121,56 @@ $padding-left-s: 4vw;
     margin-top: 5vh;
 }
 
-@media (min-width: 1024px) {
-    .navbar {
-        padding-left: 2vw;
-    }
-
-    .nav-text {
-        padding: 0;
-        padding-left: 0;
+@media (min-width: 500px) {
+    .nav-text a svg {
+        height: 4vw;
+        width: 4vw;
     }
 
     .nav-text a {
-        padding-left: 1vw;
-        padding-right: 0;
+        padding-left: 0;
+        padding: 0;
     }
 
-    .nav-text a svg {
-        height: 2vw;
-        width: 2vw;
+    .sidebar { 
+        width: 250px;
     }
 
+    .hamburger svg {
+        height: 4vw;
+        width: 4vw;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 600px) {
     .item-title {
-        align-self: center;
+        font-size: 3vw;
+        margin-left: 3vw;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 840px) {
+    .item-title {
+        font-size: 2.2vw;
+        margin-left: 3vw;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 840px) {
+    .item-title {
+        font-size: 2vw;
+        margin-left: 3vw;
+    }
+}
+
+@media only screen and (min-width: 840px) and (max-width: 1024px) {
+    .item-title {
+        font-size: 1.8vw;
+        margin-left: 1.5vw;
     }
 
-    .nav-text a:hover {
-        fill: $gray;
-        color: $gray;
-    }
-
-    .icon {
-        padding-right: 0;
+    .nav-text {
+        padding: 0 2vw;
     }
 }
 
@@ -190,3 +211,42 @@ $padding-left-s: 4vw;
     }
 }
 
+@media (min-width: 1024px) {
+    .hamburger svg {
+        height: 2vw;
+        width: 2vw;
+    }
+
+
+    .navbar {
+        padding-left: 2vw;
+    }
+
+    .nav-text {    
+        padding: 0 1vw;
+    }
+
+    .nav-text a {
+        padding-left: 1vw;
+        padding-right: 0;
+    }
+
+    .nav-text a svg {
+        height: 2vw;
+        width: 2vw;
+    }
+
+    .item-title {
+        align-self: center;
+        margin-left: 1vw;
+    }
+
+    .nav-text a:hover {
+        fill: $gray;
+        color: $gray;
+    }
+
+    .icon {
+        padding-right: 0;
+    }
+}

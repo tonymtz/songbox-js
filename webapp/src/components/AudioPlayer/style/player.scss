@@ -34,6 +34,10 @@ audio {
     padding: 0.5vw;
 }
 
+.buttons button:focus {
+    outline: none;
+}
+
 .play-icon {
     height: 13vw;
     width: 13vw;
@@ -43,20 +47,22 @@ audio {
     margin-top: 3vw;
 }
 
-@media (min-width: 1024px) {
-    .audio-container {
-        height: 8vw;
-        padding: 2vw;
+@media (min-width: 600px) and (max-width: 1024px) {
+    .file-name {
+        font-size: 1.6vw;
     }
 
-    .buttons button {
+    .icon {
         height: 2vw;
+        width: 2vw;
     }
 
-    .audio-container { 
-        padding: 0;
+    .play-icon {
+        height: 7vw;
+        width: 7vw;
     }
 }
+
 
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
     .play-icon {
@@ -70,5 +76,16 @@ audio {
 
     .audio-container {
         height: 15vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .play-icon {
+        height: 4vw;
+        width: 4vw;
+    }
+
+    .player-button {
+        margin-top: 0vw;
     }
 }

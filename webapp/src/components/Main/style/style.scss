@@ -10,10 +10,10 @@
     padding-left: 5vw;
 }
 
-@media(min-width: 1024px){
+
+@media only screen and (min-width: 600px) and (max-width: 1024px) {
     #your-personal-library {
-        font-size: 2vw;
-        margin: 1vw 2vw;
+        font-size: 3vw;
     }
 }
 
@@ -22,3 +22,17 @@
         font-size: 3vw;
     }
 }
+
+@media(min-width: 1024px){
+    #your-personal-library {
+        font-size: 2vw;
+        margin: 1vw 2vw;
+        padding-left: 3vw;
+    }
+
+    .icon {
+        height: 1.5vw;
+        width: 1.5vw;
+    }
+}
+
