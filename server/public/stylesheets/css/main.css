@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Asap&family=Quicksand&display=swap");
-html, body, .main {
+html,
+body,
+.main {
   height: 100%; }
 
 .main {
@@ -54,7 +56,11 @@ html, body, .main {
 
 .links-container {
   position: absolute;
-  bottom: 10px; }
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto; }
 
 @media (min-width: 1024px) {
   .main {
@@ -71,4 +77,9 @@ html, body, .main {
     padding: 1vw 2vw; }
   #content {
     padding: 2vw 10vw;
-    margin: auto auto; } }
+    margin: auto auto; }
+  .links-container {
+    left: unset;
+    right: unset;
+    margin-left: auto;
+    margin-right: auto; } }
