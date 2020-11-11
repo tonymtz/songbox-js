@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Cookie from 'universal-cookie';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
-import { changeAuth } from './redux/actions';
+import { changeAuth, setUser } from './redux/actions';
 
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';
@@ -24,6 +24,7 @@ const App = () => {
 
     useEffect(() => {
         const changeAuthState = (isAuth) => dispatch(changeAuth(isAuth));
+        const setUserState = (user) => dispatch(setUser(user));
 
         const tokenName = 'dbx-token';
         const cookie = new Cookie();
@@ -38,6 +39,8 @@ const App = () => {
                     cookie.remove(tokenName);
                     window.location.href  = redirectURL;
                 } else {
+                    const user = result.data.result;
+                    setUserState(user);
                     changeAuthState(true);
                 }
             })
