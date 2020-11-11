@@ -20,7 +20,7 @@ const Main = () => {
         if (route !== pathFromURL) {
             dispatch(changeRoute(pathFromURL));
         } 
-
+        
         setCorrectPath(true);
     }, []);
 
