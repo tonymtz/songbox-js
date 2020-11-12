@@ -2,28 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Player from './Player/';
+import Audio from './Audio';
+import AudioProgress from './AudioProgress';
+import Loading from '../Loading';
 
 import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
+
 import getLink from '../../Links/getLink';
 
-const AudioPlayer = () => {
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './style/player.scss';
+import './style/progress.scss';
 
-    const [onRepeat, setOnRepeat] = useState(false);
+const AudioPlayer = () => {
     const [onRandom, setOnRandom] = useState(false);
     const [singleSong, setSingleSong] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentSong, setCurrentSong] = useState('');
+    const [progress, setProgress] = useState(0);
 
     const songIndex = useSelector((state) => state.songIndex);
     const songsQueue = useSelector((state) => state.songsQueue);
+    const onRepeat = useSelector((state) => state.player.onRepeat);
 
     const dispatch = useDispatch();
     const setSongIndex = (index) => dispatch(changeSongIndex(index));
     const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
 
     useEffect(() => {
-
         if (songsQueue.length <= 0) return;
         setIsLoading(true);
 
@@ -47,14 +54,9 @@ const AudioPlayer = () => {
 
     useEffect(() => {
         const singleSong = songsQueue.length === 1;
-        const isPlaying = songsQueue.length <= 0;
-
         setSingleSong(singleSong);
-        setIsPlaying(!isPlaying);
-
     }, [songsQueue]);
 
-    const toggleOnRepeat = () => setOnRepeat(!onRepeat);
     const toggleOnRandom = () => setOnRandom(!onRandom);
 
     const repeatPlaylist = () => {
@@ -92,23 +94,42 @@ const AudioPlayer = () => {
         }
     };
 
+    const play = () => setIsPlaying(!isPlaying);
 
     return (
-        <>
-            <Player
+        <div className="audio-container">
+            <Audio
                 key={currentSong}
                 currentSong={currentSong}
-                previousSong={previousSong}
-                nextSong={nextSong}
-                onRepeat={onRepeat}
-                toggleOnRepeat={toggleOnRepeat}
-                onRandom={onRandom}
-                toggleOnRandom={toggleOnRandom}
                 singleSong={singleSong}
-                isLoading={isLoading}
+                setProgress={setProgress}
                 setIsLoading={setIsLoading}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                onRepeat={onRepeat}
+                nextSong={nextSong}
             />
-        </>
+
+            {
+                isLoading ? (
+                    <Loading />
+                ) : (
+                    <div className="audio-player">
+                        <AudioProgress 
+                            progress={progress}
+                        />
+                        <Player
+                            previousSong={previousSong}
+                            isPlaying={isPlaying}
+                            play={play}
+                            nextSong={nextSong}
+                            toggleOnRandom={toggleOnRandom}
+                            onRandom={onRandom}                          
+                        />
+                    </div>
+                )
+            }    
+        </div>
     );
 };
 

@@ -1,13 +1,10 @@
 import React from 'react';
 import { ProgressBar } from 'react-bootstrap';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../style/progress.scss';
-
-const AudioProgress = ({ process }) => {
+const AudioProgress = ({ progress }) => {
     return (
         <div>
-            <ProgressBar variant="warning" now={process} />
+            <ProgressBar variant="warning" now={progress} />
         </div>
     );
 };

@@ -17,7 +17,6 @@ const Directory = () => {
 
     const [showingRoute, setShowingRoute] = useState(route);
 
-
     history.listen(({ pathname }) => {
         let finalRoute = pathname;
 

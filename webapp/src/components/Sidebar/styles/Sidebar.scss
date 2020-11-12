@@ -250,3 +250,22 @@ $padding-left-s: 4vw;
         padding-right: 0;
     }
 }
+
+@media (min-width: 1025px) {
+
+    .sidebar {
+        position: unset;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    .close {
+        display: none;
+    }
+
+    .sidebar-container {
+        border-right: 1px solid #b0b0b0b0;
+    }
+}

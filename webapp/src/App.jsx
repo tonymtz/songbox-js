@@ -59,7 +59,7 @@ const App = () => {
                         <div className="sidebar-container">
                             <Sidebar /> 
                         </div>
-                        <div>
+                        <>
                             <Switch>
                                 <Route path="/app" component={Main} />
                                 <Route path={`/app/:path`} component={Main} />
@@ -69,7 +69,7 @@ const App = () => {
                                 <Route path="/logout" render={() => <Logout />} />
                                 <Route path="*" component={NotFound} />
                             </Switch>
-                        </div>
+                        </>
                         <AudioPlayer />
                     </BrowserRouter>
                 </>

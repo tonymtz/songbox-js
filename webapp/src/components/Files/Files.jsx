@@ -25,13 +25,27 @@ const Files = () => {
             .then((result) => {
                 const firstFile = result.data.findIndex((file) => file['.tag'] === 'file');
                 if (firstFile >= 0) {
-                    const songs = result.data.splice(firstFile, result.data.length);
+                    const songs = result.data
+                        .splice(firstFile, result.data.length)
+                        .sort((last, next) => {
+                            if (last.name.toLowerCase() > next.name.toLowerCase()) return 1;
+                            if (last.name.toLowerCase() < next.name.toLowerCase()) return -1;
+                            return 0;
+                        });
+
                     setFiles(songs);
                 } else {
                     setFiles([]);
                 }
                 
-                setFolders(result.data);
+                const folders = result.data
+                    .sort((last, next) => {
+                        if (last.name.toLowerCase() > next.name.toLowerCase()) return 1;
+                        if (last.name.toLowerCase() < next.name.toLowerCase()) return -1;
+                        return 0;
+                    });
+
+                setFolders(folders);
             })
             .catch((error) => {
                 if (error) {
