@@ -42,9 +42,7 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
             audioPlayer.current.play();
         } else if (audioPlayer.current.ended) {
             nextSong();
-        } else {
-            setIsPlaying(false);
-        }
+        } 
     };
 
     useEffect(() => {
@@ -56,7 +54,7 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
             }
         }
     }, [isPlaying]);
-
+    
     return(
         <div className="audio">
             <audio onLoadedMetadata={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>

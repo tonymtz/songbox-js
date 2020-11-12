@@ -7,7 +7,9 @@ const Forward = ({ nextSong }) => {
 
     const songIndex = useSelector((state) => state.songIndex);
     const songsQueue = useSelector((state) => state.songsQueue);
-    const isDisabled = songIndex + 1 >= songsQueue.length;
+    const onRepeat = useSelector((state) => state.player.onRepeat);
+
+    const isDisabled = onRepeat === true ? false : songIndex + 1 >= songsQueue.length;
 
     return (
         <button className="player-button" onClick={nextSong} disabled={isDisabled}>

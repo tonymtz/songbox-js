@@ -79,6 +79,8 @@ const AudioPlayer = () => {
                 setSongIndex(songIndex + 1);
             } else if (onRepeat) {
                 repeatPlaylist();
+            } else {
+                setIsPlaying(false);
             }
         }
     };
@@ -110,25 +112,25 @@ const AudioPlayer = () => {
                 nextSong={nextSong}
             />
 
-            {
-                isLoading ? (
-                    <Loading />
-                ) : (
-                    <div className="audio-player">
-                        <AudioProgress 
-                            progress={progress}
-                        />
-                        <Player
-                            previousSong={previousSong}
-                            isPlaying={isPlaying}
-                            play={play}
-                            nextSong={nextSong}
-                            toggleOnRandom={toggleOnRandom}
-                            onRandom={onRandom}                          
-                        />
-                    </div>
-                )
-            }    
+            <>
+                <Loading 
+                    isLoading={isLoading}
+                />
+
+                <div className={`audio-player ${isLoading ? 'hide' : ''}`}>
+                    <AudioProgress 
+                        progress={progress}
+                    />
+                    <Player
+                        previousSong={previousSong}
+                        isPlaying={isPlaying}
+                        play={play}
+                        nextSong={nextSong}
+                        toggleOnRandom={toggleOnRandom}
+                        onRandom={onRandom}                          
+                    />
+                </div>  
+            </>
         </div>
     );
 };
