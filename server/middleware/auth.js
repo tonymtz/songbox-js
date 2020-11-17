@@ -1,21 +1,21 @@
 const dropbox = require('dropbox');
 
-const auth = async (req, res, next) => {
+const auth = async(req, res, next) => {
     try {
         const token = req.header('dbx-token');
         if (!token) throw new Error();
-        
+
         const dbx = new dropbox.Dropbox({ accessToken: token });
         const userAccount = await dbx.usersGetCurrentAccount();
 
-        const { account_id, email } = userAccount.result; 
+        const { account_id, email } = userAccount.result;
         if (!account_id || !email) throw new Error();
 
         req.account_id = account_id;
         req.email = email;
 
         next();
-    } catch(error) {
+    } catch (error) {
         res.status(404).json({ error: 'Please authenticate!' });
     }
 };

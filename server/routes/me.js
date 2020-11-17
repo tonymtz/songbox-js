@@ -4,7 +4,9 @@ const dropbox = require('dropbox');
 const router = express.Router();
 const setToken = require('../middleware/setToken');
 
-router.get('/me', setToken, async (req, res) => {
+const { insertUser } = require('../models/users');
+
+router.get('/me', setToken, async(req, res) => {
     try {
         const token = req.token;
         const dbx = new dropbox.Dropbox({ accessToken: token });
@@ -17,6 +19,10 @@ router.get('/me', setToken, async (req, res) => {
                 email: userAccount.result.email
             },
         };
+
+        const { account_id, email } = userAccount.result;
+        await insertUser({ account_id, email });
+
         res.status(200).send(finalUserAccount);
 
     } catch (error) {

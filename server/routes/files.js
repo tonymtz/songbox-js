@@ -7,7 +7,7 @@ const setToken = require('../middleware/setToken');
 
 const router = express.Router();
 
-router.get('/files/*', setToken, async (req, res) => {
+router.get('/files/*', setToken, async(req, res) => {
     try {
         const token = req.token;
         const dbx = new dropbox.Dropbox({ accessToken: token });
@@ -54,7 +54,7 @@ router.get('/file/*', setToken, (req, res) => {
 
         const dropboxPath = path.substring(baseUrl.length, path.length);
         const decodedPath = decodeURI(dropboxPath);
-		
+
         createLink(dbx, decodedPath, '')
             .then((file) => {
                 const clearFile = {
