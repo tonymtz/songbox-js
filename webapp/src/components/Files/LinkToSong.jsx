@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
 
-import heartIcon from './icons/heart.svg';
+import HeartFavorite from '../HeartFavorite/';
 
 const LinkToSong = ({ index, fileName, samePlaylist, files}) => {
 
@@ -34,11 +34,7 @@ const LinkToSong = ({ index, fileName, samePlaylist, files}) => {
                 <polygon points="10 8 16 12 10 16 10 8" stroke={isPlaying ? "white": ""}></polygon>
             </svg>
             <p className="file-name">{'Unnamed file' && fileName}</p>
-            <img
-                className="heart-icon"
-                src={heartIcon}
-                alt="heart-icon"
-            />
+            <HeartFavorite />
         </div>
     );
 };

@@ -38,7 +38,7 @@ const AudioPlayer = () => {
             setCurrentSong(songsQueue[songIndex].preview_url);
             setSongsQueue(songsQueue);
         } else {
-            getLink(songsQueue[songIndex].path_display)
+            getLink(songsQueue[songIndex].path_display || songsQueue[songIndex].path_lower)
                 .then((result) => {
                     const songLink = result.replace('?dl=0', '').replace('www.', 'dl.');
                     songsQueue[songIndex].preview_url = songLink;

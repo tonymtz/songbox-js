@@ -1,9 +1,7 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/fonts.scss";
-
 $icon-height: 6vw;
 $icon-width: 6vw;
-
 .files-container {
     padding: 2vw 3vw;
     padding-bottom: 18vh;
@@ -48,10 +46,7 @@ $icon-width: 6vw;
 }
 
 .heart-icon {
-    height: $icon-height - 2;
-    width: $icon-width - 2;
     margin-left: auto;
-    display: none;
 }
 
 .is-playing {
@@ -75,61 +70,50 @@ $icon-width: 6vw;
         padding: 1.7vw 2vw;
         padding-left: 5vw;
     }
-
     .file-name {
         font-size: 2.7vw;
     }
-
     .icon {
         height: 4vw;
         width: 4vw;
     }
 }
 
-@media (min-width: 1024px){
+@media (min-width: 1024px) {
     $icon-height: 2vw;
     $icon-width: 2vw;
-
     .icon {
         height: $icon-height;
         width: $icon-width;
     }
-
     .heart-icon {
         height: $icon-height - 2;
         width: $icon-width - 2;
     }
-
     .file-name {
         font-size: 1vw;
     }
-
     .files-container {
         padding-bottom: 18vh;
     }
-
     .file-container {
         padding: 1.5vw 4vw;
     }
 }
 
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
     $icon-height: 3vw;
     $icon-width: 3vw;
- 
     .icon {
         height: $icon-height;
         width: $icon-width;
     }
-
     .files-container {
         padding-top: 0;
     }
-
     .file-container {
         padding: 2.5vw 5vw;
     }
-
     .file-name {
         font-size: 2.5vw;
     }
