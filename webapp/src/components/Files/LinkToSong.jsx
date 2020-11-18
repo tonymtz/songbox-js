@@ -5,7 +5,7 @@ import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
 
 import HeartFavorite from '../HeartFavorite/';
 
-const LinkToSong = ({ index, fileName, samePlaylist, files}) => {
+const LinkToSong = ({ index, fileName, samePlaylist, files, path }) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
@@ -34,7 +34,10 @@ const LinkToSong = ({ index, fileName, samePlaylist, files}) => {
                 <polygon points="10 8 16 12 10 16 10 8" stroke={isPlaying ? "white": ""}></polygon>
             </svg>
             <p className="file-name">{'Unnamed file' && fileName}</p>
-            <HeartFavorite />
+            <HeartFavorite
+                fileName={fileName} 
+                path={path}
+            />
         </div>
     );
 };

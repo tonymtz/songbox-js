@@ -94,6 +94,7 @@ const Files = () => {
                             fileName={song.name}
                             samePlaylist={samePlaylist}
                             files={files}
+                            path={song.path_lower}
                         />
                     );
                 })

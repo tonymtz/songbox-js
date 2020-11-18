@@ -9,16 +9,14 @@ const { insertFavorite, getFavoritesFromUser, deleteFavoriteFromUser } = require
 router.post('/favorite', auth, async(req, res) => {
     try {
         const file = req.body;
-
         const { account_id } = req;
         const user = await findUserByAccountId({ account_id });
 
-        if (file['.tag'] === 'file') {
-            const insertion = await insertFavorite({ user_id: user.user_id }, { song_name: file.name, path_lower: file.path_lower });
-            res.status(201).json(file);
-        } else {
-            res.status(204).json({});
-        }
+        await insertFavorite({ user_id: user.user_id }, {
+            song_name: file.name,
+            path_lower: file.path_lower
+        });
+        res.status(201).json(file);
     } catch (error) {
         res.status(500).json({});
     }
@@ -44,14 +42,18 @@ router.get('/favorites', auth, async(req, res) => {
 
 router.delete('/favorite', auth, async(req, res) => {
     try {
-        const file = req.body;
+        const file = req.query.file;
+        const cleanFile = JSON.parse(file);
 
+        const path_lower = cleanFile.path_lower;
+        const song_name = cleanFile.name;
         const { account_id } = req;
+
         const { user_id } = await findUserByAccountId({ account_id });
 
         await deleteFavoriteFromUser({ user_id }, {
-            path_lower: file.path_lower,
-            song_name: file.name,
+            path_lower,
+            song_name
         });
 
         res.status(201).send({ message: 'File was removed from favorites!' });

@@ -24,22 +24,23 @@ const Favorites = ({ pageNumber }) => {
     }, [dispatch, pageNumber]);
 
     return(
-        <div>
-            <div className="content-container">
+        <div className="content-container">
                 <h1 id="your-personal-library" className="title">Your personal library ❤️</h1>
-                {
-                    favorites.map((favorite, index) => {
-                        return (
-                        <LinkToSong
-                            key={index}
-                            index={index}
-                            fileName={favorite.song_name}
-                            samePlaylist={false}
-                            files={favorites}
-                        />)
-                    })
-                }
-            </div>
+                <div className="files-container">
+                    {
+                        favorites.map((favorite, index) => {
+                            return (
+                            <LinkToSong
+                                key={index}
+                                index={index}
+                                fileName={favorite.song_name}
+                                samePlaylist={false}
+                                files={favorites}
+                                path={favorite.path_lower}
+                            />)
+                        })
+                    }
+                </div>
         </div>
     );
 };
