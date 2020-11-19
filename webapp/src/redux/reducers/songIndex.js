@@ -1,4 +1,4 @@
-const songIndexReducer = (state = 0, { type, payload = 0}) => {
+const songIndexReducer = (state = 0, { type, payload = 0 }) => {
     switch (type) {
     case 'CHANGE_SONG_INDEX':
         return payload;

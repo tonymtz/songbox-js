@@ -7,6 +7,7 @@ import songsQueue from './songsQueue';
 import auth from './auth';
 import user from './user';
 import player from './player';
+import favorites from './favorites';
 
 const allReducers = combineReducers({
     slidebarIndex: slidebar,
@@ -15,7 +16,8 @@ const allReducers = combineReducers({
     songsQueue,
     auth,
     user,
-    player
+    player,
+    favorites
 });
 
 export default allReducers;

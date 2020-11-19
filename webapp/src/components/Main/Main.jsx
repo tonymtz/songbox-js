@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Breadcrumb from '../Breadcrumb';
@@ -10,7 +10,6 @@ import { changeRoute } from '../../redux/actions/';
 import './style/style.scss';
 
 const Main = () => {
-
     const [correctPath, setCorrectPath] = useState(false);
     const route = useSelector((state) => state.route);
     const dispatch = useDispatch();
@@ -22,7 +21,8 @@ const Main = () => {
         } 
         
         setCorrectPath(true);
-    }, []);
+    }, [route, dispatch]);
+
 
     return (
         <div className="App">

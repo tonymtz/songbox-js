@@ -50,7 +50,7 @@ const AudioPlayer = () => {
                     throw new Error(error);
                 });
         }
-    }, [songsQueue, songIndex]);
+    }, [songIndex, songsQueue]);
 
     useEffect(() => {
         const singleSong = songsQueue.length === 1;

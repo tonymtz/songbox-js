@@ -46,3 +46,31 @@ export const toggleRepeat = (repeat) => {
         payload: repeat
     };
 };
+
+export const setFavorites = (favorites) => {
+    return {
+        type: 'SET_FAVORITES',
+        payload: favorites
+    };
+};
+
+export const addToFavorites = (newFavorite) => {
+    return {
+        type: 'ADD_FAVORITE',
+        payload: newFavorite,
+    };
+};
+
+export const removeFromFavorites = (songToRemove) => {
+    return {
+        type: 'REMOVE_FAVORITE',
+        payload: songToRemove
+    };
+};
+
+export const toggleFavoritePlaying = (isPlaying) => {
+    return {
+        type: 'TOGGLE_IS_PLAYING',
+        payload: isPlaying
+    };
+};

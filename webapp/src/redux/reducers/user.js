@@ -1,10 +1,10 @@
 const userReducer = (state = {}, { type, payload = {} }) => {
     switch (type) {
-        case 'SET_USER':
-            return payload;
+    case 'SET_USER':
+        return payload;
 
-        default:
-            return state;
+    default:
+        return state;
     }
 };
 

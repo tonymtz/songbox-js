@@ -1,31 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
+import { changeSongIndex, changeSongsQueue, toggleFavoritePlaying } from '../../redux/actions/';
 
 import HeartFavorite from '../HeartFavorite/';
 
-const LinkToSong = ({ index, fileName, samePlaylist, files, path }) => {
+const LinkToSong = ({ index, fileName, samePlaylist, files, path, inFavorites }) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
 
     const songIndex = useSelector((state) => state.songIndex);
+    const favoritePlaying = useSelector((state) => state.favorites.isPlaying);
     const dispatch = useDispatch();
 
     const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue)); 
+    const toggleFavoritePlayingState = (isPlaying) => dispatch(toggleFavoritePlaying(isPlaying));
+    const setSongIndex = (index) => dispatch(changeSongIndex(index));
 
     const selectSong = () => {
-        setSongsQueue(files);
-        dispatch(changeSongIndex(index));
+        setSongIndex(index);
         setIsPlaying(true);
+        setSongsQueue(files);
+
+        if (inFavorites) toggleFavoritePlayingState(true);
+        else toggleFavoritePlayingState(false);
     };
 
     useEffect(() => {
-        const expression = (index === songIndex) && samePlaylist;
-        setIsPlaying(expression);
+        if (inFavorites) {
+            const expression = (index === songIndex) && favoritePlaying;
+            setIsPlaying(expression);
+        } else {
+            const expression = (index === songIndex) && samePlaylist;
+            setIsPlaying(expression);
+        }
 
         return () => setIsPlaying(false);
-    }, [songIndex, index, samePlaylist]);
+    }, [songIndex, samePlaylist]);
 
     return(
         <div onClick={selectSong} className={`file-container ${isPlaying ? 'is-playing' : ''}`}>

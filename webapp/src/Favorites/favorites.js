@@ -1,11 +1,6 @@
 import axios from 'axios';
 import Cookie from 'universal-cookie';
 
-const getDbxToken = () => {
-    const cookie = new Cookie();
-    return cookie.get('dbx-token');
-}
-
 export const getFavorites = async() => {
     const cookie = new Cookie();
     const token = cookie.get('dbx-token');

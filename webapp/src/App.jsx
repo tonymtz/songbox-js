@@ -15,14 +15,26 @@ import Logout from './components/Logout';
 
 import auth from './auth/auth';
 
+import { setFavorites } from './redux/actions';
+import { getFavorites } from './Favorites/favorites';
+
+
 import './styles/app.scss';
 
 
 const App = () => {
     const isAuth = useSelector((state) => state.auth);
     const dispatch = useDispatch();
+    
+    const setFavoritesState = (favorites) =>  dispatch(setFavorites(favorites));
+
 
     useEffect(() => {
+        const favorites = async () => {
+            const userFavorites = await getFavorites();
+            setFavoritesState(userFavorites.data);
+        };
+
         const changeAuthState = (isAuth) => dispatch(changeAuth(isAuth));
         const setUserState = (user) => dispatch(setUser(user));
 
@@ -40,6 +52,7 @@ const App = () => {
                     window.location.href  = redirectURL;
                 } else {
                     const user = result.data.result;
+                    favorites();
                     setUserState(user);
                     changeAuthState(true);
                 }
@@ -48,7 +61,7 @@ const App = () => {
                 cookie.remove(tokenName);
                 window.location.href  = redirectURL;	
             });
-    }, [isAuth]);
+    }, [isAuth, dispatch]);
 
     return (
         <>

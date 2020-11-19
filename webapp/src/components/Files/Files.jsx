@@ -95,6 +95,7 @@ const Files = () => {
                             samePlaylist={samePlaylist}
                             files={files}
                             path={song.path_lower}
+                            inFavorites={false}
                         />
                     );
                 })

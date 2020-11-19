@@ -19,7 +19,7 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
         return () => {
             clearInterval(interval); 
         };
-    }, []);
+    }, [audioPlayer, setProgress]);
 
     const onLoadSong = () => {
         if (audioPlayer !== null) {
@@ -53,7 +53,7 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
                 audioPlayer.current.pause();
             }
         }
-    }, [isPlaying]);
+    }, [isPlaying, audioPlayer, currentSong]);
     
     return(
         <div className="audio">
