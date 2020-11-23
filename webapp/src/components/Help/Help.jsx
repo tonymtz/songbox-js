@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { changeSlidebarIndex } from '../../redux/actions';
+
+import './styles/help.scss';
+
 const Help = ({ pageNumber }) => {
 
     const dispatch = useDispatch();
@@ -11,8 +14,11 @@ const Help = ({ pageNumber }) => {
     }, [dispatch, pageNumber]);
 
     return(
-        <div>
-            <p>This is the help page!</p>
+        <div className="content-container">
+            <p id="your-personal-library" className="title">Help</p>
+            <div className="help-container">
+                <p>Hello im just a filler!</p>
+            </div>
         </div>
     );
 };
