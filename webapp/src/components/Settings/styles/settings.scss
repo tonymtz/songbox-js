@@ -1,0 +1,55 @@
+@import '../../../styles/colors.scss';
+@import '../../../styles/fonts.scss';
+.settings-container {
+    padding: 0 5vw;
+}
+
+.solid-gray-bar {
+    margin: 0 5vw;
+    border: 1.5px solid $soft-gray;
+}
+
+.section-title {
+    border-bottom: 1px solid $soft-gray;
+    color: $not-so-soft-gray;
+    font-size: 4.5vw;
+    font-family: $font-asap;
+    padding-bottom: 2vh;
+}
+
+.section-container {
+    margin: 4vh 0;
+}
+
+.option-toggle-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.option-title {
+    color: $not-so-soft-gray;
+    font-family: $font-asap;
+    font-size: 4.5vw;
+}
+
+.option-hover {
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: 3vw;
+    }
+    .option-title {
+        font-size: 3vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-title {
+        font-size: 2vw;
+    }
+    .option-title {
+        font-size: 2vw;
+    }
+}

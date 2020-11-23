@@ -88,3 +88,23 @@ export const markSongAsBroken = (index) => {
         payload: index
     };
 };
+
+export const changeAutoPlay = (newState) => {
+    return {
+        type: 'SET_AUTO_PLAY',
+        payload: newState,
+    };
+};
+
+export const changeDarkTheme = (newState) => {
+    return {
+        type: 'SET_DARK_THEME',
+        payload: newState
+    };
+};
+
+export const restorePreferences = () => {
+    return {
+        type: 'RESTORE_PREFERENCES',
+    };
+};
