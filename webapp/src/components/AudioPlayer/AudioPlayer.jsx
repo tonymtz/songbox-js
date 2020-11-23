@@ -6,7 +6,7 @@ import Audio from './Audio';
 import AudioProgress from './AudioProgress';
 import Loading from '../Loading';
 
-import { changeSongIndex, changeSongsQueue } from '../../redux/actions/';
+import { changeSongIndex, changeSongsQueue, addBrokenLink, markSongAsBroken } from '../../redux/actions/';
 
 import getLink from '../../Links/getLink';
 
@@ -29,25 +29,42 @@ const AudioPlayer = () => {
     const dispatch = useDispatch();
     const setSongIndex = (index) => dispatch(changeSongIndex(index));
     const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
+    const addBrokenLinkState = (path) => dispatch(addBrokenLink(path));
+    const markSongAsBrokenState = (index) => dispatch(markSongAsBroken(index));
 
     useEffect(() => {
         if (songsQueue.length <= 0) return;
         setIsLoading(true);
 
+        if (songsQueue[songIndex].broken) {
+            skipToAvailableSong();
+            return;
+        }
+
         if (songsQueue[songIndex].preview_url) {
             setCurrentSong(songsQueue[songIndex].preview_url);
             setSongsQueue(songsQueue);
         } else {
-            getLink(songsQueue[songIndex].path_display || songsQueue[songIndex].path_lower)
-                .then((result) => {
-                    const songLink = result.replace('?dl=0', '').replace('www.', 'dl.');
-                    songsQueue[songIndex].preview_url = songLink;
+            const path = songsQueue[songIndex].path_display || songsQueue[songIndex].path_lower;
 
-                    setCurrentSong(songLink);
-                    setSongsQueue(songsQueue);
+            getLink(path)
+                .then((result) => {
+                    if (!result) {
+                        addBrokenLinkState(path.toLowerCase());
+                        markSongAsBrokenState(songIndex);
+                        skipToAvailableSong();
+                    } else {
+                        const songLink = result.replace('?dl=0', '').replace('www.', 'dl.');
+                        songsQueue[songIndex].preview_url = songLink;
+                        
+                        setCurrentSong(songLink);
+                        setSongsQueue(songsQueue);
+                    }
                 })
                 .catch((error) => {
-                    throw new Error(error);
+                    addBrokenLinkState(path.toLowerCase());
+                    markSongAsBrokenState(songIndex);
+                    skipToAvailableSong();
                 });
         }
     }, [songIndex, songsQueue]);
@@ -59,11 +76,34 @@ const AudioPlayer = () => {
 
     const toggleOnRandom = () => setOnRandom(!onRandom);
 
+    const skipToAvailableSong = () => {
+        const index = findNextAvailableSong(songsQueue, songIndex);
+        if (index >= 0) nextSong(index);
+        else setIsPlaying(false); 
+    }
+
+    const findNextAvailableSong = (array, currentIndex) => {
+        const startingIndex = currentIndex;
+        let wentBack = false;
+
+        for (let i = currentIndex; i < array.length; i++) {
+            if (wentBack && i === startingIndex) return -1;
+
+            if (!array[i].broken) return i;
+            if (i === array.length - 1) {
+                i = -1;
+                wentBack = true;
+            }
+        }
+
+        return -1;
+    }
+
     const repeatPlaylist = () => {
         if (songIndex + 1 >= songsQueue.length) {
             setSongIndex(0);
-        }
-    };
+        };
+    }
 
     const previousSong = () => {
         if (songIndex > 0) {
@@ -71,7 +111,12 @@ const AudioPlayer = () => {
         }
     };
 
-    const nextSong = () => {
+    const nextSong = (index) => {
+        if (Number.isInteger(index)) {
+            setSongIndex(index);
+            return;
+        }
+
         if (onRandom) {
             selectRandom();
         } else {

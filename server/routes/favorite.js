@@ -12,9 +12,11 @@ router.post('/favorite', auth, async(req, res) => {
         const { account_id } = req;
         const user = await findUserByAccountId({ account_id });
 
+        console.log(file);
+
         await insertFavorite({ user_id: user.user_id }, {
-            song_name: file.name,
-            path_lower: file.path_lower
+            song_name: file.data.song_name,
+            path_lower: file.data.path_lower
         });
         res.status(201).json(file);
     } catch (error) {
@@ -46,12 +48,12 @@ router.delete('/favorite', auth, async(req, res) => {
         const cleanFile = JSON.parse(file);
 
         const path_lower = cleanFile.path_lower;
-        const song_name = cleanFile.name;
+        const song_name = cleanFile.song_name;
         const { account_id } = req;
 
         const { user_id } = await findUserByAccountId({ account_id });
 
-        await deleteFavoriteFromUser({ user_id }, {
+        const success = await deleteFavoriteFromUser({ user_id }, {
             path_lower,
             song_name
         });

@@ -8,6 +8,7 @@ import auth from './auth';
 import user from './user';
 import player from './player';
 import favorites from './favorites';
+import brokenLinks from './brokenLinks';
 
 const allReducers = combineReducers({
     slidebarIndex: slidebar,
@@ -17,7 +18,8 @@ const allReducers = combineReducers({
     auth,
     user,
     player,
-    favorites
+    favorites,
+    brokenLinks
 });
 
 export default allReducers;

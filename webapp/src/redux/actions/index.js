@@ -74,3 +74,17 @@ export const toggleFavoritePlaying = (isPlaying) => {
         payload: isPlaying
     };
 };
+
+export const addBrokenLink = (link) => {
+    return {
+        type: 'ADD_BROKEN_LINK',
+        payload: link
+    };
+};
+
+export const markSongAsBroken = (index) => {
+    return {
+        type: 'MARK_SONG_AS_BROKEN',
+        payload: index
+    };
+};

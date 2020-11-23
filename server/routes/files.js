@@ -61,7 +61,11 @@ router.get('/file/*', setToken, (req, res) => {
                     url: file.result.url
                 };
 
-                res.status(200).json(clearFile);
+                if (file.status !== 200) {
+                    res.status(404).json({});
+                } else {
+                    res.status(200).json(clearFile);
+                }
             })
             .catch((error) => {
                 res.status(400).json(error);

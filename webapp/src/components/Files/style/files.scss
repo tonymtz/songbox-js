@@ -28,12 +28,15 @@ $icon-width: 6vw;
     cursor: pointer;
 }
 
-.file-name {
-    max-width: 80%;
+.file-name-container {
     margin-left: 20px;
+    font-size: 3.7vw;
+    max-width: 80%;
+}
+
+.file-name {
     margin-bottom: 0;
     font-family: $font-asap;
-    font-size: 4vw;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -65,13 +68,17 @@ $icon-width: 6vw;
     fill: white;
 }
 
+.broken-link {
+    background-color: $broken-link-background;
+}
+
 @media (min-width: 600px) and (max-width: 1024px) {
     .file-container {
         padding: 1.7vw 2vw;
         padding-left: 5vw;
     }
-    .file-name {
-        font-size: 2.7vw;
+    .file-name-container {
+        font-size: 1.7vw;
     }
     .icon {
         height: 4vw;
@@ -90,8 +97,8 @@ $icon-width: 6vw;
         height: $icon-height - 2;
         width: $icon-width - 2;
     }
-    .file-name {
-        font-size: 1vw;
+    .file-name-container {
+        font-size: 0.7vw;
     }
     .files-container {
         padding-bottom: 18vh;
@@ -114,7 +121,7 @@ $icon-width: 6vw;
     .file-container {
         padding: 2.5vw 5vw;
     }
-    .file-name {
-        font-size: 2.5vw;
+    .file-name-container {
+        font-size: 2.2vw;
     }
 }

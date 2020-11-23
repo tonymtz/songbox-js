@@ -21,7 +21,9 @@ const LinkToFolder = ({ fileName, route }) => {
                     src={folderIcon} 
                     alt={'folder-icon'} 
                 />
-                <p className="file-name">{'Unnamed file' && fileName}</p>
+                <div className="file-name-container">
+                    <p className="file-name">{'Unnamed file' && fileName}</p>
+                </div>
             </div>
         </Link>
     );

@@ -13,24 +13,26 @@ export const getFavorites = async() => {
                 'dbx-token': `${token}`
             }
         });
+
         return response;
     } catch (error) {
         console.log(error);
     }
 };
 
-export const addFavorite = async(data) => {
+export const addFavorite = async(file) => {
     const cookie = new Cookie();
     const token = cookie.get('dbx-token');
 
     try {
         const url = `${window.location.protocol}//${window.location.hostname}:4000/api/favorite/`;
-        const response = await axios.post(url, data, {
+        const response = await axios.post(url, { data: file }, {
             headers: {
                 'Content-Type': 'application/json',
                 'dbx-token': `${token}`
             }
         });
+
         return response;
     } catch (error) {
         console.log(error);
@@ -52,6 +54,7 @@ export const removeFavorite = async(file) => {
                 file
             }
         });
+
         return response;
     } catch (error) {
         console.log(error);

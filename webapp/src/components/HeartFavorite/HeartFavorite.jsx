@@ -16,6 +16,7 @@ const HeartFavorite = ({ fileName, path }) => {
     const removeFromFavoritesState = (songToRemove) => dispatch(removeFromFavorites(songToRemove));
 
     const favorites = useSelector((state) => state.favorites.songs);
+    const brokenLinks = useSelector((state) => state.brokenLinks);
 
     useEffect(() => {
         favorites.forEach(({ path_lower }) => {
@@ -24,6 +25,26 @@ const HeartFavorite = ({ fileName, path }) => {
             }
         });
     }, [favorites]);
+
+    useEffect(() => {
+        const checkIfBroken = async () => {
+            const lastPosition = brokenLinks.length - 1;
+            const lastLink = brokenLinks[lastPosition];
+
+            if (path.toLowerCase() === lastLink.toLowerCase()) {
+                const file = {
+                    song_name: fileName,
+                    path_lower: path
+                };
+
+                setIsFavorite(false);
+                removeFromFavoritesState(file);
+                await removeFavorite(file);
+            }
+        }
+
+        if (brokenLinks.length > 0 && favorites.length > 0) checkIfBroken();
+    }, [brokenLinks]);
 
     const markFavorite = async (e) => {
         e.cancelBubble = true;
@@ -44,7 +65,7 @@ const HeartFavorite = ({ fileName, path }) => {
                 removeFromFavoritesState(file);
                 await removeFavorite(file);
             }
-                    
+          
         }catch(error) {
             console.log(error);
         }
