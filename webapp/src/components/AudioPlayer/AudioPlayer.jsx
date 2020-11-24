@@ -15,6 +15,8 @@ import './style/player.scss';
 import './style/progress.scss';
 
 const AudioPlayer = () => {
+    const [audioPlayer] = useState(React.createRef());
+
     const [onRandom, setOnRandom] = useState(false);
     const [singleSong, setSingleSong] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -142,7 +144,17 @@ const AudioPlayer = () => {
         }
     };
 
-    const play = () => setIsPlaying(!isPlaying);
+    const play = () => {
+        if (currentSong) {
+            if (isPlaying) {
+                audioPlayer.current.pause();
+                setIsPlaying(false);
+            } else {
+                audioPlayer.current.play();
+                setIsPlaying(true);
+            }
+        }
+    }
 
     return (
         <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : '' }`}>
@@ -152,10 +164,10 @@ const AudioPlayer = () => {
                 singleSong={singleSong}
                 setProgress={setProgress}
                 setIsLoading={setIsLoading}
-                isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
                 onRepeat={onRepeat}
                 nextSong={nextSong}
+                audioPlayer={audioPlayer}
             />
 
             <>

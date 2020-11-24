@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, setIsPlaying, onRepeat, nextSong }) => {
-    const [audioPlayer] = useState(React.createRef());
-    const [muted, setMuted] = useState(true);
-
+const Audio = ({ 
+    currentSong, 
+    singleSong, 
+    setProgress, 
+    setIsLoading, 
+    setIsPlaying, 
+    onRepeat, 
+    nextSong,
+    audioPlayer,
+}) => {
     const autoPlay = useSelector((state) => state.player.autoPlay);
 
     useEffect(() => {
@@ -35,7 +41,7 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
                 })
                 .catch((error) => {
                     //Auto play is disabled
-                    console.log(error);
+                    setIsPlaying(false);
                 });
         }
     };
@@ -52,22 +58,10 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
             nextSong();
         } 
     };
-
-    useEffect(() => {
-        if (currentSong) {
-            if (isPlaying) {
-                audioPlayer.current.play();
-                setMuted(false);
-            } else {
-                audioPlayer.current.pause();
-                setMuted(true);
-            }
-        }
-    }, [isPlaying, audioPlayer, currentSong]);
     
     return(
         <div className="audio">
-            <audio id="audio-player" ref={audioPlayer} onLoadedMetadata={onLoadSong} onPause={songEnded} controls muted={muted} autoPlay={autoPlay}>
+            <audio id="audio-player" ref={audioPlayer} onLoadedMetadata={onLoadSong} onPause={songEnded} controls autoPlay={autoPlay}>
                 <source src={currentSong} type="audio/mpeg"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>
