@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, setIsPlaying, onRepeat, nextSong }) => {
     const [audioPlayer] = useState(React.createRef());
+    const [muted, setMuted] = useState(true);
 
     const autoPlay = useSelector((state) => state.player.autoPlay);
 
@@ -56,15 +57,17 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
         if (currentSong) {
             if (isPlaying) {
                 audioPlayer.current.play();
+                //setMuted(false);
             } else {
                 audioPlayer.current.pause();
+                //setMuted(true);
             }
         }
     }, [isPlaying, audioPlayer, currentSong]);
     
     return(
         <div className="audio">
-            <audio id="audio-player" ref={audioPlayer} onLoadedMetadata={onLoadSong} onPause={songEnded} controls autoPlay={autoPlay}>
+            <audio id="audio-player" ref={audioPlayer} onLoadedMetadata={onLoadSong} onPause={songEnded} controls muted={muted} autoPlay={autoPlay}>
                 <source src={currentSong} type="audio/mpeg"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>
