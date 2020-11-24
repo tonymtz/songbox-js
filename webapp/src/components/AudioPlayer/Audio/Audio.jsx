@@ -57,10 +57,10 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
         if (currentSong) {
             if (isPlaying) {
                 audioPlayer.current.play();
-                //setMuted(false);
+                setMuted(false);
             } else {
                 audioPlayer.current.pause();
-                //setMuted(true);
+                setMuted(true);
             }
         }
     }, [isPlaying, audioPlayer, currentSong]);
