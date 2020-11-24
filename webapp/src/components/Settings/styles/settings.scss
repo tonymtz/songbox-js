@@ -1,7 +1,9 @@
 @import '../../../styles/colors.scss';
 @import '../../../styles/fonts.scss';
+@import '../../../styles/sizes.scss';
 .settings-container {
     padding: 0 5vw;
+    margin-bottom: $multi-player;
 }
 
 .solid-gray-bar {
@@ -34,6 +36,18 @@
 
 .option-hover {
     cursor: pointer;
+}
+
+.dark-theme-background {
+    background-color: $dark-background !important;
+}
+
+.dark-soft-theme-background {
+    background-color: $dark-soft-background !important;
+}
+
+.dark-theme-color {
+    color: $dark-theme-color !important;
 }
 
 @media (min-width: 768px) {

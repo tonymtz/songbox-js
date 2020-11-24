@@ -24,6 +24,7 @@ import './styles/app.scss';
 
 const App = () => {
     const isAuth = useSelector((state) => state.auth);
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
     const dispatch = useDispatch();
     
     const setFavoritesState = (favorites) =>  dispatch(setFavorites(favorites));
@@ -69,20 +70,18 @@ const App = () => {
                 isAuth &&
                 <>
                     <BrowserRouter>
-                        <div className="sidebar-container">
+                        <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
                             <Sidebar /> 
                         </div>
-                        <>
                             <Switch>
-                                <Route path="/app" component={Main} />
-                                <Route path={`/app/:path`} component={Main} />
-                                <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
-                                <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
-                                <Route path="/help" render={() => <Help pageNumber={3}/>} />
-                                <Route path="/logout" render={() => <Logout />} />
-                                <Route path="*" component={NotFound} />
+                                    <Route path="/app" component={Main} />
+                                    <Route path={`/app/:path`} component={Main} />
+                                    <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
+                                    <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
+                                    <Route path="/help" render={() => <Help pageNumber={3}/>} />
+                                    <Route path="/logout" render={() => <Logout />} />
+                                    <Route path="*" component={NotFound} />
                             </Switch>
-                        </>
                         <AudioPlayer />
                     </BrowserRouter>
                 </>

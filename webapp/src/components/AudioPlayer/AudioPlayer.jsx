@@ -25,6 +25,7 @@ const AudioPlayer = () => {
     const songIndex = useSelector((state) => state.songIndex);
     const songsQueue = useSelector((state) => state.songsQueue);
     const onRepeat = useSelector((state) => state.player.onRepeat);
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
     const dispatch = useDispatch();
     const setSongIndex = (index) => dispatch(changeSongIndex(index));
@@ -144,7 +145,7 @@ const AudioPlayer = () => {
     const play = () => setIsPlaying(!isPlaying);
 
     return (
-        <div className="audio-container">
+        <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : '' }`}>
             <Audio
                 key={currentSong}
                 currentSong={currentSong}
@@ -162,7 +163,7 @@ const AudioPlayer = () => {
                     isLoading={isLoading}
                 />
 
-                <div className={`audio-player ${isLoading ? 'hide' : ''}`}>
+                <div className={`audio-player ${isLoading ? 'hide' : ''} ${darkThemeActive ? 'dark-theme-background' : '' }`}>
                     <AudioProgress 
                         progress={progress}
                     />

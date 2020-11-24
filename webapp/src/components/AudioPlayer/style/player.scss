@@ -59,6 +59,10 @@
     opacity: 0.5;
 }
 
+.nav-text a:hover {
+    color: $orange;
+}
+
 @media (min-width: 1024px) {
     .audio-container {
         height: 8vw;

@@ -16,6 +16,7 @@ const Files = () => {
 
     const route = useSelector((state) => state.route); 
     const songsQueue = useSelector((state) => state.songsQueue);
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
     useEffect(() => {
         const cookie = new Cookie();
@@ -72,7 +73,7 @@ const Files = () => {
 
 
     return (
-        <div className="files-container">
+        <div className={`files-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
             {
                 folders.map((file, index) => {
                     return(

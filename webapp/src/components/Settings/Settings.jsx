@@ -24,7 +24,7 @@ const Settings = ({ pageNumber }) => {
     const restorePreferencesFunc = () => dispatch(restorePreferences());
 
     return(
-        <div className="content-container">
+        <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : '' }`}>
             <h1 id="your-personal-library" className="title">Settings</h1>
             <hr className="solid-gray-bar"/>
             <div className="settings-container">

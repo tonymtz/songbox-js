@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, setIsPlaying, onRepeat, nextSong }) => {
     const [audioPlayer] = useState(React.createRef());
+
+    const autoPlay = useSelector((state) => state.player.autoPlay);
 
     useEffect(() => {
         const updateProcess = () => {
@@ -37,10 +40,14 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
     };
 
     const songEnded = () => {
+        if (audioPlayer.current.ended) {
+            setIsPlaying(false);
+        }
+
         if (singleSong && onRepeat && audioPlayer.current.ended) { 
             audioPlayer.current.currentTime = 0;
             audioPlayer.current.play();
-        } else if (audioPlayer.current.ended) {
+        } else if (audioPlayer.current.ended && autoPlay) {
             nextSong();
         } 
     };
@@ -57,7 +64,7 @@ const Audio = ({ currentSong, singleSong, setProgress, setIsLoading, isPlaying, 
     
     return(
         <div className="audio">
-            <audio onLoadedMetadata={onLoadSong} onPause={songEnded} ref={audioPlayer} id="audio-player" controls>
+            <audio id="audio-player" ref={audioPlayer} onLoadedMetadata={onLoadSong} onPause={songEnded} controls autoPlay={autoPlay}>
                 <source src={currentSong} type="audio/mpeg"/>
                 <source src={currentSong} type="audio/wav"/>
                 <source src={currentSong} type="audio/ogg"/>

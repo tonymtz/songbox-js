@@ -14,6 +14,8 @@ const Main = () => {
     const route = useSelector((state) => state.route);
     const dispatch = useDispatch();
 
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
+
     useEffect(() => {
         const pathFromURL = getRoute();
         if (route !== pathFromURL) {
@@ -26,7 +28,7 @@ const Main = () => {
 
     return (
         <div className="App">
-            <div className="content-container">
+            <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : '' }`}>
                 <h1 id="your-personal-library" className="title">Your personal library</h1>
                 <Breadcrumb />
                         

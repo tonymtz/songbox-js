@@ -9,7 +9,7 @@ const Previous = ({ previousSong }) => {
     const isDisabled = songIndex - 1 < 0;
 
     return (
-        <button className="player-button" onClick={previousSong} disabled={isDisabled}>
+        <button className={`player-button ${isDisabled ? 'disable-buttons' : ''}`} onClick={previousSong} disabled={isDisabled}>
             <img 
                 className="icon" 
                 src={rewindIcon}

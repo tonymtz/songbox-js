@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { changeRoute } from '../../redux/actions';
@@ -13,6 +13,8 @@ const LinkToFolder = ({ fileName, route }) => {
     const path = `${route}${fileName}/`;
     const changeFolder = () => dispatch(changeRoute(path));
 
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
+
     return(
         <Link to={'/app' + path}>
             <div onClick={changeFolder} className="file-container">
@@ -22,7 +24,7 @@ const LinkToFolder = ({ fileName, route }) => {
                     alt={'folder-icon'} 
                 />
                 <div className="file-name-container">
-                    <p className="file-name">{'Unnamed file' && fileName}</p>
+                    <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : '' }`}>{'Unnamed file' && fileName}</p>
                 </div>
             </div>
         </Link>

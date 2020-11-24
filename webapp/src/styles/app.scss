@@ -1,15 +1,13 @@
 @import "colors.scss";
 @import "fonts.scss";
-
 .App {
     display: flex;
     justify-content: center;
-
+    height: 100%;
     &-logo {
         height: 40vmin;
         pointer-events: none;
     }
-
     &-header {
         background-color: $dark-color;
         min-height: 100vh;
@@ -20,21 +18,20 @@
         font-size: calc(10px + 2vmin);
         color: $white;
     }
-
     &-link {
         color: $light-blue;
     }
 }
-  
+
 .sidebar-container {
     text-align: initial;
 }
-  
+
 .title {
     font-family: $font-quick;
     font-weight: bold;
 }
-  
+
 .text {
     font-family: $font-asap;
     font-size: 5vw;
@@ -51,7 +48,7 @@
         animation: App-logo-spin infinite 20s linear;
     }
 }
-  
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);
@@ -60,5 +57,3 @@
         transform: rotate(360deg);
     }
 }
-
-  

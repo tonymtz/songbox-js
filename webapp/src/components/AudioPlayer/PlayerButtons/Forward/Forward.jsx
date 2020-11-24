@@ -12,7 +12,7 @@ const Forward = ({ nextSong }) => {
     const isDisabled = onRepeat === true ? false : songIndex + 1 >= songsQueue.length;
 
     return (
-        <button className="player-button" onClick={nextSong} disabled={isDisabled}>
+        <button className={`player-button ${isDisabled ? 'disable-buttons' : ''}`} onClick={nextSong} disabled={isDisabled}>
             <img
                 className="icon" 
                 src={fastForwardIcon}

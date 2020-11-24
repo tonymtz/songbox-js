@@ -60,16 +60,16 @@ $icon-width: 6vw;
     fill: $not-so-soft-gray;
 }
 
-.is-playing circle {
-    fill: $not-so-soft-gray;
-}
-
 .is-playing polygon {
     fill: white;
 }
 
 .broken-link {
     background-color: $broken-link-background;
+}
+
+.no-favorites-container {
+    padding-left: 2vw;
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {

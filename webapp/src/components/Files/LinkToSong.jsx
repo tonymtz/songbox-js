@@ -14,6 +14,7 @@ const LinkToSong = ({ index, fileName, samePlaylist, files, path, inFavorites })
     const songIndex = useSelector((state) => state.songIndex);
     const favoritePlaying = useSelector((state) => state.favorites.isPlaying);
     const brokenLinks = useSelector((state) => state.brokenLinks);
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
     const dispatch = useDispatch();
 
     const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue)); 
@@ -53,7 +54,7 @@ const LinkToSong = ({ index, fileName, samePlaylist, files, path, inFavorites })
                 isBroken={isBroken}
             />
             <div className="file-name-container">
-                <p className="file-name">{'Unnamed file' && fileName}</p>
+                <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : '' }`}>{'Unnamed file' && fileName}</p>
                 {isBroken && <p>We could not find this song...</p>}
             </div>
             {
@@ -63,7 +64,6 @@ const LinkToSong = ({ index, fileName, samePlaylist, files, path, inFavorites })
                     path={path}
                 />
             }
-            
         </div>
     );
 };

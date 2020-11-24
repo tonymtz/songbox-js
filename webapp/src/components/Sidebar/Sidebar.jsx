@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -13,14 +14,16 @@ const Sidebar = () => {
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
 
+    const darkThemeActive = useSelector((state) => state.player.darkTheme);
+
     return (
         <div>
-            <div className="hamburger">
+            <div className={`hamburger ${darkThemeActive ? 'dark-theme-background dark-theme-color' : '' }`}>
                 <Link to="#">
                     <FaIcons.FaBars onClick={showSidebar}/>
                 </Link>
             </div>
-            <div className={sidebar ? 'sidebar active' : 'sidebar'}>
+            <div className={`${sidebar ? 'sidebar active' : 'sidebar'} ${darkThemeActive ? 'dark-soft-theme-background' : '' }`}>
                 <ul className="elements">
                     <li className="navbar">
                         <Link className="close" to="#">
