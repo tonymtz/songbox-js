@@ -6,7 +6,8 @@
         "start": "env-cmd -f ./.env node ./bin/www",
         "dev": "env-cmd -f ./.env nodemon ./bin/www",
         "lint": "eslint --ext .js .",
-        "lint:fix": "eslint --fix --ext .js ."
+        "lint:fix": "eslint --fix --ext .js .",
+        "test": "env-cmd -f ./test.env jest"
     },
     "husky": {
         "hooks": {
@@ -30,12 +31,14 @@
         "morgan": "~1.9.1",
         "node-sass-middleware": "^0.11.0",
         "pg": "^8.5.1",
-        "pug": "2.0.0-beta11"
+        "pug": "2.0.0-beta11",
+        "supertest": "^6.0.1"
     },
     "devDependencies": {
         "eslint": "^7.11.0",
         "gulp": "^4.0.2",
         "husky": "^4.3.0",
+        "jest": "^26.6.3",
         "lint-staged": "^10.4.2"
     }
 }

@@ -2,11 +2,11 @@ const express = require('express');
 const dropbox = require('dropbox');
 
 const router = express.Router();
-const setToken = require('../middleware/setToken');
+const auth = require('../middleware/auth');
 
 const { insertUser } = require('../models/users');
 
-router.get('/me', setToken, async(req, res) => {
+router.get('/me', auth, async(req, res) => {
     try {
         const token = req.token;
         const dbx = new dropbox.Dropbox({ accessToken: token });

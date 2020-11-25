@@ -3,11 +3,11 @@ const dropbox = require('dropbox');
 
 const typeFilter = require('../tools/typeFilter');
 const createLink = require('../tools/createLink');
-const setToken = require('../middleware/setToken');
+const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/files/*', setToken, async(req, res) => {
+router.get('/files/*', auth, async(req, res) => {
     try {
         const token = req.token;
         const dbx = new dropbox.Dropbox({ accessToken: token });
@@ -19,10 +19,6 @@ router.get('/files/*', setToken, async(req, res) => {
         const finalPath = dropboxPath === '/' ? '' : decodeURI(dropboxPath);
 
         const dropboxFiles = await dbx.filesListFolder({ path: finalPath });
-
-        if (dropboxFiles.status === 409) {
-            res.status(404).json({ error: 'Files were not found!' });
-        }
 
         const files = typeFilter(dropboxFiles.result.entries);
 
@@ -44,7 +40,7 @@ router.get('/files/*', setToken, async(req, res) => {
     }
 });
 
-router.get('/file/*', setToken, (req, res) => {
+router.get('/file/*', auth, (req, res) => {
     try {
         const token = req.token;
         const dbx = new dropbox.Dropbox({ accessToken: token });

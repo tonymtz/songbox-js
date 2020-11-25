@@ -13,10 +13,11 @@ const auth = async(req, res, next) => {
 
         req.account_id = account_id;
         req.email = email;
+        req.token = token;
 
         next();
     } catch (error) {
-        res.status(404).json({ error: 'Please authenticate!' });
+        res.status(401).json({ error: 'Please authenticate!' });
     }
 };
 

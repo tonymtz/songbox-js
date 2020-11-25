@@ -1,6 +1,6 @@
 const pool = require('../db/db');
 
-const insertUser = async({ account_id, email }) => {
+const insertUser = async ({ account_id, email }) => {
     try {
         const user = await findUserByAccountId({ account_id });
 
@@ -12,14 +12,14 @@ const insertUser = async({ account_id, email }) => {
             const successful = res.rowCount >= 1;
             return successful;
         } else {
-            return false
+            return false;
         }
     } catch (error) {
         console.log(error);
     }
 };
 
-const findUserByAccountId = async({ account_id }) => {
+const findUserByAccountId = async ({ account_id }) => {
     try {
         const queryText = 'SELECT * FROM users WHERE account_id = $1';
         const values = [account_id];
