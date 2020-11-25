@@ -1,6 +1,6 @@
 const pool = require('../db/db');
 
-const insertUser = async ({ account_id, email }) => {
+const insertUser = async({ account_id, email }) => {
     try {
         const user = await findUserByAccountId({ account_id });
 
@@ -19,7 +19,7 @@ const insertUser = async ({ account_id, email }) => {
     }
 };
 
-const findUserByAccountId = async ({ account_id }) => {
+const findUserByAccountId = async({ account_id }) => {
     try {
         const queryText = 'SELECT * FROM users WHERE account_id = $1';
         const values = [account_id];
@@ -32,7 +32,20 @@ const findUserByAccountId = async ({ account_id }) => {
     }
 };
 
+const deleteAllUsers = async() => {
+    try {
+        const queryText = 'DELETE FROM users';
+        const res = await pool.query(queryText);
+
+        const user = res.rows[0];
+        return user;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     insertUser,
-    findUserByAccountId
+    findUserByAccountId,
+    deleteAllUsers
 };

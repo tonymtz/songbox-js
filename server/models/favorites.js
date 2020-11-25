@@ -45,8 +45,21 @@ const deleteFavoriteFromUser = async({ user_id }, { song_name, path_lower }) => 
     }
 };
 
+const deleteAllFavorites = async() => {
+    try {
+        const queryText = 'DELETE FROM favorites';
+        const res = await pool.query(queryText);
+
+        const successful = res.rowCount >= 1;
+        return successful;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 module.exports = {
     insertFavorite,
     getFavoritesFromUser,
-    deleteFavoriteFromUser
+    deleteFavoriteFromUser,
+    deleteAllFavorites
 };
