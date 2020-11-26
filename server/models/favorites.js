@@ -39,9 +39,7 @@ const deleteFavoriteFromUser = async({ user_id }, { song_name, path_lower }) => 
         const successful = res.rowCount >= 1;
         return successful;
     } catch (error) {
-        if (error) {
-            return false;
-        }
+        return false;
     }
 };
 
@@ -53,7 +51,7 @@ const deleteAllFavorites = async() => {
         const successful = res.rowCount >= 1;
         return successful;
     } catch (error) {
-        console.log(error);
+        return false;
     }
 };
 
