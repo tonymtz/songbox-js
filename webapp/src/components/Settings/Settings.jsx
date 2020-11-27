@@ -24,33 +24,35 @@ const Settings = ({ pageNumber }) => {
     const restorePreferencesFunc = () => dispatch(restorePreferences());
 
     return(
-        <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : '' }`}>
-            <h1 id="your-personal-library" className="title">Settings</h1>
-            <hr className="solid-gray-bar"/>
-            <div className="settings-container">
-                <OptionSection title={'Player'}>
-                    <OptionToggle 
-                        optionTitle={'Autoplay next song'}
-                        toggle={toggleAutoPlay}
-                        checked={autoPlayActive}
-                    />
-                </OptionSection>
+        <div className="App">
+            <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : '' }`}>
+                <h1 id="your-personal-library" className="title">Settings</h1>
+                <hr className="solid-gray-bar"/>
+                <div className="settings-container">
+                    <OptionSection title={'Player'}>
+                        <OptionToggle 
+                            optionTitle={'Autoplay next song'}
+                            toggle={toggleAutoPlay}
+                            checked={autoPlayActive}
+                        />
+                    </OptionSection>
 
-                <OptionSection title={'Apparience'}>
-                    <OptionToggle 
-                        optionTitle={'Toggle dark theme'}
-                        toggle={toggleDarkTheme}
-                        checked={darkThemeActive}
-                    />
-                </OptionSection>
+                    <OptionSection title={'Apparience'}>
+                        <OptionToggle 
+                            optionTitle={'Toggle dark theme'}
+                            toggle={toggleDarkTheme}
+                            checked={darkThemeActive}
+                        />
+                    </OptionSection>
 
-                <OptionSection title={'Other'}>
-                    <Option 
-                        optionText={'Restore preferences'}
-                        onClick={restorePreferencesFunc}
-                    />
-                </OptionSection>
+                    <OptionSection title={'Other'}>
+                        <Option 
+                            optionText={'Restore preferences'}
+                            onClick={restorePreferencesFunc}
+                        />
+                    </OptionSection>
 
+                </div>
             </div>
         </div>
     );

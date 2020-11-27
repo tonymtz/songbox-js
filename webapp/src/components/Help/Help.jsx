@@ -15,10 +15,12 @@ const Help = ({ pageNumber }) => {
     }, [dispatch, pageNumber]);
 
     return(
-        <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
-            <p id="your-personal-library" className="title">Help</p>
-            <div className="help-container">
-                <p>Hello im just a filler!</p>
+        <div className="App">
+            <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
+                <p id="your-personal-library" className="title">Help</p>
+                <div className="help-container">
+                    <p>Hello im just a filler!</p>
+                </div>
             </div>
         </div>
     );
