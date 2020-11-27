@@ -22,6 +22,7 @@
     "plugins": [
         "react"
     ],
+    "ignorePatterns": ["/src/tests"],
     "settings": {
         "react": {
           "version": "16.8.2"

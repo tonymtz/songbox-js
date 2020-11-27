@@ -32,11 +32,11 @@ const Favorites = ({ pageNumber }) => {
                                     inFavorites={true}
                                 />);
                         })
-                    : (
-                        <div className="no-favorites-container">
-                            <p>No favorites songs...</p>
-                        </div>
-                    )
+                        : (
+                            <div className="no-favorites-container">
+                                <p>No favorites songs...</p>
+                            </div>
+                        )
                 }
             </div>
         </div>

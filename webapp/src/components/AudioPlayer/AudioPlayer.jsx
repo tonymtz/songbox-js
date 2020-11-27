@@ -64,7 +64,7 @@ const AudioPlayer = () => {
                         setSongsQueue(songsQueue);
                     }
                 })
-                .catch((error) => {
+                .catch(() => {
                     addBrokenLinkState(path.toLowerCase());
                     markSongAsBrokenState(songIndex);
                     skipToAvailableSong();
@@ -83,7 +83,7 @@ const AudioPlayer = () => {
         const index = findNextAvailableSong(songsQueue, songIndex);
         if (index >= 0) nextSong(index);
         else setIsPlaying(false); 
-    }
+    };
 
     const findNextAvailableSong = (array, currentIndex) => {
         const startingIndex = currentIndex;
@@ -100,13 +100,13 @@ const AudioPlayer = () => {
         }
 
         return -1;
-    }
+    };
 
     const repeatPlaylist = () => {
         if (songIndex + 1 >= songsQueue.length) {
             setSongIndex(0);
-        };
-    }
+        }
+    };
 
     const previousSong = () => {
         if (songIndex > 0) {
@@ -154,7 +154,7 @@ const AudioPlayer = () => {
                 setIsPlaying(true);
             }
         }
-    }
+    };
 
     return (
         <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : '' }`}>
