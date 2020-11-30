@@ -16,7 +16,8 @@ router.get('/me', auth, async(req, res) => {
             status: userAccount.status,
             result: {
                 name: userAccount.result.name,
-                email: userAccount.result.email
+                email: userAccount.result.email,
+                photo: userAccount.result.profile_photo_url
             },
         };
 

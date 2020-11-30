@@ -12,7 +12,7 @@ const Profile = () => {
         <div className="profile-container">
             <img
                 className="profile-picture"
-                src={profilePicture}
+                src={user.photo || profilePicture}
                 alt="profile"
             />
             <p className="user-email">{user.email || 'you@anonymous.com'}</p>

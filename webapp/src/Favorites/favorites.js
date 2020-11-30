@@ -6,7 +6,7 @@ export const getFavorites = async() => {
     const token = cookie.get('dbx-token');
 
     try {
-        const url = `${window.location.protocol}//${window.location.hostname}:4000/api/favorites`;
+        const url = `${window.location.protocol}//${window.location.hostname}/api/favorites`;
         const response = await axios.get(url, {
             headers: {
                 'Content-Type': 'application/json',

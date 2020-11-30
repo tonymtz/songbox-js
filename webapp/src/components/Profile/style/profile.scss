@@ -1,5 +1,7 @@
+@import "../../../styles/fonts.scss";
+@import "../../../styles/colors.scss";
+
 $img-size: 20vw;
-$font-size: 4vw;
 
 .profile-container {
     text-align: center;
@@ -8,27 +10,30 @@ $font-size: 4vw;
 .profile-picture {
     height: $img-size;
     width: $img-size;
-    border-radius: 50px;
+    border-radius: 50%;
 }
 
 .user-email {
-    font-size: $font-size;
+    font-family: 'Asap', sans-serif;
+    font-size: 4vw;
     margin-bottom: 0;
     padding: 1vw;
+    padding-bottom: 0.1vw;
     word-wrap: break-word;
+    color: $not-so-soft-gray;
 }
 
 .user-name {
-    font-size: $font-size;
+    font-size: 5vw;
     font-weight: bold;
     padding: 3vw;
     padding-top: 0;
     word-wrap: break-word;
+    font-family: 'Asap', sans-serif;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
     $image-size: 15vw;
-    $font-size: 2vw;
 
     .profile-picture {
         height: $image-size;
@@ -36,18 +41,17 @@ $font-size: 4vw;
     }
 
     .user-email {
-        font-size: $font-size;
+        font-size: 2vw;
     }
     
     .user-name {
-        font-size: $font-size;
+        font-size: 3vw;
         padding: 0;
     }
 }
 
 @media(min-width: 1024px) {
     $image-size: 6vw;
-    $font-size: 1vw;
 
     .profile-picture {
         height: $image-size;
@@ -55,11 +59,11 @@ $font-size: 4vw;
     }
 
     .user-email {
-        font-size: $font-size;
+        font-size: 1.2vw;
     }
     
     .user-name {
-        font-size: $font-size;
+        font-size: 1.5vw;
         padding: 0;
     }
 }
