@@ -51,6 +51,7 @@ const Files = () => {
             .catch((error) => {
                 if (error) {
                     setFiles([]);
+                    setFolders([]);
                 }
             });
 

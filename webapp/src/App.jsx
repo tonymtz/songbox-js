@@ -32,8 +32,12 @@ const App = () => {
 
     useEffect(() => {
         const favorites = async () => {
-            const userFavorites = await getFavorites();
-            setFavoritesState(userFavorites.data);
+            try {
+                const userFavorites = await getFavorites();
+                setFavoritesState(userFavorites.data);
+            } catch (error) {   
+                setFavoritesState([]);
+            }
         };
 
         const changeAuthState = (isAuth) => dispatch(changeAuth(isAuth));

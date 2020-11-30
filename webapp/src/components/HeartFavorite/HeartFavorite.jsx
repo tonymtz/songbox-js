@@ -50,12 +50,12 @@ const HeartFavorite = ({ fileName, path }) => {
         e.cancelBubble = true;
         if (e.stopPropagation) e.stopPropagation();
 
-        try {
-            const file = {
-                song_name: fileName,
-                path_lower: path
-            };
+        const file = {
+            song_name: fileName,
+            path_lower: path
+        };
 
+        try {
             if (!isFavorite) {
                 setIsFavorite(true);
                 addToFavoritesState(file); 
@@ -67,7 +67,8 @@ const HeartFavorite = ({ fileName, path }) => {
             }
           
         }catch(error) {
-            console.log(error);
+            setIsFavorite(false);
+            removeFromFavoritesState(file);
         }
     };
     return (

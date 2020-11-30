@@ -6,10 +6,17 @@ import pauseIcon from '../../icons/pause-circle.svg';
 const Play = ({ play, isPlaying }) => {
     return (
         <button className="play-button" onClick={play}>
+
             <img 
-                className="icon play-icon" 
-                src={isPlaying ? pauseIcon : playIcon}
-                alt={isPlaying ? 'pause-icon' : 'play-icon'}
+                className={`icon play-icon ${!isPlaying && 'hide'}`} 
+                src={pauseIcon}
+                alt={'pause-icon'}
+            />
+
+            <img 
+                className={`icon play-icon ${isPlaying && 'hide'}`} 
+                src={playIcon}
+                alt={'play-icon'}
             />
         </button>
     );
