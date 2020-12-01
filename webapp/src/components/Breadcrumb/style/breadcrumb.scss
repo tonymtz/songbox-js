@@ -2,12 +2,12 @@
 
 .directory-container {
     padding: 0 3vw;
-}
-
-.directory-container .title {
-    margin-left: 2vw;
-    margin-bottom: 0;
-    font-size: 4.5vw;
+    
+    & .title {
+        margin-left: 2vw;
+        margin-bottom: 0;
+        font-size: 4.5vw;
+    }
 }
 
 .sub-directory-container {
@@ -21,33 +21,33 @@
 @media (min-width: 600px) and (max-width: 1024px) {
     .sub-directory-container {
         padding: 1vw 3vw;
-    }
 
-    .sub-directory-container .title {
-        font-size: 2.5vw;
+        & .title {
+            font-size: 2.5vw;
+        }
     }
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait) { 
     .sub-directory-container {
         padding: 1.5vw 3vw;
-    }
 
-    .sub-directory-container .title {
-        font-size: 2.5vw;
+        & .title {
+            font-size: 2.5vw;
+        }
     }
 }
 
 @media (min-width: 1024px) {
     .directory-container {
         padding: 0 3vw;
+
+        & .title { 
+            margin-left: 1vw;
+            font-size: 1.5vw;
+        }
     }
     
-    .directory-container .title {
-        margin-left: 1vw;
-        font-size: 1.5vw;
-    }
-
     .sub-directory-container {
         padding-bottom: 0;
         padding: 2vh 2vw;

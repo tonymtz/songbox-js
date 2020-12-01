@@ -30,19 +30,20 @@
     padding-bottom: 0;
     padding: 2vw 5vw;
     width: 100%;
+
+    & button {
+        border-radius: 10px;
+        background-color: transparent;
+        border-color: transparent;
+        padding: 0.5vw;
+    }
+    
+    & button * {
+        height: 100%;
+        width: 100%;
+    }
 }
 
-.buttons button {
-    border-radius: 10px;
-    background-color: transparent;
-    border-color: transparent;
-    padding: 0.5vw;
-}
-
-.buttons button * {
-    height: 100%;
-    width: 100%;
-}
 
 .player-button {
     height: 5vh;
@@ -67,14 +68,14 @@
     .audio-container {
         height: 8vw;
         padding: 2vw;
-    }
-    .audio-container {
         padding: 0;
     }
+
     .player-button {
         height: 5vh;
         width: 10vw;
     }
+
     .play-button {
         height: 8vh;
         width: 17vw;
@@ -82,21 +83,17 @@
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    .play-button {
-        height: 10vw;
-        width: 10vw;
-    }
     .player-button {
         margin-top: 1.5vw;
-    }
-    .audio-container {
-        height: 15vw;
-    }
-    .player-button {
         height: 3vh;
         width: 6vw;
         margin: 0;
     }
+
+    .audio-container {
+        height: 15vw;
+    }
+    
     .play-button {
         height: 7vh;
         width: 15vw;

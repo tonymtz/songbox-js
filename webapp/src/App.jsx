@@ -77,15 +77,15 @@ const App = () => {
                         <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
                             <Sidebar /> 
                         </div>
-                            <Switch>
-                                    <Route path="/app" component={Main} />
-                                    <Route path={`/app/:path`} component={Main} />
-                                    <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
-                                    <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
-                                    <Route path="/help" render={() => <Help pageNumber={3}/>} />
-                                    <Route path="/logout" render={() => <Logout />} />
-                                    <Route path="*" component={NotFound} />
-                            </Switch>
+                        <Switch>
+                            <Route path="/app" component={Main} />
+                            <Route path={`/app/:path`} component={Main} />
+                            <Route path="/favorites" render={() => <Favorites pageNumber={1}/>}  />
+                            <Route path="/settings" render={() => <Settings pageNumber={2}/>} />
+                            <Route path="/help" render={() => <Help pageNumber={3}/>} />
+                            <Route path="/logout" render={() => <Logout />} />
+                            <Route path="*" component={NotFound} />
+                        </Switch>
                         <AudioPlayer />
                     </BrowserRouter>
                 </>

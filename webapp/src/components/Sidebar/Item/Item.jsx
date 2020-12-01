@@ -13,13 +13,15 @@ const Item = ({ index, item }) => {
     const dispatch = useDispatch();
 
     return (
-        <li onClick={() => dispatch(changeSlidebarIndex(index))} className={`${item.className} ${selectedIndex === index ? 'selected-item' : ''}`}>
-            <Link className="icon" to={item.path}>
-                { item.icon }
-                <span className="item-title">{ item.title }</span>
-            </Link>
-            <img src={selectedIndex === index ? chevronLeft : chevronRight} alt="chevron"/>
-        </li>
+        <Link className={`nav-item`} to={item.path} >
+            <li onClick={() => dispatch(changeSlidebarIndex(index))} className={`nav-li ${selectedIndex === index ? 'selected-item' : ''}`}>
+                <div>
+                    { item.icon }
+                    <span className="item-title">{ item.title }</span>
+                </div>
+                <img className="chevron" src={selectedIndex === index ? chevronLeft : chevronRight} alt="chevron"/>
+            </li>
+        </Link>
     );
 };
 

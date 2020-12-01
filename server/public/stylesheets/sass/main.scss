@@ -117,3 +117,9 @@ body,
         margin-right: auto;
     }
 }
+
+@media (max-width: 450px) {
+    .dropbox-btn {
+        border-radius: 7px;
+    }
+}

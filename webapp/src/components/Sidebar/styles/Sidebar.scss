@@ -1,5 +1,5 @@
 @import "../../../styles/colors.scss";
-
+@import "../../../styles/fonts.scss";
 
 $padding-left-s: 4vw;
 
@@ -12,28 +12,35 @@ $padding-left-s: 4vw;
     margin-left: 0;
     padding: 2vw;
     padding-left: 5vw;
+
+    & svg {
+        height: 6vw;
+        width: 6vw;
+    }
+    
+    & path {
+        fill: $orange;
+    }
 }
 
-.hamburger svg {
-    height: 6vw;
-    width: 6vw;
-}
+.nav-item {
+    width: 100%;
+    text-decoration: none !important;
 
-.nav-text a, u {
-    text-decoration: none;
-    color: $icon-gray;
+    & svg {
+        text-decoration: none;
+        color: $icon-gray;
+        height: 6vw;
+        width: 6vw;
+    }
 }
 
 .close {
     fill: $orange;
-}
 
-.close path {
-    fill: $orange;
-}
-
-.hamburger path, .hamburger path {
-    fill: $orange;
+    & path {
+        fill: $orange;
+    }
 }
 
 .sidebar-item-name {
@@ -60,13 +67,13 @@ $padding-left-s: 4vw;
     transition: 200ms;
     top: 0;
     width: 200px;
-}
 
-.sidebar.active {
-    left: 0;
-    transition: 200ms;
-    border-right: 1px solid #b0b0b0b0;
-    z-index: 1;
+    &.active {
+        left: 0;
+        transition: 200ms;
+        border-right: 1px solid #b0b0b0b0;
+        z-index: 1;
+    }
 }
 
 .nav-text {
@@ -74,28 +81,28 @@ $padding-left-s: 4vw;
     justify-content: space-around;
     list-style: none;
     padding: 0 4vw;
+
+    & .a {
+        display: flex;
+        width: 100%;
+        padding: 2vw;
+        height: 8vh;
+    }
+
+    & a:hover {
+        text-decoration: none;
+    }
+
+    & text {
+        align-self: center;
+        font-weight: 600;
+    }
 }
 
-.nav-text a {
+.nav-li  {
     display: flex;
-    width: 100%;
-    padding: 2vw;
-    height: 8vh;
-}
-
-.nav-text a:hover {
-    text-decoration: none;
-}
-
-.nav-text a svg {
-    height: 6vw;
-    width: 6vw;
-    align-self: center;
-}
-
-.nav-text span {
-    align-self: center;
-    font-weight: 600;
+    justify-content: space-between;
+    padding: 3vw 5vw;
 }
 
 .elements {
@@ -106,14 +113,16 @@ $padding-left-s: 4vw;
 .item-title {
     color: black;
     margin-left: 4vw;
+    font-family: $font-asap;
+    font-size: 4.5vw;
 }
 
 .selected-item { 
     background-color: $selected-item;
-}
 
-.selected-item path {
-    fill: $orange;
+    & path {
+        fill: $orange;
+    }
 }
 
 .profile-container {
@@ -121,15 +130,18 @@ $padding-left-s: 4vw;
     margin-top: 5vh;
 }
 
-@media (min-width: 500px) {
-    .nav-text a svg {
-        height: 4vw;
-        width: 4vw;
-    }
 
-    .nav-text a {
-        padding-left: 0;
-        padding: 0;
+@media (min-width: 500px) {
+    .nav-text {
+        & a svg {
+            height: 4vw;
+            width: 4vw;
+        }
+
+        & a{
+            padding-left: 0;
+            padding: 0;
+        }
     }
 
     .sidebar { 
@@ -140,12 +152,21 @@ $padding-left-s: 4vw;
         height: 4vw;
         width: 4vw;
     }
+
+    .item-title {
+        font-size: 4vw;
+    }
 }
 
 @media only screen and (min-width: 500px) and (max-width: 600px) {
     .item-title {
         font-size: 3vw;
         margin-left: 3vw;
+    }
+
+    .nav-item svg {
+        height: 4vw;
+        width: 4vw;
     }
 }
 
@@ -154,6 +175,11 @@ $padding-left-s: 4vw;
         font-size: 2.2vw;
         margin-left: 3vw;
     }
+
+    .nav-item svg {
+        height: 3.5vw;
+        width: 3.5vw;
+    }
 }
 
 @media only screen and (min-width: 700px) and (max-width: 840px) {
@@ -161,16 +187,29 @@ $padding-left-s: 4vw;
         font-size: 2vw;
         margin-left: 3vw;
     }
+
+    .nav-li {
+        padding: 2vw 2vw;
+    }
 }
 
 @media only screen and (min-width: 840px) and (max-width: 1024px) {
     .item-title {
-        font-size: 1.8vw;
+        font-size: 1.5vw;
         margin-left: 1.5vw;
     }
 
     .nav-text {
         padding: 0 2vw;
+    }
+
+    .nav-li {
+        padding: 1vw 2vw;
+    }
+
+    .nav-item svg {
+        height: 3vw;
+        width: 3vw;
     }
 }
 
@@ -199,15 +238,15 @@ $padding-left-s: 4vw;
 
     .nav-text {
         padding: 0vw 3vw;
-    }
 
-    .nav-text a { 
-        padding: 0;
-    }
+        & a {
+            padding: 0;
+        }
 
-    .nav-text a svg {
-        height: 3vw;
-        width: 3vw;
+        & a svg {
+            height: 3vw;
+            width: 3vw;
+        }
     }
 }
 
@@ -217,6 +256,10 @@ $padding-left-s: 4vw;
         width: 2vw;
     }
 
+    .nav-item svg {
+        height: 3vw;
+        width: 3vw;
+    }
 
     .navbar {
         padding-left: 2vw;
@@ -224,26 +267,29 @@ $padding-left-s: 4vw;
 
     .nav-text {    
         padding: 0 1vw;
-    }
 
-    .nav-text a {
-        padding-left: 1vw;
-        padding-right: 0;
-    }
+        & a {
+            padding-left: 1vw;
+            padding-right: 0;
+        }
 
-    .nav-text a svg {
-        height: 2vw;
-        width: 2vw;
+        & a svg {
+            height: 2vw;
+            width: 2vw;
+        }
+
+        & a:hover {
+            fill: $gray;
+            color: $gray;
+        }
     }
 
     .item-title {
-        align-self: center;
-        margin-left: 1vw;
+        font-size: 1.5vw;
     }
 
-    .nav-text a:hover {
-        fill: $gray;
-        color: $gray;
+    .nav-li {
+        padding: 2vw 2vw;
     }
 
     .icon {
@@ -267,5 +313,23 @@ $padding-left-s: 4vw;
 
     .sidebar-container {
         border-right: 1px solid #b0b0b0b0;
+    }
+
+    .nav-li {
+        padding: 1vw 1vw;
+    }
+
+    .nav-item svg {
+        height: 1.7vw;
+        width: 1.7vw;
+    }
+
+    .item-title {
+        font-size: 1.2vw;
+        margin-left: 10px;
+    }
+
+    .chevron {
+        display: none;
     }
 }

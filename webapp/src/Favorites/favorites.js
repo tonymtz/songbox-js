@@ -25,7 +25,7 @@ export const addFavorite = async(file) => {
     const token = cookie.get('dbx-token');
 
     try {
-        const url = `${window.location.protocol}//${window.location.hostname}:4000/api/favorite/`;
+        const url = `${window.location.protocol}//${window.location.hostname}/api/favorite/`;
         const response = await axios.post(url, { data: file }, {
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export const removeFavorite = async(file) => {
     const token = cookie.get('dbx-token');
 
     try {
-        const url = `${window.location.protocol}//${window.location.hostname}:4000/api/favorite/`;
+        const url = `${window.location.protocol}//${window.location.hostname}/api/favorite/`;
         const response = await axios.delete(url, {
             headers: {
                 'Content-Type': 'application/json',

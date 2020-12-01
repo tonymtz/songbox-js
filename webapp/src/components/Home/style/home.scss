@@ -1,12 +1,12 @@
 @import "../../../styles/colors.scss";
 
-.home-container img:hover {
-    cursor: pointer;
-}
-
 .home-container {
     padding: 2vw;
     padding-right: 0;
+
+    & img:hover {
+        cursor: pointer;
+    }
 }
 
 .home-icon {

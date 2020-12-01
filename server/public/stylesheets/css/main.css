@@ -83,3 +83,7 @@ body,
     right: unset;
     margin-left: auto;
     margin-right: auto; } }
+
+@media (max-width: 450px) {
+  .dropbox-btn {
+    border-radius: 10px; } }
