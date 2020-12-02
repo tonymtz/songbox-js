@@ -6,9 +6,9 @@ import ParentTest from './ParentTest';
 import Profile from '../components/Loading';
 
 test('Render Profile component', () => {
-    let component = create(
-        <ParentTest>
-            <Profile />
-        </ParentTest>
-    );
+  const component = create(
+    <ParentTest>
+      <Profile />
+    </ParentTest>,
+  );
 });

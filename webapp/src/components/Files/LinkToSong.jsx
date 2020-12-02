@@ -1,71 +1,96 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import propTypes from 'prop-types';
 
-import { changeSongIndex, changeSongsQueue, toggleFavoritePlaying } from '../../redux/actions/';
+import { changeSongIndex, changeSongsQueue, toggleFavoritePlaying } from '../../redux/actions';
 
-import SongIcon from '../SongIcon/';
-import HeartFavorite from '../HeartFavorite/';
+import SongIcon from '../SongIcon';
+import HeartFavorite from '../HeartFavorite';
 
-const LinkToSong = ({ index, fileName, samePlaylist, files, path, inFavorites }) => {
+const LinkToSong = ({
+  index, fileName, samePlaylist, files, path, inFavorites,
+}) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isBroken, setIsBroken] = useState(false);
 
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isBroken, setIsBroken] = useState(false);
+  const songIndex = useSelector((state) => state.songIndex);
+  const favoritePlaying = useSelector((state) => state.favorites.isPlaying);
+  const brokenLinks = useSelector((state) => state.brokenLinks);
+  const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const dispatch = useDispatch();
 
-    const songIndex = useSelector((state) => state.songIndex);
-    const favoritePlaying = useSelector((state) => state.favorites.isPlaying);
-    const brokenLinks = useSelector((state) => state.brokenLinks);
-    const darkThemeActive = useSelector((state) => state.player.darkTheme);
-    const dispatch = useDispatch();
+  const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
+  const toggleFavoritePlayingState = (playing) => dispatch(toggleFavoritePlaying(playing));
+  const setSongIndex = (sonIndex) => dispatch(changeSongIndex(sonIndex));
 
-    const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue)); 
-    const toggleFavoritePlayingState = (isPlaying) => dispatch(toggleFavoritePlaying(isPlaying));
-    const setSongIndex = (index) => dispatch(changeSongIndex(index));
+  const selectSong = () => {
+    setSongIndex(index);
+    setIsPlaying(true);
+    setSongsQueue(files);
 
-    const selectSong = () => {
-        setSongIndex(index);
-        setIsPlaying(true);
-        setSongsQueue(files);
+    if (inFavorites) toggleFavoritePlayingState(true);
+    else toggleFavoritePlayingState(false);
+  };
 
-        if (inFavorites) toggleFavoritePlayingState(true);
-        else toggleFavoritePlayingState(false);
-    };
+  useEffect(() => {
+    const found = brokenLinks.find((link) => link.toLowerCase() === path.toLowerCase());
+    setIsBroken(!!found);
+  }, [brokenLinks]);
 
-    useEffect(() => {
-        const found = brokenLinks.find((link) => link.toLowerCase() === path.toLowerCase());
-        setIsBroken(!!found);
-    }, [brokenLinks]);
+  useEffect(() => {
+    if (inFavorites) {
+      const expression = (index === songIndex) && favoritePlaying;
+      setIsPlaying(expression);
+    } else {
+      const expression = (index === songIndex) && samePlaylist;
+      setIsPlaying(expression);
+    }
 
-    useEffect(() => {
-        if (inFavorites) {
-            const expression = (index === songIndex) && favoritePlaying;
-            setIsPlaying(expression);
-        } else {
-            const expression = (index === songIndex) && samePlaylist;
-            setIsPlaying(expression);
-        }
+    return () => setIsPlaying(false);
+  }, [songIndex, samePlaylist]);
 
-        return () => setIsPlaying(false);
-    }, [songIndex, samePlaylist]);
-
-    return(
-        <div onClick={selectSong} className={`file-container ${isPlaying && !isBroken ? 'is-playing' : ''} ${isBroken ? 'broken-link' : ''}`}>
-            <SongIcon 
-                isPlaying={isPlaying}
-                isBroken={isBroken}
-            />
-            <div className="file-name-container">
-                <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : '' }`}>{'Unnamed file' && fileName}</p>
-                {isBroken && <p>We could not find this song...</p>}
-            </div>
-            {
-                !isBroken &&
+  return (
+    /* eslint-disable jsx-a11y/no-static-element-interactions */
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+    <div onClick={selectSong} className={`file-container ${isPlaying && !isBroken ? 'is-playing' : ''} ${isBroken ? 'broken-link' : ''}`}>
+      <SongIcon
+        isPlaying={isPlaying}
+        isBroken={isBroken}
+      />
+      <div className="file-name-container">
+        <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : ''}`}>{'Unnamed file' && fileName}</p>
+        {isBroken && <p>We could not find this song...</p>}
+      </div>
+      {
+                !isBroken
+                && (
                 <HeartFavorite
-                    fileName={fileName} 
-                    path={path}
+                  fileName={fileName}
+                  path={path}
                 />
+                )
             }
-        </div>
-    );
+    </div>
+  );
+};
+
+LinkToSong.propTypes = {
+  index: propTypes.number,
+  fileName: propTypes.string,
+  samePlaylist: propTypes.bool,
+  // eslint-disable-next-line react/forbid-prop-types
+  files: propTypes.array,
+  path: propTypes.string,
+  inFavorites: propTypes.bool,
+};
+
+LinkToSong.defaultProps = {
+  index: 0,
+  fileName: '',
+  samePlaylist: false,
+  files: [],
+  path: '',
+  inFavorites: false,
 };
 
 export default LinkToSong;

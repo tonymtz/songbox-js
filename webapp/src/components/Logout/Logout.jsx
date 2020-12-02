@@ -5,18 +5,16 @@ import { useDispatch } from 'react-redux';
 import { changeAuth } from '../../redux/actions';
 
 const Logout = () => {
-    const dispatch = useDispatch();
-    const changeAuthState = (newState) => dispatch(changeAuth(newState));
-    
-    const cookie = new Cookie();
-    cookie.remove('dbx-token', { path: '/'});
-    changeAuthState(false);
+  const dispatch = useDispatch();
+  const changeAuthState = (newState) => dispatch(changeAuth(newState));
 
-    return(
-        <div>
+  const cookie = new Cookie();
+  cookie.remove('dbx-token', { path: '/' });
+  changeAuthState(false);
 
-        </div>
-    );
+  return (
+    <div />
+  );
 };
 
 export default Logout;

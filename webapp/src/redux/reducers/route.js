@@ -1,11 +1,11 @@
 const routeReducer = (state = '/', { type, payload = '' }) => {
-    switch (type) {
+  switch (type) {
     case 'CHANGE_ROUTE':
-        return payload;
+      return payload;
 
     default:
-        return state;
-    }
+      return state;
+  }
 };
 
 export default routeReducer;

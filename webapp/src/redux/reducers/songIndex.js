@@ -1,11 +1,11 @@
 const songIndexReducer = (state = 0, { type, payload = 0 }) => {
-    switch (type) {
+  switch (type) {
     case 'CHANGE_SONG_INDEX':
-        return payload;
+      return payload;
 
     default:
-        return state;
-    }
+      return state;
+  }
 };
 
 export default songIndexReducer;

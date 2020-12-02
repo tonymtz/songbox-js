@@ -5,12 +5,10 @@ import allReducers from '../redux/reducers';
 
 const store = createStore(allReducers);
 
-const ParentTest = (props) => {
-    return(
-        <Provider store={store}>
-            {props.children}
-        </Provider>
-    );
-};
+const ParentTest = (props) => (
+  <Provider store={store}>
+    {props.children}
+  </Provider>
+);
 
 export default ParentTest;

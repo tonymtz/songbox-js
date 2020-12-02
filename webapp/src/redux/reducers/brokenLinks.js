@@ -1,11 +1,11 @@
 const brokenLinksReducer = (state = [], { type, payload }) => {
-    switch (type) {
+  switch (type) {
     case 'ADD_BROKEN_LINK':
-        return [...state, payload];
+      return [...state, payload];
 
     default:
-        return state;
-    }
+      return state;
+  }
 };
 
 export default brokenLinksReducer;

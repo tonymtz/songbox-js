@@ -1,11 +1,11 @@
-const slideBarReducer = (state = 0, { type, payload = 0}) => {
-    switch(type) {
+const slideBarReducer = (state = 0, { type, payload = 0 }) => {
+  switch (type) {
     case 'CHANGE_SLIDEBAR_INDEX':
-        return payload;
+      return payload;
 
     default:
-        return state;
-    }
+      return state;
+  }
 };
 
 export default slideBarReducer;

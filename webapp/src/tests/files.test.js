@@ -9,27 +9,27 @@ import LinkToFolder from '../components/Files/LinkToFolder';
 import LinkToSong from '../components/Files/LinkToSong';
 
 test('Test Files component', () => {
-    const component = create(
-        <ParentTest>
-            <Files />
-        </ParentTest>
-    )
+  const component = create(
+    <ParentTest>
+      <Files />
+    </ParentTest>,
+  );
 });
 
 test('Test LinkToFolder component', () => {
-    const component = create(
-        <ParentTest>
-             <BrowserRouter>
-                <Route path="/" component={LinkToFolder}/>
-             </BrowserRouter>
-        </ParentTest>
-    )
+  const component = create(
+    <ParentTest>
+      <BrowserRouter>
+        <Route path="/" component={LinkToFolder} />
+      </BrowserRouter>
+    </ParentTest>,
+  );
 });
 
 test('Test LinkToSong component', () => {
-    const component = create(
-        <ParentTest>
-            <LinkToSong  />
-        </ParentTest>
-    )
+  const component = create(
+    <ParentTest>
+      <LinkToSong />
+    </ParentTest>,
+  );
 });

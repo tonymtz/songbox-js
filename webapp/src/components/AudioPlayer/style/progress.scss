@@ -1,6 +1,11 @@
+.progress-bar-container {
+    height: 2vh;
+    position: relative;
+}
+
 .progress { 
     border-radius: 0;
-    height: 0.5vh;
+    height: 100%;
 }
 
 .hide {

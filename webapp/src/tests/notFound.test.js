@@ -6,9 +6,9 @@ import ParentTest from './ParentTest';
 import NotFound from '../components/NotFound';
 
 test('Render NotFound component', () => {
-    let component = create(
-        <ParentTest>
-            <NotFound />
-        </ParentTest>
-    );
+  const component = create(
+    <ParentTest>
+      <NotFound />
+    </ParentTest>,
+  );
 });

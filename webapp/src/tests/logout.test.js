@@ -6,9 +6,9 @@ import ParentTest from './ParentTest';
 import Logout from '../components/Loading';
 
 test('Render Logout component', () => {
-    let component = create(
-        <ParentTest>
-            <Logout />
-        </ParentTest>
-    );
+  const component = create(
+    <ParentTest>
+      <Logout />
+    </ParentTest>,
+  );
 });

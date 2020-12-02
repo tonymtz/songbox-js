@@ -6,9 +6,9 @@ import ParentTest from './ParentTest';
 import Help from '../components/Help';
 
 test('Render Help component', () => {
-    let component = create(
-        <ParentTest>
-            <Help />
-        </ParentTest>
-    );
+  const component = create(
+    <ParentTest>
+      <Help />
+    </ParentTest>,
+  );
 });

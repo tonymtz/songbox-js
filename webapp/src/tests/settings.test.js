@@ -6,9 +6,9 @@ import ParentTest from './ParentTest';
 import Settings from '../components/Loading';
 
 test('Render Settings component', () => {
-    let component = create(
-        <ParentTest>
-            <Settings />
-        </ParentTest>
-    );
+  const component = create(
+    <ParentTest>
+      <Settings />
+    </ParentTest>,
+  );
 });

@@ -1,11 +1,11 @@
 const userReducer = (state = {}, { type, payload = {} }) => {
-    switch (type) {
+  switch (type) {
     case 'SET_USER':
-        return payload;
+      return payload;
 
     default:
-        return state;
-    }
+      return state;
+  }
 };
 
 export default userReducer;

@@ -1,110 +1,78 @@
-export const changeSlidebarIndex = (index) => {
-    return {
-        type: 'CHANGE_SLIDEBAR_INDEX',
-        payload: index
-    };
-};
+export const changeSlidebarIndex = (index) => ({
+  type: 'CHANGE_SLIDEBAR_INDEX',
+  payload: index,
+});
 
-export const changeRoute = (route) => {
-    return {
-        type: 'CHANGE_ROUTE',
-        payload: route
-    };
-};
+export const changeRoute = (route) => ({
+  type: 'CHANGE_ROUTE',
+  payload: route,
+});
 
-export const changeSongIndex = (index) => {
-    return {
-        type: 'CHANGE_SONG_INDEX',
-        payload: index
-    };
-};
+export const changeSongIndex = (index) => ({
+  type: 'CHANGE_SONG_INDEX',
+  payload: index,
+});
 
-export const changeSongsQueue = (newQueue) => {
-    return {
-        type: 'CHANGE_SONGS_QUEUE',
-        payload: newQueue
-    };
-};
+export const changeSongsQueue = (newQueue) => ({
+  type: 'CHANGE_SONGS_QUEUE',
+  payload: newQueue,
+});
 
-export const changeAuth = (auth) => {
-    return {
-        type: 'CHANGED_AUTH',
-        payload: auth
-    };
-};
+export const changeAuth = (auth) => ({
+  type: 'CHANGED_AUTH',
+  payload: auth,
+});
 
-export const setUser = (user) => {
-    return {
-        type: 'SET_USER',
-        payload: user,
-    };
-};
+export const setUser = (user) => ({
+  type: 'SET_USER',
+  payload: user,
+});
 
-export const toggleRepeat = (repeat) => {
-    return {
-        type: 'TOGGLE_REPEAT',
-        payload: repeat
-    };
-};
+export const toggleRepeat = (repeat) => ({
+  type: 'TOGGLE_REPEAT',
+  payload: repeat,
+});
 
-export const setFavorites = (favorites) => {
-    return {
-        type: 'SET_FAVORITES',
-        payload: favorites
-    };
-};
+export const setFavorites = (favorites) => ({
+  type: 'SET_FAVORITES',
+  payload: favorites,
+});
 
-export const addToFavorites = (newFavorite) => {
-    return {
-        type: 'ADD_FAVORITE',
-        payload: newFavorite,
-    };
-};
+export const addToFavorites = (newFavorite) => ({
+  type: 'ADD_FAVORITE',
+  payload: newFavorite,
+});
 
-export const removeFromFavorites = (songToRemove) => {
-    return {
-        type: 'REMOVE_FAVORITE',
-        payload: songToRemove
-    };
-};
+export const removeFromFavorites = (songToRemove) => ({
+  type: 'REMOVE_FAVORITE',
+  payload: songToRemove,
+});
 
-export const toggleFavoritePlaying = (isPlaying) => {
-    return {
-        type: 'TOGGLE_IS_PLAYING',
-        payload: isPlaying
-    };
-};
+export const toggleFavoritePlaying = (isPlaying) => ({
+  type: 'TOGGLE_IS_PLAYING',
+  payload: isPlaying,
+});
 
-export const addBrokenLink = (link) => {
-    return {
-        type: 'ADD_BROKEN_LINK',
-        payload: link
-    };
-};
+export const addBrokenLink = (link) => ({
+  type: 'ADD_BROKEN_LINK',
+  payload: link,
+});
 
-export const markSongAsBroken = (index) => {
-    return {
-        type: 'MARK_SONG_AS_BROKEN',
-        payload: index
-    };
-};
+export const markSongAsBroken = (index) => ({
+  type: 'MARK_SONG_AS_BROKEN',
+  payload: index,
+});
 
-export const changeAutoPlay = (newState) => {
-    return {
-        type: 'SET_AUTO_PLAY',
-        payload: newState,
-    };
-};
+export const changeAutoPlay = (newState) => ({
+  type: 'SET_AUTO_PLAY',
+  payload: newState,
+});
 
-export const changeDarkTheme = (newState) => {
-    return {
-        type: 'SET_DARK_THEME',
-        payload: newState
-    };
-};
+export const changeDarkTheme = (newState) => ({
+  type: 'SET_DARK_THEME',
+  payload: newState,
+});
 
-export const restorePreferences = () => {
-    return {
-        type: 'RESTORE_PREFERENCES',
-    };
-};
+export const restorePreferences = () => ({
+  type: 'RESTORE_PREFERENCES',
+});

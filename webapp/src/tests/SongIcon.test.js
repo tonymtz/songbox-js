@@ -6,9 +6,9 @@ import ParentTest from './ParentTest';
 import SongIcon from '../components/SongIcon';
 
 test('Render SongIcon component', () => {
-    let component = create(
-        <ParentTest>
-            <SongIcon />
-        </ParentTest>
-    );
+  const component = create(
+    <ParentTest>
+      <SongIcon />
+    </ParentTest>,
+  );
 });
