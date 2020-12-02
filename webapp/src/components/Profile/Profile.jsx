@@ -7,6 +7,7 @@ import './style/profile.scss';
 const Profile = () => {
 
     const user = useSelector((state) => state.user); 
+    const darkThemeActive = useSelector((state) => state.player.darkTheme); 
 
     return(
         <div className="profile-container">
@@ -15,7 +16,7 @@ const Profile = () => {
                 src={user.photo || profilePicture}
                 alt="profile"
             />
-            <p className="user-email">{user.email || 'you@anonymous.com'}</p>
+            <p className={`${darkThemeActive ? 'dark-theme-name' : ''} user-email`}>{user.email || 'you@anonymous.com'}</p>
             <h4 className="user-name">{user.name.display_name || 'Anonymous'}</h4>
         </div>
     );

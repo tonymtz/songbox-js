@@ -18,6 +18,11 @@
     padding: 2vw 3vw;
 }
 
+.route-breadcrumb {
+    text-decoration: none;
+    color: black;
+}
+
 @media (min-width: 600px) and (max-width: 1024px) {
     .sub-directory-container {
         padding: 1vw 3vw;

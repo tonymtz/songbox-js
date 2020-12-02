@@ -45,10 +45,11 @@
     .App {
         width: 100%;
         height: unset;
+        margin-left: 250px; //Slidebars width
     }
 
     #root {
-        height: unset;
+        height: 100%;
     }
 }
 

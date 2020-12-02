@@ -50,6 +50,10 @@
     color: $dark-theme-color !important;
 }
 
+.dark-theme-name {
+    color: white;
+}
+
 @media (min-width: 768px) {
     .section-title {
         font-size: 3vw;

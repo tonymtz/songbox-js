@@ -5,9 +5,9 @@ import { changeSlidebarIndex, changeAutoPlay, changeDarkTheme, restorePreference
 
 import OptionSection from './OptionSection';
 import OptionToggle from './OptionToggle';
-import Option from './Option'
+import Option from './Option';
 
-import './styles/settings.scss'
+import './styles/settings.scss';
 
 const Settings = ({ pageNumber }) => {
     const dispatch = useDispatch();

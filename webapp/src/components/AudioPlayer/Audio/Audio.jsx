@@ -39,7 +39,7 @@ const Audio = ({
                     //Auto play...
                     setIsPlaying(true);
                 })
-                .catch((error) => {
+                .catch(() => {
                     //Auto play is disabled
                     setIsPlaying(false);
                 });
