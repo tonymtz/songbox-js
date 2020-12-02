@@ -16,7 +16,7 @@ export const getFavorites = async() => {
 
         return response;
     } catch (error) {
-        console.log(error);
+        return false;
     }
 };
 
@@ -35,7 +35,7 @@ export const addFavorite = async(file) => {
 
         return response;
     } catch (error) {
-        console.log(error);
+        return false;
     }
 };
 
@@ -57,6 +57,6 @@ export const removeFavorite = async(file) => {
 
         return response;
     } catch (error) {
-        console.log(error);
+        return false;
     }
 };

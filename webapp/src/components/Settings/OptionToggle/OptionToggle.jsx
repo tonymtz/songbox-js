@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import IOSSwitch from '../IOSSwitch';
 
 const OptionToggle = ({ optionTitle, checked, toggle }) => {

@@ -44,7 +44,6 @@
     }
 }
 
-
 .player-button {
     height: 5vh;
     width: 12vw;
@@ -97,5 +96,11 @@
     .play-button {
         height: 7vh;
         width: 15vw;
+    }
+}
+
+@media (min-width: 1025px) {
+    .audio-container {
+        height: 10vh;
     }
 }

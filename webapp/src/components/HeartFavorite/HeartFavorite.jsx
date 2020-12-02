@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import swal from 'sweetalert';
 
 import { addToFavorites, removeFromFavorites } from '../../redux/actions';
 import { addFavorite, removeFavorite } from '../../Favorites/favorites';
@@ -18,7 +19,17 @@ const HeartFavorite = ({ fileName, path }) => {
     const favorites = useSelector((state) => state.favorites.songs);
     const brokenLinks = useSelector((state) => state.brokenLinks);
 
+    const showServiceNotAvailable = () => {
+        setIsFavorite(false);
+        swal({
+            text: 'Service not available, try again later.',
+            icon: 'error'
+        });
+    };
+
     useEffect(() => {
+        if (!favorites) return;
+
         favorites.forEach(({ path_lower }) => {
             if (path.toLowerCase() === path_lower){
                 setIsFavorite(true);
@@ -37,11 +48,18 @@ const HeartFavorite = ({ fileName, path }) => {
                     path_lower: path
                 };
 
-                setIsFavorite(false);
-                removeFromFavoritesState(file);
-                await removeFavorite(file);
+                try {
+                    setIsFavorite(false);
+                    removeFromFavoritesState(file);
+                    await removeFavorite(file);
+                } catch (e) {
+                    setIsFavorite(false);
+                    removeFromFavoritesState(file);
+                    showServiceNotAvailable();
+                }
+
             }
-        }
+        };
 
         if (brokenLinks.length > 0 && favorites.length > 0) checkIfBroken();
     }, [brokenLinks]);
@@ -56,21 +74,30 @@ const HeartFavorite = ({ fileName, path }) => {
         };
 
         try {
+            let success = false;
+
             if (!isFavorite) {
                 setIsFavorite(true);
                 addToFavoritesState(file); 
                 await addFavorite(file);
+                success = await addFavorite(file);
             } else {
                 setIsFavorite(false);
                 removeFromFavoritesState(file);
-                await removeFavorite(file);
-            }
-          
+                success = await removeFavorite(file);
+            }   
+
+            if (!success) throw new Error();
+
         }catch(error) {
+            showServiceNotAvailable();
             setIsFavorite(false);
             removeFromFavoritesState(file);
         }
     };
+
+
+
     return (
         <svg onClick={markFavorite} className="feather feather-heart heart-icon icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill={isFavorite ? "#8A8A8A" : "none"} stroke="gray" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>

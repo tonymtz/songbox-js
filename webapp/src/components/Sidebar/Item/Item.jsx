@@ -15,7 +15,7 @@ const Item = ({ index, item }) => {
     return (
         <Link className={`nav-item`} to={item.path} >
             <li onClick={() => dispatch(changeSlidebarIndex(index))} className={`nav-li ${selectedIndex === index ? 'selected-item' : ''}`}>
-                <div>
+                <div className="nav-item-container">
                     { item.icon }
                     <span className="item-title">{ item.title }</span>
                 </div>

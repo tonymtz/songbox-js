@@ -18,9 +18,7 @@ import auth from './auth/auth';
 import { setFavorites } from './redux/actions';
 import { getFavorites } from './Favorites/favorites';
 
-
 import './styles/app.scss';
-
 
 const App = () => {
     const isAuth = useSelector((state) => state.auth);
@@ -34,7 +32,11 @@ const App = () => {
         const favorites = async () => {
             try {
                 const userFavorites = await getFavorites();
-                setFavoritesState(userFavorites.data);
+                if (!userFavorites) {
+                    throw new Error();
+                } else {
+                    setFavoritesState(userFavorites.data);
+                }
             } catch (error) {   
                 setFavoritesState([]);
             }
