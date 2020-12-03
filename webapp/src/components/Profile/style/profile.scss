@@ -15,7 +15,7 @@ $img-size: 20vw;
 
 .user-email {
     font-family: 'Asap', sans-serif;
-    font-size: 4vw;
+    font-size: 14px;
     margin-bottom: 0;
     padding: 1vw;
     padding-bottom: 0.1vw;
@@ -24,7 +24,7 @@ $img-size: 20vw;
 }
 
 .user-name {
-    font-size: 5vw;
+    font-size: 16px;
     font-weight: bold;
     padding: 3vw;
     padding-top: 0;
@@ -33,37 +33,28 @@ $img-size: 20vw;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    $image-size: 15vw;
+    $image-size: 12vw;
 
     .profile-picture {
         height: $image-size;
         width: $image-size;
     }
-
-    .user-email {
-        font-size: 2vw;
-    }
     
     .user-name {
-        font-size: 3vw;
         padding: 0;
     }
 }
 
 @media(min-width: 1024px) {
-    $image-size: 6vw;
+    $image-size: 7vw;
 
     .profile-picture {
         height: $image-size;
         width: $image-size;
     }
-
-    .user-email {
-        font-size: 16px;
-    }
     
     .user-name {
-        font-size: 18px;
         padding: 0;
+        font-size: 18px;
     }
 }

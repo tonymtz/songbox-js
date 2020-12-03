@@ -8,8 +8,9 @@ import './style/breadcrumb.scss';
 
 const Directory = () => {
   const route = useSelector((state) => state.route);
-  const [showingRoute, setShowingRoute] = useState([]);
+  const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
+  const [showingRoute, setShowingRoute] = useState([]);
   const [clickableFolders, setClickableFolders] = useState([]);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ const Directory = () => {
           {
                         clickableFolders.length >= 1
                           ? clickableFolders.map((tempRoute, index) => (
-                            <Link className="route-breadcrumb" key={tempRoute} to={`/app${tempRoute}`}>
+                            <Link className={`${darkThemeActive ? 'dark-theme-color' : ''} route-breadcrumb`} key={tempRoute} to={`/app${tempRoute}`}>
                               {`/${showingRoute[index]}`}
                             </Link>
                           ))

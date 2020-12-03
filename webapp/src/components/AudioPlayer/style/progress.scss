@@ -1,3 +1,6 @@
+$size-on-hover: 3vh;
+$increased-size: 0.5vh;
+
 .progress-bar-container {
     height: 2vh;
     position: relative;
@@ -8,6 +11,31 @@
     height: 100%;
 }
 
+.progress-hover {
+    height: $size-on-hover;
+}
+
+.progress-indicator {
+    position: absolute;
+    top: -15%;
+    height: $size-on-hover + $increased-size;
+    width: $size-on-hover + $increased-size;
+    border-radius: 50%;
+    border: 1px solid #adadad;
+    background-color: white;
+    display: block !important;
+}
+
 .hide {
     display: none;
+}
+
+@media (min-width: 1024px) {
+    .progress-indicator {
+        display: none !important;
+    }
+
+    .show {
+        display: block !important;
+    }
 }

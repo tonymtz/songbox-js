@@ -32,6 +32,7 @@ $padding-left-s: 4vw;
         color: $icon-gray;
         height: 6vw;
         width: 6vw;
+        align-self: center;
     }
 }
 
@@ -112,9 +113,9 @@ $padding-left-s: 4vw;
 
 .item-title {
     color: black;
-    margin-left: 4vw;
+    margin-left: 2vw;
     font-family: $font-asap;
-    font-size: 4.5vw;
+    font-size: 16px;
 }
 
 .selected-item { 
@@ -128,6 +129,10 @@ $padding-left-s: 4vw;
 .profile-container {
     margin-bottom: 5vh;
     margin-top: 5vh;
+}
+
+.nav-item-container {
+    display: flex;
 }
 
 
@@ -161,7 +166,7 @@ $padding-left-s: 4vw;
 @media only screen and (min-width: 500px) and (max-width: 600px) {
     .item-title {
         font-size: 3vw;
-        margin-left: 3vw;
+        margin-left: 1vw;
     }
 
     .nav-item svg {
@@ -173,7 +178,7 @@ $padding-left-s: 4vw;
 @media only screen and (min-width: 600px) and (max-width: 840px) {
     .item-title {
         font-size: 2.2vw;
-        margin-left: 3vw;
+        margin-left: 1vw;
     }
 
     .nav-item svg {
@@ -185,7 +190,7 @@ $padding-left-s: 4vw;
 @media only screen and (min-width: 700px) and (max-width: 840px) {
     .item-title {
         font-size: 2vw;
-        margin-left: 3vw;
+        margin-left: 1vw;
     }
 
     .nav-li {
@@ -196,7 +201,7 @@ $padding-left-s: 4vw;
 @media only screen and (min-width: 840px) and (max-width: 1024px) {
     .item-title {
         font-size: 1.5vw;
-        margin-left: 1.5vw;
+        margin-left: 1vw;
     }
 
     .nav-text {
@@ -327,7 +332,7 @@ $padding-left-s: 4vw;
     }
 
     .item-title {
-        font-size: 1.2vw;
+        font-size: 18px;
         margin-left: 10px;
     }
 

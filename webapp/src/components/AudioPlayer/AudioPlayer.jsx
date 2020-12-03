@@ -180,6 +180,7 @@ const AudioPlayer = () => {
             progress={progress}
             audioPlayer={audioPlayer}
             currentSong={currentSong}
+            setProgress={setProgress}
           />
           <Player
             previousSong={previousSong}
