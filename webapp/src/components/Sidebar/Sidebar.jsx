@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React from 'react';
+import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,8 +13,7 @@ import Item from './Item';
 
 import './styles/Sidebar.scss';
 
-const Sidebar = () => {
-  const [sidebar, setSidebar] = useState(false);
+const Sidebar = ({ sidebar, setSidebar }) => {
   const showSidebar = () => setSidebar(!sidebar);
 
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
@@ -49,6 +49,16 @@ const Sidebar = () => {
       </div>
     </div>
   );
+};
+
+Sidebar.defaultProps = {
+  sidebar: false,
+  setSidebar: undefined,
+};
+
+Sidebar.propTypes = {
+  sidebar: propTypes.bool,
+  setSidebar: propTypes.func,
 };
 
 export default Sidebar;

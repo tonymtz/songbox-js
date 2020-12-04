@@ -35,13 +35,11 @@ const Main = () => {
   }, []);
 
   return (
-    <div className="App">
-      <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
-        <h1 id="your-personal-library" className="title">Your personal library</h1>
-        <Breadcrumb />
+    <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
+      <h1 id="your-personal-library" className="title">Your personal library</h1>
+      <Breadcrumb />
 
-        <Files key={route} />
-      </div>
+      <Files key={route} />
     </div>
   );
 };

@@ -2,6 +2,8 @@ const defaultPlayer = {
   onRepeat: false,
   autoPlay: true,
   darkTheme: false,
+  currentSong: undefined,
+  songName: '',
 };
 
 const playerReducer = (state = defaultPlayer, { type, payload }) => {
@@ -14,6 +16,12 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
 
     case 'SET_DARK_THEME':
       return { ...state, darkTheme: payload };
+
+    case 'SET_CURRENT_SONG':
+      return { ...state, currentSong: payload };
+
+    case 'SET_SONG_NAME':
+      return { ...state, songName: payload };
 
     case 'RESTORE_PREFERENCES':
       return {

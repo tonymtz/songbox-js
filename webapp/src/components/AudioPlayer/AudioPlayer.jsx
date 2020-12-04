@@ -1,4 +1,7 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
+import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Player from './Player';
@@ -7,7 +10,7 @@ import AudioProgress from './AudioProgress';
 import Loading from '../Loading';
 
 import {
-  changeSongIndex, changeSongsQueue, addBrokenLink, markSongAsBroken,
+  changeSongIndex, changeSongsQueue, addBrokenLink, markSongAsBroken, setSongName,
 } from '../../redux/actions';
 
 import getLink from '../../Links/getLink';
@@ -16,7 +19,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './style/player.scss';
 import './style/progress.scss';
 
-const AudioPlayer = () => {
+const AudioPlayer = ({ closeSidebar }) => {
   const [audioPlayer] = useState(React.createRef());
 
   const [onRandom, setOnRandom] = useState(false);
@@ -30,12 +33,14 @@ const AudioPlayer = () => {
   const songsQueue = useSelector((state) => state.songsQueue);
   const onRepeat = useSelector((state) => state.player.onRepeat);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const songName = useSelector((state) => state.player.songName);
 
   const dispatch = useDispatch();
   const setSongIndex = (index) => dispatch(changeSongIndex(index));
   const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
   const addBrokenLinkState = (path) => dispatch(addBrokenLink(path));
   const markSongAsBrokenState = (index) => dispatch(markSongAsBroken(index));
+  const setSongNameState = (name) => dispatch(setSongName(name));
 
   const repeatPlaylist = () => {
     if (songIndex + 1 >= songsQueue.length) {
@@ -142,6 +147,8 @@ const AudioPlayer = () => {
             setCurrentSong(songLink);
             setSongsQueue(songsQueue);
           }
+
+          setSongNameState(songsQueue[songIndex].name);
         })
         .catch(() => {
           addBrokenLinkState(path.toLowerCase());
@@ -157,7 +164,7 @@ const AudioPlayer = () => {
   }, [songsQueue]);
 
   return (
-    <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
+    <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`} onClick={closeSidebar} onKeyDown={closeSidebar}>
       <Audio
         key={currentSong}
         currentSong={currentSong}
@@ -192,8 +199,19 @@ const AudioPlayer = () => {
           />
         </div>
       </>
+      <Helmet>
+        <title>{ songName && isPlaying ? `▶ ${songName}` : 'Songbox'}</title>
+      </Helmet>
     </div>
   );
+};
+
+AudioPlayer.defaultProps = {
+  closeSidebar: undefined,
+};
+
+AudioPlayer.propTypes = {
+  closeSidebar: propTypes.func,
 };
 
 export default AudioPlayer;

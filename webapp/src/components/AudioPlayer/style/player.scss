@@ -101,6 +101,18 @@
 
 @media (min-width: 1025px) {
     .audio-container {
-        height: 10vh;
+        height: 12vh;
+    }
+
+    .buttons {
+        justify-content: center;
+
+        & button {
+            padding: 0.5vw 0;
+        }
+    }
+
+    .play-button {
+        width: 10vw;
     }
 }

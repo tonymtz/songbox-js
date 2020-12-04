@@ -60,7 +60,7 @@ const AudioProgress = ({
   }, [progress]);
 
   return (
-    <div className={`${showThumb || showBar ? 'progress-hover' : ''} progress-bar-container`}>
+    <div className="progress-bar-container">
       <Draggable
         axis="x"
         onStart={startDragging}
@@ -85,6 +85,7 @@ const AudioProgress = ({
         onMouseLeave={stopHover}
         onClick={changeProgress}
         variant="warning"
+        className={`${showThumb || showBar ? 'progress-hover' : ''}`}
         now={progress}
       />
     </div>

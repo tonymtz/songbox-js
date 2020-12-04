@@ -157,15 +157,10 @@ $padding-left-s: 4vw;
         height: 4vw;
         width: 4vw;
     }
-
-    .item-title {
-        font-size: 4vw;
-    }
 }
 
 @media only screen and (min-width: 500px) and (max-width: 600px) {
     .item-title {
-        font-size: 3vw;
         margin-left: 1vw;
     }
 
@@ -177,7 +172,6 @@ $padding-left-s: 4vw;
 
 @media only screen and (min-width: 600px) and (max-width: 840px) {
     .item-title {
-        font-size: 2.2vw;
         margin-left: 1vw;
     }
 
@@ -189,7 +183,6 @@ $padding-left-s: 4vw;
 
 @media only screen and (min-width: 700px) and (max-width: 840px) {
     .item-title {
-        font-size: 2vw;
         margin-left: 1vw;
     }
 
@@ -200,7 +193,6 @@ $padding-left-s: 4vw;
 
 @media only screen and (min-width: 840px) and (max-width: 1024px) {
     .item-title {
-        font-size: 1.5vw;
         margin-left: 1vw;
     }
 
@@ -289,10 +281,6 @@ $padding-left-s: 4vw;
         }
     }
 
-    .item-title {
-        font-size: 1.5vw;
-    }
-
     .nav-li {
         padding: 2vw 2vw;
     }
@@ -332,7 +320,6 @@ $padding-left-s: 4vw;
     }
 
     .item-title {
-        font-size: 18px;
         margin-left: 10px;
     }
 

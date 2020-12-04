@@ -76,3 +76,13 @@ export const changeDarkTheme = (newState) => ({
 export const restorePreferences = () => ({
   type: 'RESTORE_PREFERENCES',
 });
+
+export const setSong = (song) => ({
+  type: 'SET_CURRENT_SONG',
+  payload: song,
+});
+
+export const setSongName = (name) => ({
+  type: 'SET_SONG_NAME',
+  payload: name,
+});

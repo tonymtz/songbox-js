@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useEffect, useState } from 'react';
 import Cookie from 'universal-cookie';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,9 +23,11 @@ import './styles/app.scss';
 const App = () => {
   const isAuth = useSelector((state) => state.auth);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
-  const dispatch = useDispatch();
 
+  const dispatch = useDispatch();
   const setFavoritesState = (favorites) => dispatch(setFavorites(favorites));
+
+  const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
     const favorites = async () => {
@@ -68,6 +71,8 @@ const App = () => {
       });
   }, [isAuth, dispatch]);
 
+  const closeSidebar = () => setSidebar(false);
+
   return (
     <>
       {
@@ -76,18 +81,25 @@ const App = () => {
                 <>
                   <BrowserRouter>
                     <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
-                      <Sidebar />
+                      <Sidebar
+                        sidebar={sidebar}
+                        setSidebar={setSidebar}
+                      />
                     </div>
-                    <Switch>
-                      <Route path="/app" component={Main} />
-                      <Route path="/app/:path" component={Main} />
-                      <Route path="/favorites" render={() => <Favorites pageNumber={1} />} />
-                      <Route path="/settings" render={() => <Settings pageNumber={2} />} />
-                      <Route path="/help" render={() => <Help pageNumber={3} />} />
-                      <Route path="/logout" render={() => <Logout />} />
-                      <Route path="*" component={NotFound} />
-                    </Switch>
-                    <AudioPlayer />
+                    <div className="App" onClick={closeSidebar} onKeyDown={closeSidebar}>
+                      <Switch>
+                        <Route path="/app" component={Main} />
+                        <Route path="/app/:path" component={Main} />
+                        <Route path="/favorites" render={() => <Favorites pageNumber={1} />} />
+                        <Route path="/settings" render={() => <Settings pageNumber={2} />} />
+                        <Route path="/help" render={() => <Help pageNumber={3} />} />
+                        <Route path="/logout" render={() => <Logout />} />
+                        <Route path="*" component={NotFound} />
+                      </Switch>
+                    </div>
+                    <AudioPlayer
+                      closeSidebar={closeSidebar}
+                    />
                   </BrowserRouter>
                 </>
                 )

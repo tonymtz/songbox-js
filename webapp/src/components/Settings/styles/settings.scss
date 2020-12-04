@@ -3,7 +3,7 @@
 @import '../../../styles/sizes.scss';
 .settings-container {
     padding: 0 5vw;
-    margin-bottom: $multi-player;
+    padding-bottom: $multi-player;
 }
 
 .solid-gray-bar {
@@ -52,6 +52,20 @@
 
 .dark-theme-name {
     color: white;
+}
+
+.copy-right-container {
+    padding-top: 2vh;
+}
+
+.copy-right {
+    font-size: 12px;
+}
+
+.pref-button {
+    border-radius: 50px;
+    border: none;
+    padding: 1vh 2.5vw
 }
 
 @media (min-width: 768px) {

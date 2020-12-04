@@ -11,10 +11,6 @@ $increased-size: 0.5vh;
     height: 100%;
 }
 
-.progress-hover {
-    height: $size-on-hover;
-}
-
 .progress-indicator {
     position: absolute;
     top: -15%;
@@ -31,8 +27,17 @@ $increased-size: 0.5vh;
 }
 
 @media (min-width: 1024px) {
+    .progress { 
+        height: 40%;
+    }
+
+    .progress-hover {
+        height: 100%;
+    }
+
     .progress-indicator {
         display: none !important;
+        top: -25%;
     }
 
     .show {

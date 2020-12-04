@@ -17,6 +17,7 @@ const LinkToSong = ({
   const favoritePlaying = useSelector((state) => state.favorites.isPlaying);
   const brokenLinks = useSelector((state) => state.brokenLinks);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
+
   const dispatch = useDispatch();
 
   const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));

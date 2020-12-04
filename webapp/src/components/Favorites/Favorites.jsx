@@ -17,14 +17,13 @@ const Favorites = ({ pageNumber }) => {
   }, [pageNumber, dispatch]);
 
   return (
-    <div className="App">
-      <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
-        <h1 id="your-personal-library" className="title">
-          Your personal library
-          <span role="img" aria-label="heart">❤️</span>
-        </h1>
-        <div className={`files-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
-          {
+    <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
+      <h1 id="your-personal-library" className="title">
+        Your personal library
+        <span role="img" aria-label="heart">❤️</span>
+      </h1>
+      <div className={`files-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
+        {
                         favorites.length > 0
                           ? favorites.map((favorite, index) => (
                             <LinkToSong
@@ -43,7 +42,6 @@ const Favorites = ({ pageNumber }) => {
                             </div>
                           )
                     }
-        </div>
       </div>
     </div>
   );
