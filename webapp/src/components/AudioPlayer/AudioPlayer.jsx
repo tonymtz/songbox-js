@@ -28,12 +28,14 @@ const AudioPlayer = ({ closeSidebar }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState('');
   const [progress, setProgress] = useState(0);
+  const [showingName, setShowingName] = useState('');
 
   const songIndex = useSelector((state) => state.songIndex);
   const songsQueue = useSelector((state) => state.songsQueue);
   const onRepeat = useSelector((state) => state.player.onRepeat);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
   const songName = useSelector((state) => state.player.songName);
+  const showFullFilename = useSelector((state) => state.player.fullFilename);
 
   const dispatch = useDispatch();
   const setSongIndex = (index) => dispatch(changeSongIndex(index));
@@ -131,6 +133,11 @@ const AudioPlayer = ({ closeSidebar }) => {
     if (songsQueue[songIndex].preview_url) {
       setCurrentSong(songsQueue[songIndex].preview_url);
       setSongsQueue(songsQueue);
+
+      const song = songsQueue[songIndex].name || songsQueue[songIndex].song_name;
+
+      setSongNameState(song);
+      setShowingName(song);
     } else {
       const path = songsQueue[songIndex].path_display || songsQueue[songIndex].path_lower;
 
@@ -148,7 +155,10 @@ const AudioPlayer = ({ closeSidebar }) => {
             setSongsQueue(songsQueue);
           }
 
-          setSongNameState(songsQueue[songIndex].name);
+          const song = songsQueue[songIndex].name || songsQueue[songIndex].song_name;
+
+          setSongNameState(song);
+          setShowingName(song);
         })
         .catch(() => {
           addBrokenLinkState(path.toLowerCase());
@@ -162,6 +172,14 @@ const AudioPlayer = ({ closeSidebar }) => {
     const singleSongTemp = songsQueue.length === 1;
     setSingleSong(singleSongTemp);
   }, [songsQueue]);
+
+  useEffect(() => {
+    if (!showFullFilename && songName) {
+      setShowingName(songName.replace(/\.?(mp3|ogg|wav)$/, ''));
+    } else if (songName) {
+      setShowingName(songName);
+    }
+  }, [showFullFilename, songName]);
 
   return (
     <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`} onClick={closeSidebar} onKeyDown={closeSidebar}>
@@ -196,11 +214,12 @@ const AudioPlayer = ({ closeSidebar }) => {
             nextSong={nextSong}
             toggleOnRandom={toggleOnRandom}
             onRandom={onRandom}
+            showingName={showingName}
           />
         </div>
       </>
       <Helmet>
-        <title>{ songName && isPlaying ? `▶ ${songName}` : 'Songbox'}</title>
+        <title>{ songName && showingName && isPlaying ? `▶ ${showingName}` : 'Songbox'}</title>
       </Helmet>
     </div>
   );

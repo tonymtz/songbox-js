@@ -9,32 +9,35 @@ import Forward from '../PlayerButtons/Forward';
 import Shuffle from '../PlayerButtons/Shuffle';
 
 const Player = ({
-  previousSong, isPlaying, play, nextSong, toggleOnRandom, onRandom,
+  previousSong, isPlaying, play, nextSong, toggleOnRandom, onRandom, showingName,
 }) => {
   const queueExists = useSelector((state) => state.songsQueue);
   const isDisable = queueExists.length <= 0;
 
   return (
     <div className={`buttons ${isDisable ? 'disable-buttons' : ''}`}>
-      <Repeat />
+      <p className="file-name-playing">{ showingName ? `Playing: ${showingName}` : 'Select an audio file to play' }</p>
+      <div className="buttons-container">
+        <Repeat />
 
-      <Rewind
-        previousSong={previousSong}
-      />
+        <Rewind
+          previousSong={previousSong}
+        />
 
-      <Play
-        play={play}
-        isPlaying={isPlaying}
-      />
+        <Play
+          play={play}
+          isPlaying={isPlaying}
+        />
 
-      <Forward
-        nextSong={nextSong}
-      />
+        <Forward
+          nextSong={nextSong}
+        />
 
-      <Shuffle
-        toggleOnRandom={toggleOnRandom}
-        onRandom={onRandom}
-      />
+        <Shuffle
+          toggleOnRandom={toggleOnRandom}
+          onRandom={onRandom}
+        />
+      </div>
     </div>
   );
 };
@@ -46,6 +49,7 @@ Player.propTypes = {
   nextSong: propTypes.func,
   toggleOnRandom: propTypes.func,
   onRandom: propTypes.bool,
+  showingName: propTypes.string,
 };
 
 Player.defaultProps = {
@@ -55,6 +59,7 @@ Player.defaultProps = {
   nextSong: undefined,
   toggleOnRandom: undefined,
   onRandom: undefined,
+  showingName: '',
 };
 
 export default Player;

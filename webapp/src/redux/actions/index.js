@@ -86,3 +86,8 @@ export const setSongName = (name) => ({
   type: 'SET_SONG_NAME',
   payload: name,
 });
+
+export const setFullfilename = (newState) => ({
+  type: 'SET_FULL_FILENAME',
+  payload: newState,
+});

@@ -1,15 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap&family=Quicksand&display=swap');
 //////////////////////// CLASSES ////////////////////////
-$font-size-s: 4vw;
-$font-size-m: 6vw;
-$font-size-l: 8vw;
-$font-quicksand: 'Quicksand',
-sans-serif;
-$font-asap: 'Asap',
-sans-serif;
-html,
-body,
-.main {
+$font-size-s: 2.5rem;
+$font-size-m: 3.5rem;
+$font-size-l: 5.5rem;
+$font-quicksand: 'Quicksand', sans-serif;
+$font-asap: 'Asap', sans-serif;
+
+html, body, .main {
     height: 100%;
 }
 
@@ -41,10 +38,11 @@ body,
     display: flex;
     flex-direction: column;
     margin-bottom: 10vh;
-}
+    flex-grow: 1;
 
-.buttons-container a {
-    margin: 2vw 0;
+    & a {
+        margin: 2vw 0;
+    }
 }
 
 .dropbox-btn {
@@ -65,61 +63,49 @@ body,
     width: 100%;
 }
 
-// #image {
-// }
 #content {
     padding: 2vw 14vw;
     padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    height: 65%;
 }
 
 #sign-in {
     font-weight: bold;
 }
 
-.links-container {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 @media (min-width: 1024px) {
-    $font-size-s: 1vw;
-    $font-size-m: 2vw;
-    $font-size-l: 3vw;
+    $font-size-xs: 1.5rem;
+    $font-size-s: 2rem;
+    $font-size-m: 2.5rem;
+    $font-size-l: 4rem;
+
     .main {
         display: flex;
     }
+
     #image-container {
         height: 100%;
         width: 45%;
     }
+
     .header {
         font-size: $font-size-m;
     }
+
     .text {
         font-size: $font-size-s;
     }
+
     .dropbox-btn {
-        font-size: $font-size-m;
+        font-size: $font-size-s;
         padding: 1vw 2vw;
     }
+
     #content {
         padding: 2vw 10vw;
-        margin: auto auto;
-    }
-    .links-container {
-        left: unset;
-        right: unset;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 450px) {
-    .dropbox-btn {
-        border-radius: 7px;
+        margin: auto 0;
+        width: 55%;
     }
 }

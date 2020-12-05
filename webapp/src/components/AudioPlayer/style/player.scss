@@ -1,4 +1,6 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles/sizes.scss";
+@import "../../../styles/fonts.scss";
 .button-active {
     background-color: $green-active;
 }
@@ -13,7 +15,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 15vh;
+    height: $multi-player;
     display: flex;
     justify-content: center;
 }
@@ -26,10 +28,11 @@
     align-items: center;
     display: flex;
     height: 90%;
-    justify-content: space-between;
-    padding-bottom: 0;
-    padding: 2vw 5vw;
     width: 100%;
+    flex-direction: column;
+    padding: 1vh 5vw;
+    padding-top: 0.2vh;
+    justify-content: space-around;
 
     & button {
         border-radius: 10px;
@@ -50,8 +53,8 @@
 }
 
 .play-button {
-    height: 9vh;
-    width: 20vw;
+    height: 8vh;
+    width: 18vw;
 }
 
 .disable-buttons {
@@ -61,6 +64,20 @@
 
 .nav-text a:hover {
     color: $orange;
+}
+
+.file-name-playing {
+    font-size: 12px;
+    margin-bottom: 0 !important;
+    overflow: hidden;
+    font-family: $font-asap;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
 @media (min-width: 1024px) {
@@ -90,7 +107,7 @@
     }
 
     .audio-container {
-        height: 15vw;
+        height: $multi-player - 5;
     }
     
     .play-button {
@@ -101,7 +118,7 @@
 
 @media (min-width: 1025px) {
     .audio-container {
-        height: 12vh;
+        height: $multi-player - 4;
     }
 
     .buttons {
@@ -112,7 +129,19 @@
         }
     }
 
+    .file-name-playing {
+        margin-bottom: 0.5vh !important;
+    }
+
     .play-button {
         width: 10vw;
+    }
+
+    .player-button {
+        width: 5vw;
+    }
+
+    .buttons-container {
+        justify-content: center;
     }
 }
