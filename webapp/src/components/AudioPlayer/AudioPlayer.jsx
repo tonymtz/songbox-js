@@ -160,7 +160,7 @@ const AudioPlayer = ({ closeSidebar }) => {
           const songTemp = songsQueue[songIndex];
           const songName = songTemp.name || songTemp.song_name;
 
-          setSongState(song);
+          setSongState(songTemp);
           setShowingName(songName);
         })
         .catch(() => {

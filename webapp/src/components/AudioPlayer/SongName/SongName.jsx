@@ -1,17 +1,16 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 import swal from 'sweetalert';
 
-import { changeRoute } from '../../../redux/actions';
 import { addFavorite } from '../../../Favorites/favorites';
 
 const SongName = ({ showingName }) => {
   const currentSong = useSelector((state) => state.player.currentSong);
   const songPath = currentSong ? currentSong.path : '';
 
-  const dispatch = useDispatch();
-  const goToFolder = (route) => dispatch(changeRoute(route));
+  const history = useHistory();
 
   const showInfo = () => {
     swal(`${showingName || 'Anonymous song'}`, {
@@ -35,7 +34,8 @@ const SongName = ({ showingName }) => {
             break;
 
           case 'folder':
-            goToFolder(songPath);
+            const appRoute = '/app' + songPath;
+            history.push(appRoute); 
             break;
 
           default:
