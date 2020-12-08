@@ -15,11 +15,11 @@ const Main = () => {
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
   const dispatch = useDispatch();
 
-  const changeRouteState = (newRoute) => dispatch(changeRoute(newRoute));
-
   const history = useHistory();
 
   useEffect(() => {
+    const changeRouteState = (newRoute) => dispatch(changeRoute(newRoute));
+
     const realRoute = getRoute();
     if (realRoute !== route) {
       changeRouteState(realRoute);

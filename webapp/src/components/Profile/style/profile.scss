@@ -1,7 +1,7 @@
 @import "../../../styles/fonts.scss";
 @import "../../../styles/colors.scss";
 
-$img-size: 20vw;
+$img-size: 100px;
 
 .profile-container {
     text-align: center;
@@ -33,26 +33,12 @@ $img-size: 20vw;
 }
 
 @media only screen and (min-width: 600px) and (max-width: 1024px) {
-    $image-size: 12vw;
-
-    .profile-picture {
-        height: $image-size;
-        width: $image-size;
-    }
-    
     .user-name {
         padding: 0;
     }
 }
 
-@media(min-width: 1024px) {
-    $image-size: 8vw;
-
-    .profile-picture {
-        height: $image-size;
-        width: $image-size;
-    }
-    
+@media(min-width: 1024px) { 
     .user-name {
         padding: 0;
         font-size: 18px;

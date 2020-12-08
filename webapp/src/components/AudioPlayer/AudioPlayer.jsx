@@ -10,7 +10,7 @@ import AudioProgress from './AudioProgress';
 import Loading from '../Loading';
 
 import {
-  changeSongIndex, changeSongsQueue, addBrokenLink, markSongAsBroken, setSongName,
+  changeSongIndex, changeSongsQueue, addBrokenLink, markSongAsBroken, setSong,
 } from '../../redux/actions';
 
 import getLink from '../../Links/getLink';
@@ -34,15 +34,16 @@ const AudioPlayer = ({ closeSidebar }) => {
   const songsQueue = useSelector((state) => state.songsQueue);
   const onRepeat = useSelector((state) => state.player.onRepeat);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
-  const songName = useSelector((state) => state.player.songName);
+  const song = useSelector((state) => state.player.currentSong);
   const showFullFilename = useSelector((state) => state.player.fullFilename);
 
   const dispatch = useDispatch();
-  const setSongIndex = (index) => dispatch(changeSongIndex(index));
+
   const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
   const addBrokenLinkState = (path) => dispatch(addBrokenLink(path));
   const markSongAsBrokenState = (index) => dispatch(markSongAsBroken(index));
-  const setSongNameState = (name) => dispatch(setSongName(name));
+  const setSongState = (name) => dispatch(setSong(name));
+  const setSongIndex = (index) => dispatch(changeSongIndex(index));
 
   const repeatPlaylist = () => {
     if (songIndex + 1 >= songsQueue.length) {
@@ -113,15 +114,15 @@ const AudioPlayer = ({ closeSidebar }) => {
     return -1;
   };
 
-  const skipToAvailableSong = () => {
-    const index = findNextAvailableSong(songsQueue, songIndex);
-    if (index >= 0) nextSong(index);
-    else setIsPlaying(false);
-  };
-
   const toggleOnRandom = () => setOnRandom(!onRandom);
 
   useEffect(() => {
+    const skipToAvailableSong = () => {
+      const index = findNextAvailableSong(songsQueue, songIndex);
+      if (index >= 0) nextSong(index);
+      else setIsPlaying(false);
+    };
+
     if (songsQueue.length <= 0) return;
     setIsLoading(true);
 
@@ -134,10 +135,11 @@ const AudioPlayer = ({ closeSidebar }) => {
       setCurrentSong(songsQueue[songIndex].preview_url);
       setSongsQueue(songsQueue);
 
-      const song = songsQueue[songIndex].name || songsQueue[songIndex].song_name;
+      const songTemp = songsQueue[songIndex];
+      const songName = songTemp.name || songTemp.song_name;
 
-      setSongNameState(song);
-      setShowingName(song);
+      setSongState(songTemp);
+      setShowingName(songName);
     } else {
       const path = songsQueue[songIndex].path_display || songsQueue[songIndex].path_lower;
 
@@ -155,10 +157,11 @@ const AudioPlayer = ({ closeSidebar }) => {
             setSongsQueue(songsQueue);
           }
 
-          const song = songsQueue[songIndex].name || songsQueue[songIndex].song_name;
+          const songTemp = songsQueue[songIndex];
+          const songName = songTemp.name || songTemp.song_name;
 
-          setSongNameState(song);
-          setShowingName(song);
+          setSongState(song);
+          setShowingName(songName);
         })
         .catch(() => {
           addBrokenLinkState(path.toLowerCase());
@@ -174,12 +177,16 @@ const AudioPlayer = ({ closeSidebar }) => {
   }, [songsQueue]);
 
   useEffect(() => {
+    if (!song) return;
+
+    const songName = song.name;
+
     if (!showFullFilename && songName) {
       setShowingName(songName.replace(/\.?(mp3|ogg|wav)$/, ''));
     } else if (songName) {
       setShowingName(songName);
     }
-  }, [showFullFilename, songName]);
+  }, [showFullFilename, song]);
 
   return (
     <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`} onClick={closeSidebar} onKeyDown={closeSidebar}>
@@ -219,7 +226,7 @@ const AudioPlayer = ({ closeSidebar }) => {
         </div>
       </>
       <Helmet>
-        <title>{ songName && showingName && isPlaying ? `▶ ${showingName}` : 'Songbox'}</title>
+        <title>{ song && showingName && isPlaying ? `▶ ${showingName}` : 'Songbox'}</title>
       </Helmet>
     </div>
   );

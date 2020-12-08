@@ -37,7 +37,7 @@ const HeartFavorite = ({ fileName, path }) => {
         setIsFavorite(true);
       }
     });
-  }, [favorites]);
+  }, [favorites, path]);
 
   useEffect(() => {
     const checkIfBroken = async () => {
@@ -63,7 +63,7 @@ const HeartFavorite = ({ fileName, path }) => {
     };
 
     if (brokenLinks.length > 0 && favorites.length > 0) checkIfBroken();
-  }, [brokenLinks]);
+  }, [brokenLinks, fileName, path, favorites.length]);
 
   const markFavorite = async (e) => {
     e.cancelBubble = true;

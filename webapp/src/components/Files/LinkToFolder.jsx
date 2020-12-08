@@ -17,7 +17,7 @@ const LinkToFolder = ({ fileName, route }) => {
           src={folderIcon}
           alt="folder-icon"
         />
-        <div className="file-name-container">
+        <div className="file-name-container folder">
           <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : ''}`}>{'Unnamed file' && fileName}</p>
         </div>
       </div>

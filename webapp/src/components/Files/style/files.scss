@@ -1,8 +1,8 @@
 @import "../../../styles/colors.scss";
 @import "../../../styles/fonts.scss";
 
-$icon-height: 6vw;
-$icon-width: 6vw;
+$icon-height: 25px;
+$icon-width: 25px;
 
 .files-container {
     padding: 2vw 3vw;
@@ -19,10 +19,10 @@ $icon-width: 6vw;
     border-top: 0.5px solid $soft-gray;
     display: flex;
     justify-content: flex-start;
-    padding: 5vw;
+    padding: 20px 5vw;
 
     & .text {
-        margin-left: 1vw;
+        margin-left: 10px;
     }
 
     &:hover {
@@ -36,7 +36,7 @@ $icon-width: 6vw;
 
 .file-name-container {
     margin-left: 20px;
-    font-size: 3.7vw;
+    font-size: 14px;
     max-width: 80%;
 }
 
@@ -47,6 +47,11 @@ $icon-width: 6vw;
     white-space: nowrap;
     text-overflow: ellipsis;
     color: #656565;
+    width: 80%;
+}
+
+.folder {
+    width: 100%;
 }
 
 .icon {
@@ -76,44 +81,17 @@ $icon-width: 6vw;
 
 @media (min-width: 600px) and (max-width: 1024px) {
     .file-container {
-        padding: 1.7vw 2vw;
         padding-left: 5vw;
-    }
-
-    .file-name-container {
-        font-size: 1.7vw;
-    }
-
-    .icon {
-        height: 4vw;
-        width: 4vw;
     }
 }
 
 @media (min-width: 1024px) {
-    $icon-height: 2vw;
-    $icon-width: 2vw;
-
-    .icon {
-        height: $icon-height;
-        width: $icon-width;
-    }
-
-    .heart-icon {
-        height: $icon-height - 2;
-        width: $icon-width - 2;
-    }
-
-    .file-name-container {
-        font-size: 16px;
-    }
-
     .files-container {
         padding-bottom: 18vh;
     }
     
     .file-container {
-        padding: 1.5vw 4vw;
+        padding: 20px 4vw;
     }
 }
 

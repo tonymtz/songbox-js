@@ -30,6 +30,7 @@ router.get('/files/*', auth, async(req, res) => {
             delete file.size;
             delete file.is_downloadable;
             delete file.content_hash;
+            file.path = finalPath ? finalPath : '/';
 
             return file;
         });

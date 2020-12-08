@@ -25,11 +25,12 @@ const App = () => {
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
   const dispatch = useDispatch();
-  const setFavoritesState = (favorites) => dispatch(setFavorites(favorites));
 
   const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
+    const setFavoritesState = (favorites) => dispatch(setFavorites(favorites));
+
     const favorites = async () => {
       try {
         const userFavorites = await getFavorites();

@@ -36,7 +36,7 @@ const LinkToSong = ({
   useEffect(() => {
     const found = brokenLinks.find((link) => link.toLowerCase() === path.toLowerCase());
     setIsBroken(!!found);
-  }, [brokenLinks]);
+  }, [brokenLinks, path]);
 
   useEffect(() => {
     if (inFavorites) {

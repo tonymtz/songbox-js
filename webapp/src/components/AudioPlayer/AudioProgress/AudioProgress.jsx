@@ -57,7 +57,7 @@ const AudioProgress = ({
       const calculatePosition = window.innerWidth * (progress / 100);
       setThumbPos(calculatePosition - 20);
     }
-  }, [progress]);
+  }, [progress, beingDrag]);
 
   return (
     <div className="progress-bar-container">

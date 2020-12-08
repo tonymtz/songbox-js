@@ -8,6 +8,8 @@ import Play from '../PlayerButtons/Play';
 import Forward from '../PlayerButtons/Forward';
 import Shuffle from '../PlayerButtons/Shuffle';
 
+import SongName from '../SongName';
+
 const Player = ({
   previousSong, isPlaying, play, nextSong, toggleOnRandom, onRandom, showingName,
 }) => {
@@ -16,7 +18,7 @@ const Player = ({
 
   return (
     <div className={`buttons ${isDisable ? 'disable-buttons' : ''}`}>
-      <p className="file-name-playing">{ showingName ? `Playing: ${showingName}` : 'Select an audio file to play' }</p>
+      <SongName showingName={showingName} />
       <div className="buttons-container">
         <Repeat />
 

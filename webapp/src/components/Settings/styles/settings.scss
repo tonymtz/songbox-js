@@ -3,7 +3,7 @@
 @import '../../../styles/sizes.scss';
 .settings-container {
     padding: 0 5vw;
-    padding-bottom: $multi-player;
+    padding-bottom: $multi-player-mobile;
 }
 
 .solid-gray-bar {
@@ -14,7 +14,7 @@
 .section-title {
     border-bottom: 1px solid $soft-gray;
     color: $not-so-soft-gray;
-    font-size: 4.5vw;
+    font-size: 16px;
     font-family: $font-asap;
     padding-bottom: 2vh;
 }
@@ -31,7 +31,7 @@
 .option-title {
     color: $not-so-soft-gray;
     font-family: $font-asap;
-    font-size: 4.5vw;
+    font-size: 15px;
 }
 
 .option-hover {
@@ -66,22 +66,4 @@
     border-radius: 50px;
     border: none;
     padding: 1vh 2.5vw
-}
-
-@media (min-width: 768px) {
-    .section-title {
-        font-size: 3vw;
-    }
-    .option-title {
-        font-size: 3vw;
-    }
-}
-
-@media (min-width: 1024px) {
-    .section-title {
-        font-size: 1.5vw;
-    }
-    .option-title {
-        font-size: 1.5vw;
-    }
 }

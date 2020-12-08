@@ -64,10 +64,14 @@ html, body, .main {
   .header {
     font-size: 2.5rem; }
   .text {
-    font-size: 2rem; }
+    font-size: 2rem;
+    text-align: left; }
+  .links-container {
+    text-align: left; }
   .dropbox-btn {
     font-size: 2rem;
     padding: 1vw 2vw; }
   #content {
     padding: 2vw 10vw;
-    margin: auto auto; } }
+    margin: auto 0;
+    width: 55%; } }

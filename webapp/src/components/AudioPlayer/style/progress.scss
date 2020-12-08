@@ -1,8 +1,10 @@
-$size-on-hover: 3vh;
-$increased-size: 0.5vh;
+@import "../../../styles/colors.scss";
+
+$size-on-hover: 16px;
+$increased-size: 10px;
 
 .progress-bar-container {
-    height: 2vh;
+    height: 10px;
     position: relative;
 }
 
@@ -13,7 +15,7 @@ $increased-size: 0.5vh;
 
 .progress-indicator {
     position: absolute;
-    top: -15%;
+    top: -50%;
     height: $size-on-hover + $increased-size;
     width: $size-on-hover + $increased-size;
     border-radius: 50%;
@@ -26,9 +28,35 @@ $increased-size: 0.5vh;
     display: none;
 }
 
+.display-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-name-playing {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50%;
+    color: $not-so-soft-gray;
+}
+
+.display-name-container {
+    cursor: pointer;
+}
+
+.swal-title {
+    font-size: 16px !important;
+}
+
 @media (min-width: 1024px) {
     .progress { 
         height: 40%;
+    }
+
+    .progress-bar-container {
+        height: 20px;
     }
 
     .progress-hover {
@@ -37,7 +65,7 @@ $increased-size: 0.5vh;
 
     .progress-indicator {
         display: none !important;
-        top: -25%;
+        top: -10%;
     }
 
     .show {

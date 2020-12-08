@@ -22,8 +22,28 @@ Songbox is a web service that allows users to listen to their music stored in Dr
 ## Installation
 
 ```shell script
+Webapp
+$ cd webapp/
 $ npm install
 $ npm start
+
+Server
+$ cd /server 
+$ npm install
+$ npm run start
+```
+
+## .env file for /server
+
+```
+CLIENT_ID=<Key from dropbox app>
+URL=<Url of your website>
+DATABASE_USER=<Database user>
+DATABASE_HOST=<Database url>
+DATABASE_PASSWORD=<Database password>
+DATABASE_NAME=<Database name>
+
+**Check sample.env**
 ```
 
 ## API 
@@ -42,13 +62,15 @@ This route will give you access to an specific folder of your Dropbox (specifyin
 **3. GET -> /api/file/filename.mp3
 This route will give access to the file link.
 
-**4. POST -> /users/auth
-This route will check if 'dbx-token' is valid.
+**4. GET -> /api/me
+This route will check if your token is valid and return the information of the user.
+
+**5. POST -> /
+This will save the cookie on the route of the website.
+
 
 https://documenter.getpostman.com/view/9987408/TVRj6orw#52f42304-ce6a-4336-8e95-0a4d26ca6904
 ```
-
-
 
 
 Simple as that...

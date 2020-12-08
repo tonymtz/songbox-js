@@ -3,7 +3,6 @@ const defaultPlayer = {
   autoPlay: true,
   darkTheme: false,
   currentSong: undefined,
-  songName: '',
   fullFilename: false,
 };
 
@@ -20,9 +19,6 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
 
     case 'SET_CURRENT_SONG':
       return { ...state, currentSong: payload };
-
-    case 'SET_SONG_NAME':
-      return { ...state, songName: payload };
 
     case 'SET_FULL_FILENAME':
       return { ...state, fullFilename: payload };

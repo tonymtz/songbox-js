@@ -96,6 +96,11 @@ html, body, .main {
 
     .text {
         font-size: $font-size-s;
+        text-align: left;
+    }
+
+    .links-container {
+        text-align: left;
     }
 
     .dropbox-btn {

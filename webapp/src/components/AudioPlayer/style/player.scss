@@ -15,7 +15,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: $multi-player;
+    height: 125px;
     display: flex;
     justify-content: center;
 }
@@ -30,7 +30,6 @@
     height: 90%;
     width: 100%;
     flex-direction: column;
-    padding: 1vh 5vw;
     padding-top: 0.2vh;
     justify-content: space-around;
 
@@ -38,7 +37,6 @@
         border-radius: 10px;
         background-color: transparent;
         border-color: transparent;
-        padding: 0.5vw;
     }
     
     & button * {
@@ -48,13 +46,17 @@
 }
 
 .player-button {
-    height: 5vh;
-    width: 12vw;
+    height: 25px;
+    width: 25px;
 }
 
 .play-button {
-    height: 8vh;
-    width: 18vw;
+    height: 40px;
+    width: 40px;
+}
+
+.player-button, .play-button {
+    padding: 0;
 }
 
 .disable-buttons {
@@ -77,48 +79,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 30px;
+    height: 50%;
     width: 100%;
 }
 
 @media (min-width: 1024px) {
-    .audio-container {
-        height: 8vw;
-        padding: 2vw;
-        padding: 0;
-    }
-
     .player-button {
-        height: 5vh;
-        width: 10vw;
+        height: 45px;
+        width: 45px;
     }
 
     .play-button {
-        height: 8vh;
-        width: 17vw;
-    }
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-    .player-button {
-        margin-top: 1.5vw;
-        height: 3vh;
-        width: 6vw;
-        margin: 0;
-    }
-
-    .audio-container {
-        height: $multi-player - 5;
-    }
-    
-    .play-button {
-        height: 7vh;
-        width: 15vw;
+        height: 65px;
+        width: 65px;
     }
 }
 
 @media (min-width: 1025px) {
     .audio-container {
-        height: $multi-player - 4;
+        height: 150px;
     }
 
     .buttons {
@@ -126,19 +106,12 @@
 
         & button {
             padding: 0.5vw 0;
+            margin: 0 15px;
         }
     }
 
     .file-name-playing {
         margin-bottom: 0.5vh !important;
-    }
-
-    .play-button {
-        width: 10vw;
-    }
-
-    .player-button {
-        width: 5vw;
     }
 
     .buttons-container {
