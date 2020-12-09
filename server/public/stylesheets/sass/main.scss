@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Asap&family=Quicksand&display=swap');
 //////////////////////// CLASSES ////////////////////////
-$font-size-s: 2.5rem;
-$font-size-m: 3.5rem;
-$font-size-l: 5.5rem;
+$font-size-s: 2rem;
+$font-size-m: 2.5rem;
+$font-size-l: 3.5rem;
 $font-quicksand: 'Quicksand', sans-serif;
 $font-asap: 'Asap', sans-serif;
 
@@ -76,10 +76,10 @@ html, body, .main {
 }
 
 @media (min-width: 1024px) {
-    $font-size-xs: 1.5rem;
-    $font-size-s: 2rem;
-    $font-size-m: 2.5rem;
-    $font-size-l: 4rem;
+    $font-size-xs: 1.25rem;
+    $font-size-s: 1.50rem;
+    $font-size-m: 1.75rem;
+    $font-size-l: 2rem;
 
     .main {
         display: flex;
@@ -109,8 +109,8 @@ html, body, .main {
     }
 
     #content {
-        padding: 2vw 10vw;
+        padding: 7vw 10vw;
         margin: auto 0;
-        width: 55%;
+        height: 100%;
     }
 }

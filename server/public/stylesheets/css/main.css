@@ -3,24 +3,24 @@ html, body, .main {
   height: 100%; }
 
 .main {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   text-align: center; }
 
 .header-container {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin-bottom: 3.5rem; }
+  margin-bottom: 2.5rem; }
 
 .header {
   color: black;
   font-family: "Quicksand", sans-serif;
-  font-size: 5.5rem; }
+  font-size: 3.5rem; }
 
 .text {
   color: #b0b0b0;
   font-family: "Asap", sans-serif;
-  font-size: 2.5rem; }
+  font-size: 2rem; }
 
 .buttons-container {
   display: flex;
@@ -36,7 +36,7 @@ html, body, .main {
   border: none;
   color: white;
   font-family: "Asap", sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   padding: 3vw 8vw; }
 
@@ -62,16 +62,16 @@ html, body, .main {
     height: 100%;
     width: 45%; }
   .header {
-    font-size: 2.5rem; }
+    font-size: 1.75rem; }
   .text {
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: left; }
   .links-container {
     text-align: left; }
   .dropbox-btn {
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 1vw 2vw; }
   #content {
-    padding: 2vw 10vw;
+    padding: 7vw 10vw;
     margin: auto 0;
-    width: 55%; } }
+    height: 100%; } }

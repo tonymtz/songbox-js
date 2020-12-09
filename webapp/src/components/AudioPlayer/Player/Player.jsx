@@ -7,6 +7,7 @@ import Rewind from '../PlayerButtons/Rewind';
 import Play from '../PlayerButtons/Play';
 import Forward from '../PlayerButtons/Forward';
 import Shuffle from '../PlayerButtons/Shuffle';
+import Volume from '../PlayerButtons/Volume';
 
 import SongName from '../SongName';
 
@@ -39,6 +40,8 @@ const Player = ({
           toggleOnRandom={toggleOnRandom}
           onRandom={onRandom}
         />
+
+        <Volume />
       </div>
     </div>
   );

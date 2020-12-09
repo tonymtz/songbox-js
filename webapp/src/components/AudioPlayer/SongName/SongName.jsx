@@ -33,9 +33,10 @@ const SongName = ({ showingName }) => {
           }
             break;
 
-          case 'folder':
-            const appRoute = '/app' + songPath;
-            history.push(appRoute); 
+          case 'folder': {
+            const appRoute = `/app${songPath}`;
+            history.push(appRoute);
+          }
             break;
 
           default:

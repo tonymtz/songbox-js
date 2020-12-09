@@ -4,6 +4,7 @@ const defaultPlayer = {
   darkTheme: false,
   currentSong: undefined,
   fullFilename: false,
+  volume: 0.5,
 };
 
 const playerReducer = (state = defaultPlayer, { type, payload }) => {
@@ -22,6 +23,9 @@ const playerReducer = (state = defaultPlayer, { type, payload }) => {
 
     case 'SET_FULL_FILENAME':
       return { ...state, fullFilename: payload };
+
+    case 'SET_VOLUME':
+      return { ...state, volume: payload };
 
     case 'RESTORE_PREFERENCES':
       return {

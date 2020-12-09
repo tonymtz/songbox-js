@@ -1,0 +1,24 @@
+.volume-button {
+    position: relative;
+}
+
+.volume-bar {
+    position: absolute;
+    top: -6vh;
+    width: 20vw !important;
+    left: -15vw;
+    border-radius: 50px;
+}
+
+input[type=range] {
+    border-radius: 50px;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #fd710b;
+    border: 3px solid #fd710b;
+    cursor: pointer;
+    border-radius: 50%;
+    height: 85%;
+    width: 4vw;
+}

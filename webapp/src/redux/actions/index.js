@@ -86,3 +86,8 @@ export const setFullfilename = (newState) => ({
   type: 'SET_FULL_FILENAME',
   payload: newState,
 });
+
+export const setVolume = (volume) => ({
+  type: 'SET_VOLUME',
+  payload: volume,
+});

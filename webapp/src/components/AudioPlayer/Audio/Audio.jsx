@@ -16,6 +16,7 @@ const Audio = ({
   audioPlayer,
 }) => {
   const autoPlay = useSelector((state) => state.player.autoPlay);
+  const volume = useSelector((state) => state.player.volume);
 
   useEffect(() => {
     const updateProcess = () => {
@@ -63,6 +64,13 @@ const Audio = ({
       nextSong();
     }
   };
+
+  useEffect(() => {
+    if (audioPlayer && volume >= 0 && volume <= 1) {
+      // eslint-disable-next-line no-param-reassign
+      audioPlayer.current.volume = volume;
+    }
+  }, [volume]);
 
   return (
     <div className="audio">

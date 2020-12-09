@@ -9,9 +9,6 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { changeSlidebarIndex } from '../../../redux/actions';
 
-import chevronLeft from '../icons/chevron-left.svg';
-import chevronRight from '../icons/chevron-right.svg';
-
 const Item = ({ index, item }) => {
   const selectedIndex = useSelector((state) => state.slidebarIndex);
   const dispatch = useDispatch();
@@ -23,7 +20,6 @@ const Item = ({ index, item }) => {
           { item.icon }
           <span className="item-title">{ item.title }</span>
         </div>
-        <img className="chevron" src={selectedIndex === index ? chevronLeft : chevronRight} alt="chevron" />
       </li>
     </Link>
   );
