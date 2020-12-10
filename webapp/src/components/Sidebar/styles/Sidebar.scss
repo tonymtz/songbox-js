@@ -207,7 +207,7 @@ $padding-left-s: 4vw;
     }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1025px) and (min-height: 700px)  {
 
     .sidebar {
         position: unset;

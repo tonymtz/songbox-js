@@ -1,24 +1,73 @@
+@import "../../../styles/colors.scss";
+
 .volume-button {
     position: relative;
 }
 
 .volume-bar {
+    border-radius: 50px;
+    left: -50px;
     position: absolute;
     top: -6vh;
-    width: 20vw !important;
-    left: -15vw;
-    border-radius: 50px;
+    width: 85px !important;
+    border-color: $gray;
 }
 
-input[type=range] {
-    border-radius: 50px;
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+/* 2.1 THUMB */
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: $volume-orange;
+  width: 20px;
+  height: 20px;
+  border: 3px solid $volume-orange;
+  border-radius: 50%;
+  margin-top: -9px;
 }
 
 input[type=range]::-moz-range-thumb {
-    background-color: #fd710b;
-    border: 3px solid #fd710b;
-    cursor: pointer;
-    border-radius: 50%;
-    height: 85%;
-    width: 4vw;
+  background-color: $volume-orange;
+  width: 15px;
+  height: 15px;
+  border: 3px solid $volume-orange;
+  border-radius: 50%;
+}
+
+input[type=range]::-ms-thumb {
+  background-color: $volume-orange;
+  width: 20px;
+  height: 20px;
+  border: 3px solid $volume-orange;
+  border-radius: 50%;
+}
+/* 2.2 TRACK */
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: $volume-orange;
+  height: 3px;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  background-color: transparent;
+}
+
+input[type=range]::-moz-range-track {
+  background-color: transparent;
+  height: 3px;
+}
+
+input[type=range]::-ms-track {
+  background-color: transparent;
+  height: 3px;
+}
+
+@media (min-width: 1024px) {
+    .volume-bar {
+        left: -18px;
+        width: 150px !important;
+    }
 }

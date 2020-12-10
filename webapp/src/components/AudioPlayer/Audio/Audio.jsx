@@ -18,24 +18,6 @@ const Audio = ({
   const autoPlay = useSelector((state) => state.player.autoPlay);
   const volume = useSelector((state) => state.player.volume);
 
-  useEffect(() => {
-    const updateProcess = () => {
-      if (audioPlayer !== null && !audioPlayer.current.paused) {
-        const { currentTime } = audioPlayer.current;
-        const totalTime = audioPlayer.current.duration;
-        const progress = (currentTime / totalTime) * 100;
-
-        setProgress(progress);
-      }
-    };
-
-    const interval = setInterval(() => updateProcess(), 333);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [audioPlayer, setProgress]);
-
   const onLoadSong = () => {
     if (audioPlayer !== null) {
       setIsLoading(false);
@@ -66,10 +48,29 @@ const Audio = ({
   };
 
   useEffect(() => {
+    const updateProcess = () => {
+      if (audioPlayer !== null && !audioPlayer.current.paused) {
+        const { currentTime } = audioPlayer.current;
+        const totalTime = audioPlayer.current.duration;
+        const progress = (currentTime / totalTime) * 100;
+
+        setProgress(progress);
+      }
+    };
+
+    const interval = setInterval(() => updateProcess(), 333);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [audioPlayer, setProgress]);
+
+  useEffect(() => {
     if (audioPlayer && volume >= 0 && volume <= 1) {
       // eslint-disable-next-line no-param-reassign
       audioPlayer.current.volume = volume;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [volume]);
 
   return (

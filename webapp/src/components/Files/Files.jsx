@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Cookie from 'universal-cookie';
-import { v4 as uuidv4 } from 'uuid';
 
 import LinkToFolder from './LinkToFolder';
 import LinkToSong from './LinkToSong';
@@ -74,7 +73,7 @@ const Files = () => {
       {
                 folders.map((file) => (
                   <LinkToFolder
-                    key={uuidv4()}
+                    key={file.name}
                     fileName={file.name}
                     route={route}
                   />
@@ -84,7 +83,7 @@ const Files = () => {
       {
                 files.map((song, index) => (
                   <LinkToSong
-                    key={uuidv4()}
+                    key={song.name}
                     index={index}
                     fileName={song.name}
                     samePlaylist={samePlaylist}

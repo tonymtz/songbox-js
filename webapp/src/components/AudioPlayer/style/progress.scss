@@ -34,14 +34,6 @@ $increased-size: 10px;
     align-items: center;
 }
 
-.file-name-playing {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 50%;
-    color: $not-so-soft-gray;
-}
-
 .display-name-container {
     cursor: pointer;
 }

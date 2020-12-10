@@ -1,14 +1,20 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import propTypes from 'prop-types';
 import swal from 'sweetalert';
 
 import { addFavorite } from '../../../Favorites/favorites';
+import { addToFavorites } from '../../../redux/actions';
+
+import '../style/song.scss';
 
 const SongName = ({ showingName }) => {
   const currentSong = useSelector((state) => state.player.currentSong);
   const songPath = currentSong ? currentSong.path : '';
+
+  const dispatch = useDispatch();
+  const addToFavoritesState = (newFile) => dispatch(addToFavorites(newFile));
 
   const history = useHistory();
 
@@ -26,6 +32,10 @@ const SongName = ({ showingName }) => {
         switch (value) {
           case 'favorite': {
             const successfull = await addFavorite(currentSong);
+            if (successfull) {
+              addToFavoritesState(currentSong);
+            }
+
             swal({
               icon: successfull ? 'sucess' : 'error',
               text: successfull ? 'Added to favorites!' : 'Service not available, try again later.',

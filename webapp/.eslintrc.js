@@ -19,7 +19,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: [
-    'react',
+    'react', 'react-hooks'
   ],
   rules: {
   },
@@ -28,7 +28,8 @@ module.exports = {
       files: ["*.spec.js"],
 
       rules: {
-        "jest/valid-expect": 0
+        "jest/valid-expect": 0,
+        "eslint linebreak-style": ["error", "windows"]
       }
     }
   ]

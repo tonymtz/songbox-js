@@ -63,6 +63,7 @@ const HeartFavorite = ({ fileName, path }) => {
     };
 
     if (brokenLinks.length > 0 && favorites.length > 0) checkIfBroken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brokenLinks, fileName, path, favorites.length]);
 
   const markFavorite = async (e) => {

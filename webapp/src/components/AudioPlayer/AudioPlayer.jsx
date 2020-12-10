@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
 import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -39,11 +38,11 @@ const AudioPlayer = ({ closeSidebar }) => {
 
   const dispatch = useDispatch();
 
-  const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
+  const setSongIndex = (index) => dispatch(changeSongIndex(index));
   const addBrokenLinkState = (path) => dispatch(addBrokenLink(path));
   const markSongAsBrokenState = (index) => dispatch(markSongAsBroken(index));
+  const setSongsQueue = (newQueue) => dispatch(changeSongsQueue(newQueue));
   const setSongState = (name) => dispatch(setSong(name));
-  const setSongIndex = (index) => dispatch(changeSongIndex(index));
 
   const repeatPlaylist = () => {
     if (songIndex + 1 >= songsQueue.length) {
@@ -169,6 +168,7 @@ const AudioPlayer = ({ closeSidebar }) => {
           skipToAvailableSong();
         });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songIndex, songsQueue]);
 
   useEffect(() => {
@@ -178,7 +178,6 @@ const AudioPlayer = ({ closeSidebar }) => {
 
   useEffect(() => {
     if (!song) return;
-
     const songName = song.name;
 
     if (!showFullFilename && songName) {
@@ -186,7 +185,11 @@ const AudioPlayer = ({ closeSidebar }) => {
     } else if (songName) {
       setShowingName(songName);
     }
-  }, [showFullFilename, song]);
+  }, [showFullFilename, song, currentSong, isPlaying]);
+
+  useEffect(() => {
+    document.title = showingName || 'Songbox';
+  }, [showingName]);
 
   return (
     <div className={`audio-container ${darkThemeActive ? 'dark-theme-background' : ''}`} onClick={closeSidebar} onKeyDown={closeSidebar}>
@@ -225,9 +228,6 @@ const AudioPlayer = ({ closeSidebar }) => {
           />
         </div>
       </>
-      <Helmet>
-        <title>{ song && showingName && isPlaying ? `▶ ${showingName}` : 'Songbox'}</title>
-      </Helmet>
     </div>
   );
 };

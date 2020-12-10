@@ -16,12 +16,21 @@ const VolumeBar = ({ barShowing }) => {
   const updateVolume = (e) => setVolumeState(e.target.value);
 
   const style = {
-    backgroundImage: `-moz-linear-gradient(left, rgb(240, 211, 48) ${volume * 100}%, #c7c7c7 ${volume * 100}%)`,
+    // eslint-disable max-len
+    background: `linear-gradient(to right, rgb(240, 211, 48) ${volume * 100}%, #c7c7c7 ${volume * 100}%)`,
   };
 
   return (
-    <div className={`${barShowing ? '' : 'hide'} volume-bar`} onClick={clickVolume} role="button" onKeyDown={clickVolume} tabIndex={-1}>
-      <input onChange={updateVolume} type="range" style={style} value={volume} min={0} max={1} step={0.01} />
+    <div className={`${barShowing ? '' : 'hide'} volume-bar`} onInput={clickVolume} role="button" onKeyDown={clickVolume} tabIndex={-1}>
+      <input
+        onChange={updateVolume}
+        type="range"
+        style={style}
+        value={volume}
+        min={0}
+        max={1}
+        step={0.01}
+      />
     </div>
   );
 };

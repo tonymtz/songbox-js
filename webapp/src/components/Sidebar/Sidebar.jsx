@@ -3,7 +3,6 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 
@@ -39,7 +38,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
           {
                         SidebarData.map((item, index) => (
                           <Item
-                            key={uuidv4()}
+                            key={item.title}
                             index={index}
                             item={item}
                           />

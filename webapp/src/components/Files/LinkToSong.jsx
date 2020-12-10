@@ -48,6 +48,7 @@ const LinkToSong = ({
     }
 
     return () => setIsPlaying(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [songIndex, samePlaylist]);
 
   return (

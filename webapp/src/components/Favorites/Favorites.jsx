@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { v4 as uuidv4 } from 'uuid';
 import propTypes from 'prop-types';
 
 import LinkToSong from '../Files/LinkToSong';
@@ -27,7 +26,7 @@ const Favorites = ({ pageNumber }) => {
                         favorites.length > 0
                           ? favorites.map((favorite, index) => (
                             <LinkToSong
-                              key={uuidv4()}
+                              key={favorite.song_name || favorite.name}
                               index={index}
                               fileName={favorite.song_name || favorite.name}
                               samePlaylist
