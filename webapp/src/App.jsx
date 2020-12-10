@@ -29,6 +29,7 @@ const App = () => {
   const [sidebar, setSidebar] = useState(false);
 
   useEffect(() => {
+    setSidebar(false);
     const setFavoritesState = (favorites) => dispatch(setFavorites(favorites));
 
     const favorites = async () => {

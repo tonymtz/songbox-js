@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import propTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
 import Cookie from 'universal-cookie';
 
 import LinkToFolder from './LinkToFolder';
 import LinkToSong from './LinkToSong';
 
 import getFiles from './tools/files';
+import { addFiles, updateFiles } from '../../redux/actions';
+import getSongs from './tools/songs';
+import getFolders from './tools/folders';
 
 import './style/files.scss';
 
-const Files = () => {
+const Files = ({ triggerUpdate, setTriggerUpdate }) => {
   const [folders, setFolders] = useState([]);
   const [files, setFiles] = useState([]);
   const [samePlaylist, setSamePlaylist] = useState(false);
@@ -17,44 +21,59 @@ const Files = () => {
   const route = useSelector((state) => state.route);
   const songsQueue = useSelector((state) => state.songsQueue);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const routeFiles = useSelector((state) => state.filesRoutes);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const cookie = new Cookie();
     const token = cookie.get('dbx-token');
 
-    getFiles(token, route)
-      .then((result) => {
-        const firstFile = result.data.findIndex((file) => file['.tag'] === 'file');
-        if (firstFile >= 0) {
-          const songs = result.data
-            .splice(firstFile, result.data.length)
-            .sort((last, next) => {
-              if (last.name.toLowerCase() > next.name.toLowerCase()) return 1;
-              if (last.name.toLowerCase() < next.name.toLowerCase()) return -1;
-              return 0;
+    const saveFiles = (filesToSave) => dispatch(addFiles(filesToSave));
+    const updateFilesState = (filesToUpdate) => dispatch(updateFiles(filesToUpdate));
+
+    const isRouteInCache = routeFiles.findIndex((routes) => routes.route === route);
+    if (isRouteInCache >= 0 && !triggerUpdate) {
+      const chacedFiles = routeFiles[isRouteInCache].files;
+      const cachedSongs = getSongs(chacedFiles);
+      const cachedFolders = getFolders(chacedFiles);
+
+      setFiles(cachedSongs);
+      setFolders(cachedFolders);
+    } else {
+      getFiles(token, route)
+        .then((result) => {
+          const newSongs = getSongs(result.data);
+          const newFolders = getFolders(result.data);
+
+          const allFiles = newFolders.concat(newSongs);
+
+          if (triggerUpdate && isRouteInCache >= 0) {
+            updateFilesState({
+              route,
+              files: allFiles,
             });
+          } else {
+            saveFiles({
+              route,
+              files: allFiles,
+            });
+          }
 
-          setFiles(songs);
-        } else {
-          setFiles([]);
-        }
+          setFiles(newSongs);
+          setFolders(newFolders);
+        })
+        .catch((error) => {
+          if (error) {
+            setFiles([]);
+            setFolders([]);
+          }
+        });
+    }
 
-        const orderedFolders = result.data
-          .sort((last, next) => {
-            if (last.name.toLowerCase() > next.name.toLowerCase()) return 1;
-            if (last.name.toLowerCase() < next.name.toLowerCase()) return -1;
-            return 0;
-          });
-
-        setFolders(orderedFolders);
-      })
-      .catch((error) => {
-        if (error) {
-          setFiles([]);
-          setFolders([]);
-        }
-      });
-  }, [route]);
+    setTriggerUpdate(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [route, triggerUpdate]);
 
   useEffect(() => {
     const isSamePlaylist = () => {
@@ -71,30 +90,40 @@ const Files = () => {
   return (
     <div className={`files-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
       {
-                folders.map((file) => (
-                  <LinkToFolder
-                    key={file.name}
-                    fileName={file.name}
-                    route={route}
-                  />
-                ))
-            }
+        folders.map((file) => (
+          <LinkToFolder
+            key={file.name}
+            fileName={file.name}
+            route={route}
+          />
+        ))
+      }
 
       {
-                files.map((song, index) => (
-                  <LinkToSong
-                    key={song.name}
-                    index={index}
-                    fileName={song.name}
-                    samePlaylist={samePlaylist}
-                    files={files}
-                    path={song.path_lower}
-                    inFavorites={false}
-                  />
-                ))
-            }
+        files.map((song, index) => (
+          <LinkToSong
+            key={song.name}
+            index={index}
+            fileName={song.name}
+            samePlaylist={samePlaylist}
+            files={files}
+            path={song.path_lower}
+            inFavorites={false}
+          />
+        ))
+      }
     </div>
   );
+};
+
+Files.defaultProps = {
+  triggerUpdate: false,
+  setTriggerUpdate: undefined,
+};
+
+Files.propTypes = {
+  triggerUpdate: propTypes.bool,
+  setTriggerUpdate: propTypes.func,
 };
 
 export default Files;

@@ -1,9 +1,6 @@
 @import "../../../styles/colors.scss";
 
 .home-container {
-    padding: 2vw;
-    padding-right: 0;
-
     & img:hover {
         cursor: pointer;
     }
@@ -11,13 +8,4 @@
 
 .home-icon {
     fill: $gray;
-}
-
-@media (min-width: 1024px) {
-    .home-container {
-        padding: 2vw 1vw;
-        padding-right: 0;
-        padding-bottom: 0;
-        padding-left: 4vw;
-    }
 }

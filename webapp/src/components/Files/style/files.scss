@@ -5,9 +5,8 @@ $icon-height: 25px;
 $icon-width: 25px;
 
 .files-container {
-    padding: 2vw 3vw;
-    padding-bottom: 22vh;
-    padding-top: 0;
+    padding: 0 20px;
+    padding-bottom: 25vh;
 
     & a:hover {
         text-decoration: none;
@@ -79,19 +78,13 @@ $icon-width: 25px;
     padding-left: 2vw;
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
-    .file-container {
-        padding-left: 5vw;
-    }
-}
-
 @media (min-width: 1024px) {
     .files-container {
         padding-bottom: 18vh;
     }
     
     .file-container {
-        padding: 20px 4vw;
+        padding: 20px 5vw;
     }
 }
 
@@ -106,10 +99,6 @@ $icon-width: 25px;
 
     .files-container {
         padding-top: 0;
-    }
-
-    .file-container {
-        padding: 2.5vw 5vw;
     }
 
     .file-name-container {

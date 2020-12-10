@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +7,7 @@ import Home from '../Home';
 
 import './style/breadcrumb.scss';
 
-const Directory = () => {
+const Directory = ({ setTriggerUpdate }) => {
   const route = useSelector((state) => state.route);
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
@@ -38,22 +39,33 @@ const Directory = () => {
     <div className="directory-container">
       <div className="sub-directory-container">
         <Home />
-        <h4 className="title">
-          {
-                        clickableFolders.length >= 1
-                          ? clickableFolders.map((tempRoute, index) => (
-                            <Link className={`${darkThemeActive ? 'dark-theme-color' : ''} route-breadcrumb`} key={tempRoute} to={`/app${tempRoute}`}>
-                              {`/${showingRoute[index]}`}
-                            </Link>
-                          ))
-                          : (
-                            '/'
-                          )
-                    }
-        </h4>
+        <div className={`route-refresh-container ${darkThemeActive ? 'dark-theme-background' : ''}`}>
+          <h4 className="title">
+            {
+                          clickableFolders.length >= 1
+                            ? clickableFolders.map((tempRoute, index) => (
+                              <Link className={`${darkThemeActive ? 'dark-theme-color' : ''} route-breadcrumb`} key={tempRoute} to={`/app${tempRoute}`}>
+                                {`/${showingRoute[index]}`}
+                              </Link>
+                            ))
+                            : (
+                              '/'
+                            )
+                      }
+          </h4>
+          <button className="refresh-btn" onClick={() => setTriggerUpdate(true)} type="button">Refresh</button>
+        </div>
       </div>
     </div>
   );
+};
+
+Directory.defaultProps = {
+  setTriggerUpdate: undefined,
+};
+
+Directory.propTypes = {
+  setTriggerUpdate: propTypes.func,
 };
 
 export default Directory;

@@ -1,12 +1,13 @@
 @import "../../../styles/colors.scss";
+@import "../../../styles//fonts.scss";
 
 .directory-container {
-    padding: 0 3vw;
+    padding: 0 20px;
     
     & .title {
         margin-left: 2vw;
         margin-bottom: 0;
-        font-size: 4.5vw;
+        font-size: 16px;
     }
 }
 
@@ -15,7 +16,7 @@
     align-items: center;
     justify-content: left;
     border-top: 2px solid $soft-gray;
-    padding: 2vw 3vw;
+    padding: 20px 5vw;
 }
 
 .route-breadcrumb {
@@ -23,44 +24,41 @@
     color: black;
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
-    .sub-directory-container {
-        padding: 1vw 3vw;
-
-        & .title {
-            font-size: 2.5vw;
-        }
-    }
+.route-refresh-container {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation : portrait) { 
-    .sub-directory-container {
-        padding: 1.5vw 3vw;
+.refresh-btn {
+    border-radius: 50px;
+    padding: 5px 20px;
+    border: 1px solid $orange;
+    font-family: $font-asap;
+}
 
-        & .title {
-            font-size: 2.5vw;
-        }
-    }
+.refresh-btn:hover {
+    background-color: $volume-orange;
+    color: white;
+}
+
+.refresh-btn:active {
+    background-color: $orange-active;
+    color: white;
+}
+
+.route-breadcrumb:hover {
+    color: $orange;
 }
 
 @media (min-width: 1024px) {
     .directory-container {
-        padding: 0 3vw;
+        padding: 0 20px;
 
         & .title { 
             margin-left: 1vw;
-            font-size: 1.5vw;
         }
-    }
-    
-    .sub-directory-container {
-        padding-bottom: 0;
-        padding: 2vh 2vw;
-        padding-bottom: 4vh;
-        padding-left: 0;
-    }
-
-    .title {
-        align-self: flex-end;
     }
 }

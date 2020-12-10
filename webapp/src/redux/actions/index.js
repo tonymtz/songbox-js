@@ -91,3 +91,13 @@ export const setVolume = (volume) => ({
   type: 'SET_VOLUME',
   payload: volume,
 });
+
+export const addFiles = (files) => ({
+  type: 'ADD_FILE_ROUTE',
+  payload: files,
+});
+
+export const updateFiles = (files) => ({
+  type: 'UPDATE_FILE_ROUTE',
+  payload: files,
+});

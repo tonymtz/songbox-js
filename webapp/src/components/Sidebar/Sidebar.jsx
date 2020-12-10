@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useEffect } from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,13 @@ const Sidebar = ({ sidebar, setSidebar }) => {
   const showSidebar = () => setSidebar(!sidebar);
 
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
+  const selectedIndex = useSelector((state) => state.slidebarIndex);
+
+  useEffect(() => {
+    showSidebar(false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedIndex]);
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
@@ -16,6 +16,8 @@ const Main = () => {
   const dispatch = useDispatch();
 
   const history = useHistory();
+
+  const [triggerUpdate, setTriggerUpdate] = useState();
 
   useEffect(() => {
     const changeRouteState = (newRoute) => dispatch(changeRoute(newRoute));
@@ -38,9 +40,15 @@ const Main = () => {
   return (
     <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
       <h1 id="your-personal-library" className="title">Your personal library</h1>
-      <Breadcrumb />
+      <Breadcrumb
+        setTriggerUpdate={setTriggerUpdate}
+      />
 
-      <Files key={route} />
+      <Files
+        key={route}
+        triggerUpdate={triggerUpdate}
+        setTriggerUpdate={setTriggerUpdate}
+      />
     </div>
   );
 };
