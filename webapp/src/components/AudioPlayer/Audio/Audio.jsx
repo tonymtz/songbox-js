@@ -16,7 +16,6 @@ const Audio = ({
   audioPlayer,
 }) => {
   const autoPlay = useSelector((state) => state.player.autoPlay);
-  const volume = useSelector((state) => state.player.volume);
 
   const onLoadSong = () => {
     if (audioPlayer !== null) {
@@ -64,14 +63,6 @@ const Audio = ({
       clearInterval(interval);
     };
   }, [audioPlayer, setProgress]);
-
-  useEffect(() => {
-    if (audioPlayer && volume >= 0 && volume <= 1) {
-      // eslint-disable-next-line no-param-reassign
-      audioPlayer.current.volume = volume;
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [volume]);
 
   return (
     <div className="audio">

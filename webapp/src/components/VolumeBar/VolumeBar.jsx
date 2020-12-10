@@ -1,19 +1,25 @@
-import React from 'react';
+/* eslint-disable react/default-props-match-prop-types */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
+import React, { useState } from 'react';
 import propTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { setVolume } from '../../redux/actions';
 
 import './style/volume.scss';
 
-const VolumeBar = ({ barShowing }) => {
-  const volume = useSelector((state) => state.player.volume);
-
-  const dispatch = useDispatch();
-  const setVolumeState = (newVolume) => dispatch(setVolume(newVolume));
+const VolumeBar = ({ barShowing, audioPlayer }) => {
+  const [volume, setVolume] = useState(0.5);
 
   const clickVolume = (e) => e.stopPropagation();
-  const updateVolume = (e) => setVolumeState(e.target.value);
+
+  const updateVolume = (e) => {
+    const nextVolume = !Number.isNaN(e.target.value) ? e.target.value : 0.5;
+    setVolume(nextVolume);
+
+    if (nextVolume && audioPlayer) {
+      // eslint-disable-next-line no-param-reassign
+      audioPlayer.current.volume = nextVolume;
+    }
+  };
 
   const style = {
     // eslint-disable max-len
@@ -21,7 +27,7 @@ const VolumeBar = ({ barShowing }) => {
   };
 
   return (
-    <div className={`${barShowing ? '' : 'hide'} volume-bar`} onInput={clickVolume} role="button" onKeyDown={clickVolume} tabIndex={-1}>
+    <div className={`${barShowing ? '' : 'hide'} volume-bar`} onClick={clickVolume} role="button" onKeyDown={clickVolume} tabIndex={-1}>
       <input
         onChange={updateVolume}
         type="range"
@@ -37,10 +43,12 @@ const VolumeBar = ({ barShowing }) => {
 
 VolumeBar.propTypes = {
   barShowing: propTypes.bool,
+  audioPlayer: propTypes.any.isRequired,
 };
 
 VolumeBar.defaultProps = {
   barShowing: false,
+  audioPlayer: propTypes.any.isRequired,
 };
 
 export default VolumeBar;

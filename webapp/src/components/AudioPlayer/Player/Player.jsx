@@ -1,3 +1,6 @@
+/* eslint-disable react/default-props-match-prop-types */
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import { useSelector } from 'react-redux';
 import propTypes from 'prop-types';
@@ -12,7 +15,7 @@ import Volume from '../PlayerButtons/Volume';
 import SongName from '../SongName';
 
 const Player = ({
-  previousSong, isPlaying, play, nextSong, toggleOnRandom, onRandom, showingName,
+  previousSong, isPlaying, play, nextSong, toggleOnRandom, onRandom, showingName, audioPlayer,
 }) => {
   const queueExists = useSelector((state) => state.songsQueue);
   const isDisable = queueExists.length <= 0;
@@ -41,7 +44,9 @@ const Player = ({
           onRandom={onRandom}
         />
 
-        <Volume />
+        <Volume
+          audioPlayer={audioPlayer}
+        />
       </div>
     </div>
   );
@@ -55,6 +60,7 @@ Player.propTypes = {
   toggleOnRandom: propTypes.func,
   onRandom: propTypes.bool,
   showingName: propTypes.string,
+  audioPlayer: propTypes.any.isRequired,
 };
 
 Player.defaultProps = {

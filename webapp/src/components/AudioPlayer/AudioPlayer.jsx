@@ -225,6 +225,7 @@ const AudioPlayer = ({ closeSidebar }) => {
             toggleOnRandom={toggleOnRandom}
             onRandom={onRandom}
             showingName={showingName}
+            audioPlayer={audioPlayer}
           />
         </div>
       </>
