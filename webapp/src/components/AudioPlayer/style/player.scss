@@ -76,7 +76,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    width: 100%;
+    width: 40%;
     color: $not-so-soft-gray;
 }
 
@@ -112,6 +112,7 @@
 
     .file-name-playing {
         margin-bottom: 0.5vh !important;
+        width: 100%;
     }
 
     .buttons-container {

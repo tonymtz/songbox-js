@@ -1,0 +1,60 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles//fonts.scss";
+
+.context-menu {
+  background: transparent;
+  border: none;
+}
+
+.menu-options {
+  background-color: white;
+  border-bottom: 1px solid $not-so-soft-gray;
+  border-left: 0;
+  border-right: 0;
+  list-style: none;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  bottom: 150px;
+  width: 100%;
+}
+
+.close-menu {
+  float: right;
+  background-color: #ee7b7b;
+  border: none;
+  width: 40px;
+  height: 40px;
+}
+
+.option {
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid $not-so-soft-gray;
+  font-family: $font-asap;
+  padding: 10px 10px;
+  width: 100%;
+}
+
+.option:hover {
+  background-color: $orange;
+  color: white;
+}
+
+.option:active {
+  background-color: $orange-active;
+}
+
+@media (min-width: 1024px) {
+  .menu-options {
+    border-left: 1px solid $not-so-soft-gray;
+    border-right: 1px solid $not-so-soft-gray;
+    position: absolute;
+    left: unset;
+    top: unset;
+    right: 12%;
+    bottom: 30%;
+    width: 30%;
+  }
+}

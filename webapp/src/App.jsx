@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Cookie from 'universal-cookie';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -26,10 +26,7 @@ const App = () => {
 
   const dispatch = useDispatch();
 
-  const [sidebar, setSidebar] = useState(false);
-
   useEffect(() => {
-    setSidebar(false);
     const setFavoritesState = (favorites) => dispatch(setFavorites(favorites));
 
     const favorites = async () => {
@@ -73,8 +70,6 @@ const App = () => {
       });
   }, [isAuth, dispatch]);
 
-  const closeSidebar = () => setSidebar(false);
-
   return (
     <>
       {
@@ -83,12 +78,9 @@ const App = () => {
                 <>
                   <BrowserRouter>
                     <div className={`sidebar-container ${darkThemeActive ? 'dark-soft-theme-background' : ''}`}>
-                      <Sidebar
-                        sidebar={sidebar}
-                        setSidebar={setSidebar}
-                      />
+                      <Sidebar />
                     </div>
-                    <div className="App" onClick={closeSidebar} onKeyDown={closeSidebar}>
+                    <div className="App">
                       <Switch>
                         <Route path="/app" component={Main} />
                         <Route path="/app/:path" component={Main} />
@@ -99,9 +91,7 @@ const App = () => {
                         <Route path="*" component={NotFound} />
                       </Switch>
                     </div>
-                    <AudioPlayer
-                      closeSidebar={closeSidebar}
-                    />
+                    <AudioPlayer />
                   </BrowserRouter>
                 </>
                 )

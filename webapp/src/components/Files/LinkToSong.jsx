@@ -6,6 +6,7 @@ import { changeSongIndex, changeSongsQueue, toggleFavoritePlaying } from '../../
 
 import SongIcon from '../SongIcon';
 import HeartFavorite from '../HeartFavorite';
+import ContextMenu from '../ContextMenu';
 
 const LinkToSong = ({
   index, fileName, samePlaylist, files, path, inFavorites,
@@ -66,10 +67,13 @@ const LinkToSong = ({
       {
                 !isBroken
                 && (
-                <HeartFavorite
-                  fileName={fileName}
-                  path={path}
-                />
+                  <>
+                    <HeartFavorite
+                      fileName={fileName}
+                      path={path}
+                    />
+                    <ContextMenu />
+                  </>
                 )
             }
     </div>

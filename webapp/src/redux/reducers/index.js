@@ -10,6 +10,7 @@ import player from './player';
 import favorites from './favorites';
 import brokenLinks from './brokenLinks';
 import filesRoutes from './files';
+import menu from './menu';
 
 const allReducers = combineReducers({
   slidebarIndex: slidebar,
@@ -22,6 +23,7 @@ const allReducers = combineReducers({
   favorites,
   brokenLinks,
   filesRoutes,
+  menu,
 });
 
 export default allReducers;

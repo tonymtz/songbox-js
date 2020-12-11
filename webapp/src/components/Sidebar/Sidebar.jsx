@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import propTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,20 +12,49 @@ import Item from './Item';
 
 import './styles/Sidebar.scss';
 
-const Sidebar = ({ sidebar, setSidebar }) => {
-  const showSidebar = () => setSidebar(!sidebar);
+const Sidebar = () => {
+  const nodeRef = React.useRef();
+
+  const [sidebar, setSidebar] = useState(false);
 
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
   const selectedIndex = useSelector((state) => state.slidebarIndex);
 
+  const showSidebar = (newState) => { 
+    if (newState !== undefined) {
+      setSidebar(newState);
+      return;
+    }
+
+    setSidebar(!sidebar)
+  };
+
   useEffect(() => {
     showSidebar(false);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedIndex]);
 
+  
+  useEffect(() => {
+    const clickOutside = (e) => {
+      if (nodeRef.current.contains(e.target)) {
+        return;
+      }
+
+      e.stopPropagation();
+      showSidebar(false);
+    };
+
+    document.addEventListener('mousedown', clickOutside, false);
+
+    return () => {
+      document.removeEventListener('mousedown', clickOutside, false);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <div>
+    <div ref={nodeRef}>
       <div className={`hamburger ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
         <Link to="#">
           <FaIcons.FaBars onClick={showSidebar} />
@@ -50,7 +79,7 @@ const Sidebar = ({ sidebar, setSidebar }) => {
                             item={item}
                           />
                         ))
-                    }
+          }
         </ul>
       </div>
     </div>

@@ -6,7 +6,7 @@ $icon-width: 25px;
 
 .files-container {
     padding: 0 20px;
-    padding-bottom: 25vh;
+    padding-bottom: 150px;
 
     & a:hover {
         text-decoration: none;
@@ -36,7 +36,7 @@ $icon-width: 25px;
 .file-name-container {
     margin-left: 20px;
     font-size: 14px;
-    max-width: 80%;
+    max-width: 60%;
 }
 
 .file-name {
@@ -80,11 +80,18 @@ $icon-width: 25px;
 
 @media (min-width: 1024px) {
     .files-container {
-        padding-bottom: 18vh;
-    }
-    
-    .file-container {
+        padding-bottom: 150px;
+      }
+      
+      .file-container {
         padding: 20px 5vw;
+        position: relative; //this is for the context menu
+    }
+}
+
+@media (min-width: 600px) {
+    .file-name-container {
+        max-width: 80%;
     }
 }
 
