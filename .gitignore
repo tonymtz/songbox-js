@@ -107,3 +107,4 @@ dist
 playground/
 .idea
 .vscode
+server/.env
