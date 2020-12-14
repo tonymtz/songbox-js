@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
+import appReducer from './app';
+import filesReducer from './files';
 import slidebar from './slideBar';
 import routeReducer from './route';
 import songIndex from './songIndex';
@@ -9,10 +11,11 @@ import user from './user';
 import player from './player';
 import favorites from './favorites';
 import brokenLinks from './brokenLinks';
-import filesRoutes from './files';
 import menu from './menu';
 
-const allReducers = combineReducers({
+export default combineReducers({
+  app: appReducer,
+  files: filesReducer,
   slidebarIndex: slidebar,
   route: routeReducer,
   songIndex,
@@ -22,8 +25,5 @@ const allReducers = combineReducers({
   player,
   favorites,
   brokenLinks,
-  filesRoutes,
   menu,
 });
-
-export default allReducers;

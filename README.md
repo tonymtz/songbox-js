@@ -31,6 +31,7 @@ Server
 $ cd /server 
 $ npm install
 $ npm run start
+# localhost:4000
 ```
 
 ## .env file for /server

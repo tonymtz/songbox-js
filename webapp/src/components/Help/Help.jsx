@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { changeSlidebarIndex } from '../../redux/actions';
+import { changeSlidebarIndex } from '../../store/actions';
 
 import './styles/help.scss';
 

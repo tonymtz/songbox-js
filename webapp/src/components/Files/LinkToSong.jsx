@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import propTypes from 'prop-types';
 
-import { changeSongIndex, changeSongsQueue, toggleFavoritePlaying } from '../../redux/actions';
+import { List } from 'immutable';
+import { changeSongIndex, changeSongsQueue, toggleFavoritePlaying } from '../../store/actions';
 
 import SongIcon from '../SongIcon';
 import HeartFavorite from '../HeartFavorite';
@@ -65,7 +66,7 @@ const LinkToSong = ({
         {isBroken && <p>We could not find this song...</p>}
       </div>
       {
-                !isBroken
+        !isBroken
                 && (
                   <>
                     <HeartFavorite
@@ -75,7 +76,7 @@ const LinkToSong = ({
                     <ContextMenu />
                   </>
                 )
-            }
+      }
     </div>
   );
 };
@@ -84,8 +85,7 @@ LinkToSong.propTypes = {
   index: propTypes.number,
   fileName: propTypes.string,
   samePlaylist: propTypes.bool,
-  // eslint-disable-next-line react/forbid-prop-types
-  files: propTypes.array,
+  files: propTypes.instanceOf(List).isRequired,
   path: propTypes.string,
   inFavorites: propTypes.bool,
 };
@@ -94,7 +94,6 @@ LinkToSong.defaultProps = {
   index: 0,
   fileName: '',
   samePlaylist: false,
-  files: [],
   path: '',
   inFavorites: false,
 };

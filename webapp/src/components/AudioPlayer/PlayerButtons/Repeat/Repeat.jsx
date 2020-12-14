@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleRepeat } from '../../../../redux/actions';
+import { toggleRepeat } from '../../../../store/actions';
 
 const Repeat = () => {
   const onRepeat = useSelector((state) => state.player.onRepeat);

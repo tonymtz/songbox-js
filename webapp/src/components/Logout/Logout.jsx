@@ -2,7 +2,7 @@ import React from 'react';
 import Cookie from 'universal-cookie';
 import { useDispatch } from 'react-redux';
 
-import { changeAuth } from '../../redux/actions';
+import { changeAuth } from '../../store/actions';
 
 const Logout = () => {
   const dispatch = useDispatch();

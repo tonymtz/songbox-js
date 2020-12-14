@@ -7,7 +7,7 @@ import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { changeSlidebarIndex } from '../../../redux/actions';
+import { changeSlidebarIndex } from '../../../store/actions';
 
 const Item = ({ index, item }) => {
   const selectedIndex = useSelector((state) => state.slidebarIndex);

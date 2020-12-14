@@ -1,11 +1,9 @@
 const express = require('express');
-const dropbox = require('dropbox');
 
 const router = express.Router();
-const dbx = new dropbox.Dropbox({ clientId: process.env.CLIENT_ID });
 
 router.get('/', (req, res) => {
-    res.render('login', { dropbox: dbx, url: process.env.URL });
+    res.render('login');
 });
 
 module.exports = router;

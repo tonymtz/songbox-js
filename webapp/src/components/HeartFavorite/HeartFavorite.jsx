@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import swal from 'sweetalert';
 
-import { addToFavorites, removeFromFavorites } from '../../redux/actions';
+import { addToFavorites, removeFromFavorites } from '../../store/actions';
 import { addFavorite, removeFavorite } from '../../Favorites/favorites';
 
 import './styles/favorite.scss';

@@ -14,6 +14,7 @@ const pricingRouter = require('./routes/pricing');
 const privacyRouter = require('./routes/privacy');
 const termsRouter = require('./routes/termsOfService');
 const favoritesRouter = require('./routes/favorite');
+const authRouter = require('./routes/auth');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(sassMiddleware({
     prefix: '/stylesheets/css'
 }));
 
+app.use('/auth', authRouter);
 app.use('/api', filesRouter);
 app.use('/api', favoritesRouter);
 app.use('/', indexRouter);

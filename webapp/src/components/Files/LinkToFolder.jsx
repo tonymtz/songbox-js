@@ -5,12 +5,11 @@ import propTypes from 'prop-types';
 
 import folderIcon from './icons/folder.svg';
 
-const LinkToFolder = ({ fileName, route }) => {
-  const path = `${route}${fileName}/`;
+const LinkToFolder = ({ folder }) => {
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
 
   return (
-    <Link to={`/app${path}`}>
+    <Link to={`/app${folder.get('path_lower')}`}>
       <div className="file-container">
         <img
           className="icon"
@@ -18,7 +17,7 @@ const LinkToFolder = ({ fileName, route }) => {
           alt="folder-icon"
         />
         <div className="file-name-container folder">
-          <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : ''}`}>{'Unnamed file' && fileName}</p>
+          <p className={`file-name ${darkThemeActive ? 'dark-theme-color' : ''}`}>{'Unnamed file' && folder.get('name')}</p>
         </div>
       </div>
     </Link>
@@ -26,13 +25,8 @@ const LinkToFolder = ({ fileName, route }) => {
 };
 
 LinkToFolder.propTypes = {
-  fileName: propTypes.string,
-  route: propTypes.string,
-};
-
-LinkToFolder.defaultProps = {
-  fileName: '',
-  route: '',
+  // eslint-disable-next-line react/forbid-prop-types
+  folder: propTypes.object.isRequired,
 };
 
 export default LinkToFolder;

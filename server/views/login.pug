@@ -10,14 +10,14 @@ block content
                 p(class="text") Hey there! Nice to see you again.
 
             div(class="buttons-container")
-                a(href=`${dropbox.auth.getAuthenticationUrl(`${url}/login`)}`) 
-                    button(class="dropbox-btn") Dropbox                  
+                a(href="/auth/dropbox")
+                    button(class="dropbox-btn") Dropbox
 
             div(class="links-container")
-                a(class="text" href=`/pricing`) Pricing  
-                a(class="text") | 
-                a(class="text" href=`/privacy`) Privacy 
-                a(class="text") | 
+                a(class="text" href=`/pricing`) Pricing
+                a(class="text") |
+                a(class="text" href=`/privacy`) Privacy
+                a(class="text") |
                 a(class="text" href=`/terms-of-service`) Terms of Service
 
     script(src="/javascripts/utils.js")

@@ -13,19 +13,15 @@ router.get('/me', auth, async(req, res) => {
 
         const userAccount = await dbx.usersGetCurrentAccount();
         const finalUserAccount = {
-            status: userAccount.status,
-            result: {
-                name: userAccount.result.name,
-                email: userAccount.result.email,
-                photo: userAccount.result.profile_photo_url
-            },
+            name: userAccount.result.name,
+            email: userAccount.result.email,
+            photo: userAccount.result.profile_photo_url
         };
 
         const { account_id, email } = userAccount.result;
         await insertUser({ account_id, email });
 
         res.status(200).send(finalUserAccount);
-
     } catch (error) {
         res.status(401).json(error);
     }

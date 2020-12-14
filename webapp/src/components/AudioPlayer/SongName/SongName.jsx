@@ -5,7 +5,7 @@ import propTypes from 'prop-types';
 import swal from 'sweetalert';
 
 import { addFavorite } from '../../../Favorites/favorites';
-import { addToFavorites } from '../../../redux/actions';
+import { addToFavorites } from '../../../store/actions';
 
 import '../style/song.scss';
 
@@ -30,27 +30,27 @@ const SongName = ({ showingName }) => {
     })
       .then(async (value) => {
         switch (value) {
-          case 'favorite': {
-            const successfull = await addFavorite(currentSong);
-            if (successfull) {
-              addToFavoritesState(currentSong);
-            }
-
-            swal({
-              icon: successfull ? 'sucess' : 'error',
-              text: successfull ? 'Added to favorites!' : 'Service not available, try again later.',
-            });
+        case 'favorite': {
+          const successfull = await addFavorite(currentSong);
+          if (successfull) {
+            addToFavoritesState(currentSong);
           }
-            break;
 
-          case 'folder': {
-            const appRoute = `/app${songPath}`;
-            history.push(appRoute);
-          }
-            break;
+          swal({
+            icon: successfull ? 'sucess' : 'error',
+            text: successfull ? 'Added to favorites!' : 'Service not available, try again later.',
+          });
+        }
+          break;
 
-          default:
-            break;
+        case 'folder': {
+          const appRoute = `/app${songPath}`;
+          history.push(appRoute);
+        }
+          break;
+
+        default:
+          break;
         }
       });
   };

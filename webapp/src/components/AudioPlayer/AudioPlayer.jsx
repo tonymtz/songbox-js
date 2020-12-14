@@ -10,7 +10,7 @@ import Loading from '../Loading';
 
 import {
   changeSongIndex, changeSongsQueue, addBrokenLink, markSongAsBroken, setSong,
-} from '../../redux/actions';
+} from '../../store/actions';
 
 import getLink from '../../Links/getLink';
 

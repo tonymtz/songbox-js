@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import {
   changeSlidebarIndex, changeAutoPlay, changeDarkTheme, restorePreferences, setFullfilename,
-} from '../../redux/actions';
+} from '../../store/actions';
 
 import OptionSection from './OptionSection';
 import OptionToggle from './OptionToggle';

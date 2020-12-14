@@ -4,14 +4,14 @@ import { create } from 'react-test-renderer';
 
 import ParentTest from './ParentTest';
 
-import Files from '../components/Files';
+import FilesComponent from '../components/Files';
 import LinkToFolder from '../components/Files/LinkToFolder';
 import LinkToSong from '../components/Files/LinkToSong';
 
 test('Test Files component', () => {
   const component = create(
     <ParentTest>
-      <Files />
+      <FilesComponent />
     </ParentTest>,
   );
 });

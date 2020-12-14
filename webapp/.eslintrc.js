@@ -22,6 +22,9 @@ module.exports = {
     'react', 'react-hooks'
   ],
   rules: {
+    "indent": ["error", 2],
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": "off"
   },
   overrides: [
     {

@@ -2,7 +2,7 @@ import React from 'react';
 
 const NotFound = () => (
   <div>
-    <h1>If you are reading this it is because you are lost!</h1>
+    <h1>404: Not found.</h1>
   </div>
 );
 

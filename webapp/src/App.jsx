@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import Cookie from 'universal-cookie';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { changeAuth, setUser, setFavorites } from './redux/actions';
+import { changeAuth, setUser, setFavorites } from './store/actions';
 
 import Sidebar from './components/Sidebar';
 import Main from './components/Main';

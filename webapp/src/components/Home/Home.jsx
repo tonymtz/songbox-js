@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AiFillHome } from 'react-icons/ai';
 
-import { changeRoute } from '../../redux/actions';
+import { changeRoute } from '../../store/actions';
 
 import './style/home.scss';
 

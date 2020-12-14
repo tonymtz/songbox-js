@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import LinkToSong from '../Files/LinkToSong';
 
-import { changeSlidebarIndex } from '../../redux/actions';
+import { changeSlidebarIndex } from '../../store/actions';
 
 const Favorites = ({ pageNumber }) => {
   const favorites = useSelector((state) => state.favorites.songs);
