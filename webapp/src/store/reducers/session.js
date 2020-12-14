@@ -15,7 +15,6 @@ const isLogged = false;
 
 const initState = {
   user,
-  token,
   isLogged,
 };
 
@@ -24,7 +23,6 @@ export default (state = initState, action) => {
   case SESSION_UPDATE:
     return {
       ...state,
-      token: action.payload.token,
       user: action.payload.user,
       isLogged: true,
     };
