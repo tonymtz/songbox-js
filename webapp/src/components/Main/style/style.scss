@@ -9,6 +9,16 @@
     padding-left: 5vw;
 }
 
+.breadcrumb-and-refresh-background{
+  padding: 0 20px;
+}
+.breadcrumb-and-refresh-container {
+  border-top: 2px solid #F2F3F4;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 5vw;
+}
+
 @media(min-width: 1024px) {
     #your-personal-library {
         font-size: 25px;

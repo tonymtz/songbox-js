@@ -3,11 +3,6 @@ export const changeSlidebarIndex = (index) => ({
   payload: index,
 });
 
-export const changeRoute = (route) => ({
-  type: 'CHANGE_ROUTE',
-  payload: route,
-});
-
 export const changeSongIndex = (index) => ({
   type: 'CHANGE_SONG_INDEX',
   payload: index,

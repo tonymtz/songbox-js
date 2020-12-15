@@ -1,0 +1,21 @@
+@import "../../../styles/colors.scss";
+@import "../../../styles/fonts.scss";
+
+.refresh-btn {
+  align-self: center;
+  border-radius: 50px;
+  padding: 5px 20px;
+  border: 1px solid $orange;
+  font-family: $font-asap;
+  height: 50%;
+}
+
+.refresh-btn:hover {
+  background-color: $volume-orange;
+  color: white;
+}
+
+.refresh-btn:active {
+  background-color: $orange-active;
+  color: white;
+}
