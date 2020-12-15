@@ -1,3 +1,1 @@
-import Directory from './Breadcrumb';
-
-export default Directory;
+export { default } from './Breadcrumb.component';
