@@ -1,8 +1,9 @@
 FROM node:10-alpine as songbox-webapp-stage
 LABEL maintainer="tonymtz <hello@tonymtz.com>"
+ARG REACT_APP_ENV=$REACT_APP_ENV
 WORKDIR /app
 COPY . .
-RUN npm install || true
+RUN npm install --silent
 # RUN CI=true npm test
 RUN npm run build
 
