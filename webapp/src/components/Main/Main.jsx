@@ -10,7 +10,7 @@ import './style/style.scss';
 const Main = () => {
   const { path } = useParams();
   const darkThemeActive = useSelector((state) => state.player.darkTheme);
-  const [triggerUpdate, setTriggerUpdate] = useState();
+  const [ , setTriggerUpdate] = useState();
 
   return (
     <div className={`content-container ${darkThemeActive ? 'dark-theme-background dark-theme-color' : ''}`}>
